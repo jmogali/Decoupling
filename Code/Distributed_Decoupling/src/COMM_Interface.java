@@ -13,24 +13,23 @@ public class COMM_Interface {
 		m_hmp_Sync_Objects_Change = new HashMap<String, Boolean>();
 	}
 	
-	public synchronized int Get_Value(String stAgent_agent) throws NoNewUpdateException 
+	public synchronized int Get_Value(String stAgent) throws NoNewUpdateException, ConnectionNotEstablished 
 	{
-		if(!m_hmp_Sync_Objects_Change.get(stAgent_agent))
+		try
 		{
-			try{
-				wait(200);
-					
-				if(!m_hmp_Sync_Objects_Change.get(stAgent_agent))
-				{
-					throw new NoNewUpdateException(stAgent_agent);	
-				}
-			}catch(InterruptedException e){
-				System.out.println("Thanks for waking me up!!!");
-			}		
+			if(!m_hmp_Sync_Objects_Change.get(stAgent))
+			{
+				throw new NoNewUpdateException(stAgent);				 	
+			}
+		}catch(NullPointerException e){
+			
+			throw new ConnectionNotEstablished(stAgent);	
 		}
 		
-		m_hmp_Sync_Objects_Change.put(stAgent_agent, false);
-		return m_hmp_Sync_Objects.get(stAgent_agent);
+		m_hmp_Sync_Objects_Change.put(stAgent, false);
+		int iVal = m_hmp_Sync_Objects.get(stAgent);
+		
+	    return iVal;
 	}
 	
 	public synchronized void Insert_Entry(String stAgent_agent , Integer iVal)
@@ -39,7 +38,6 @@ public class COMM_Interface {
 		
 		m_hmp_Sync_Objects.put(stAgent_agent, iVal); 	
 		m_hmp_Sync_Objects_Change.put(stAgent_agent, true);
-		
-		notify();
+	
 	}	
 }
