@@ -1,0 +1,59 @@
+
+public class Main {
+	
+	public static void main(String args[])
+	{
+		COMM_Interface comm1 = new COMM_Interface();
+		Agent agent1 = new Agent("One", comm1, 6, 200);
+		
+		COMM_Interface comm2 = new COMM_Interface();
+		Agent agent2 = new Agent("Two", comm2, 9, 220);
+		
+		COMM_Interface comm3 = new COMM_Interface();
+		Agent agent3 = new Agent("Three", comm3, 4, 200);
+		
+		COMM_Interface comm4 = new COMM_Interface();
+		Agent agent4 = new Agent("Four", comm4, 3, 200);
+		
+		COMM_Interface comm5 = new COMM_Interface();
+		Agent agent5 = new Agent("Five", comm5, 7, 2000);
+		
+		agent1.AddCommNeighbour(agent2.GetName(), agent2.Get_Contact_Info());
+		agent1.AddCommNeighbour(agent3.GetName(), agent3.Get_Contact_Info());
+		
+		agent2.AddCommNeighbour(agent1.GetName(), agent1.Get_Contact_Info());
+		agent2.AddCommNeighbour(agent3.GetName(), agent3.Get_Contact_Info());
+		agent2.AddCommNeighbour(agent4.GetName(), agent4.Get_Contact_Info());
+		
+		agent3.AddCommNeighbour(agent1.GetName(), agent1.Get_Contact_Info());
+		agent3.AddCommNeighbour(agent2.GetName(), agent2.Get_Contact_Info());
+		agent3.AddCommNeighbour(agent4.GetName(), agent4.Get_Contact_Info());
+		agent3.AddCommNeighbour(agent5.GetName(), agent5.Get_Contact_Info());
+		
+		agent4.AddCommNeighbour(agent2.GetName(), agent2.Get_Contact_Info());
+		agent4.AddCommNeighbour(agent3.GetName(), agent3.Get_Contact_Info());
+		agent4.AddCommNeighbour(agent5.GetName(), agent5.Get_Contact_Info());
+		
+		agent5.AddCommNeighbour(agent3.GetName(), agent3.Get_Contact_Info());
+		agent5.AddCommNeighbour(agent4.GetName(), agent4.Get_Contact_Info());
+		
+		agent1.t.start();
+		agent2.t.start();
+		agent3.t.start();
+		agent4.t.start();
+		agent5.t.start();
+		
+		try {
+			System.out.println("Waiting for threads to finish.");
+			agent1.t.join();
+			agent2.t.join();
+			agent3.t.join();
+			agent4.t.join();
+			agent5.t.join();
+		} catch (InterruptedException e) {
+			System.out.println("Main thread Interrupted");
+		}
+		
+	}
+
+}
