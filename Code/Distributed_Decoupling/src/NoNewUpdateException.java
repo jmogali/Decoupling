@@ -7,9 +7,9 @@ public class NoNewUpdateException extends Exception {
 	private static final long serialVersionUID = 1L;
 	private String m_Sender;
 	
-	NoNewUpdateException(String stAgent)
+	NoNewUpdateException(String strAgent)
 	{
-		m_Sender = stAgent;
+		m_Sender = strAgent;
 	}
 
 	public String toString()

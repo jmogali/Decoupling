@@ -95,10 +95,9 @@ public class Main {
 			d.t.join();
 			e.t.join();
 			f.t.join();
-			g.t.join();
-			
+			g.t.join();			
 		}catch(InterruptedException exp){
-			System.out.println("Main thread interrupted");
-		}
+			System.out.println(exp);
+		}		
 	}
 }

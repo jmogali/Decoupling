@@ -4,9 +4,9 @@ public class ConnectionNotEstablished extends Exception{
 	private static final long serialVersionUID = 1L;
 	private String m_Sender;
 	
-	ConnectionNotEstablished(String stAgent)
+	ConnectionNotEstablished(String strAgent)
 	{
-		m_Sender = stAgent;
+		m_Sender = strAgent;
 	}
 
 	public String toString()

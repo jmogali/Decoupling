@@ -1,0 +1,5780 @@
+c In this file, the DIMACS format is extended by allowing arcs of infinite weight.
+c These are specified by "a U V inf", where U and V are vertex IDs.
+c 321 vertex labels follow:
+c <label>     1 0_0_ST
+c <label>     2 0_0_ET
+c <label>     3 0_1_ST
+c <label>     4 0_1_ET
+c <label>     5 0_2_ST
+c <label>     6 0_2_ET
+c <label>     7 0_3_ST
+c <label>     8 0_3_ET
+c <label>     9 0_4_ST
+c <label>    10 0_4_ET
+c <label>    11 0_5_ST
+c <label>    12 0_5_ET
+c <label>    13 0_6_ST
+c <label>    14 0_6_ET
+c <label>    15 0_7_ST
+c <label>    16 0_7_ET
+c <label>    17 0_8_ST
+c <label>    18 0_8_ET
+c <label>    19 0_9_ST
+c <label>    20 0_9_ET
+c <label>    21 1_0_ST
+c <label>    22 1_0_ET
+c <label>    23 1_1_ST
+c <label>    24 1_1_ET
+c <label>    25 1_2_ST
+c <label>    26 1_2_ET
+c <label>    27 1_3_ST
+c <label>    28 1_3_ET
+c <label>    29 1_4_ST
+c <label>    30 1_4_ET
+c <label>    31 1_5_ST
+c <label>    32 1_5_ET
+c <label>    33 1_6_ST
+c <label>    34 1_6_ET
+c <label>    35 1_7_ST
+c <label>    36 1_7_ET
+c <label>    37 1_8_ST
+c <label>    38 1_8_ET
+c <label>    39 1_9_ST
+c <label>    40 1_9_ET
+c <label>    41 2_0_ST
+c <label>    42 2_0_ET
+c <label>    43 2_1_ST
+c <label>    44 2_1_ET
+c <label>    45 2_2_ST
+c <label>    46 2_2_ET
+c <label>    47 2_3_ST
+c <label>    48 2_3_ET
+c <label>    49 2_4_ST
+c <label>    50 2_4_ET
+c <label>    51 2_5_ST
+c <label>    52 2_5_ET
+c <label>    53 2_6_ST
+c <label>    54 2_6_ET
+c <label>    55 2_7_ST
+c <label>    56 2_7_ET
+c <label>    57 2_8_ST
+c <label>    58 2_8_ET
+c <label>    59 2_9_ST
+c <label>    60 2_9_ET
+c <label>    61 3_0_ST
+c <label>    62 3_0_ET
+c <label>    63 3_1_ST
+c <label>    64 3_1_ET
+c <label>    65 3_2_ST
+c <label>    66 3_2_ET
+c <label>    67 3_3_ST
+c <label>    68 3_3_ET
+c <label>    69 3_4_ST
+c <label>    70 3_4_ET
+c <label>    71 3_5_ST
+c <label>    72 3_5_ET
+c <label>    73 3_6_ST
+c <label>    74 3_6_ET
+c <label>    75 3_7_ST
+c <label>    76 3_7_ET
+c <label>    77 3_8_ST
+c <label>    78 3_8_ET
+c <label>    79 3_9_ST
+c <label>    80 3_9_ET
+c <label>    81 4_0_ST
+c <label>    82 4_0_ET
+c <label>    83 4_1_ST
+c <label>    84 4_1_ET
+c <label>    85 4_2_ST
+c <label>    86 4_2_ET
+c <label>    87 4_3_ST
+c <label>    88 4_3_ET
+c <label>    89 4_4_ST
+c <label>    90 4_4_ET
+c <label>    91 4_5_ST
+c <label>    92 4_5_ET
+c <label>    93 4_6_ST
+c <label>    94 4_6_ET
+c <label>    95 4_7_ST
+c <label>    96 4_7_ET
+c <label>    97 4_8_ST
+c <label>    98 4_8_ET
+c <label>    99 4_9_ST
+c <label>   100 4_9_ET
+c <label>   101 5_0_ST
+c <label>   102 5_0_ET
+c <label>   103 5_1_ST
+c <label>   104 5_1_ET
+c <label>   105 5_2_ST
+c <label>   106 5_2_ET
+c <label>   107 5_3_ST
+c <label>   108 5_3_ET
+c <label>   109 5_4_ST
+c <label>   110 5_4_ET
+c <label>   111 5_5_ST
+c <label>   112 5_5_ET
+c <label>   113 5_6_ST
+c <label>   114 5_6_ET
+c <label>   115 5_7_ST
+c <label>   116 5_7_ET
+c <label>   117 5_8_ST
+c <label>   118 5_8_ET
+c <label>   119 5_9_ST
+c <label>   120 5_9_ET
+c <label>   121 6_0_ST
+c <label>   122 6_0_ET
+c <label>   123 6_1_ST
+c <label>   124 6_1_ET
+c <label>   125 6_2_ST
+c <label>   126 6_2_ET
+c <label>   127 6_3_ST
+c <label>   128 6_3_ET
+c <label>   129 6_4_ST
+c <label>   130 6_4_ET
+c <label>   131 6_5_ST
+c <label>   132 6_5_ET
+c <label>   133 6_6_ST
+c <label>   134 6_6_ET
+c <label>   135 6_7_ST
+c <label>   136 6_7_ET
+c <label>   137 6_8_ST
+c <label>   138 6_8_ET
+c <label>   139 6_9_ST
+c <label>   140 6_9_ET
+c <label>   141 7_0_ST
+c <label>   142 7_0_ET
+c <label>   143 7_1_ST
+c <label>   144 7_1_ET
+c <label>   145 7_2_ST
+c <label>   146 7_2_ET
+c <label>   147 7_3_ST
+c <label>   148 7_3_ET
+c <label>   149 7_4_ST
+c <label>   150 7_4_ET
+c <label>   151 7_5_ST
+c <label>   152 7_5_ET
+c <label>   153 7_6_ST
+c <label>   154 7_6_ET
+c <label>   155 7_7_ST
+c <label>   156 7_7_ET
+c <label>   157 7_8_ST
+c <label>   158 7_8_ET
+c <label>   159 7_9_ST
+c <label>   160 7_9_ET
+c <label>   161 8_0_ST
+c <label>   162 8_0_ET
+c <label>   163 8_1_ST
+c <label>   164 8_1_ET
+c <label>   165 8_2_ST
+c <label>   166 8_2_ET
+c <label>   167 8_3_ST
+c <label>   168 8_3_ET
+c <label>   169 8_4_ST
+c <label>   170 8_4_ET
+c <label>   171 8_5_ST
+c <label>   172 8_5_ET
+c <label>   173 8_6_ST
+c <label>   174 8_6_ET
+c <label>   175 8_7_ST
+c <label>   176 8_7_ET
+c <label>   177 8_8_ST
+c <label>   178 8_8_ET
+c <label>   179 8_9_ST
+c <label>   180 8_9_ET
+c <label>   181 9_0_ST
+c <label>   182 9_0_ET
+c <label>   183 9_1_ST
+c <label>   184 9_1_ET
+c <label>   185 9_2_ST
+c <label>   186 9_2_ET
+c <label>   187 9_3_ST
+c <label>   188 9_3_ET
+c <label>   189 9_4_ST
+c <label>   190 9_4_ET
+c <label>   191 9_5_ST
+c <label>   192 9_5_ET
+c <label>   193 9_6_ST
+c <label>   194 9_6_ET
+c <label>   195 9_7_ST
+c <label>   196 9_7_ET
+c <label>   197 9_8_ST
+c <label>   198 9_8_ET
+c <label>   199 9_9_ST
+c <label>   200 9_9_ET
+c <label>   201 10_0_ST
+c <label>   202 10_0_ET
+c <label>   203 10_1_ST
+c <label>   204 10_1_ET
+c <label>   205 10_2_ST
+c <label>   206 10_2_ET
+c <label>   207 10_3_ST
+c <label>   208 10_3_ET
+c <label>   209 10_4_ST
+c <label>   210 10_4_ET
+c <label>   211 10_5_ST
+c <label>   212 10_5_ET
+c <label>   213 10_6_ST
+c <label>   214 10_6_ET
+c <label>   215 10_7_ST
+c <label>   216 10_7_ET
+c <label>   217 10_8_ST
+c <label>   218 10_8_ET
+c <label>   219 10_9_ST
+c <label>   220 10_9_ET
+c <label>   221 11_0_ST
+c <label>   222 11_0_ET
+c <label>   223 11_1_ST
+c <label>   224 11_1_ET
+c <label>   225 11_2_ST
+c <label>   226 11_2_ET
+c <label>   227 11_3_ST
+c <label>   228 11_3_ET
+c <label>   229 11_4_ST
+c <label>   230 11_4_ET
+c <label>   231 11_5_ST
+c <label>   232 11_5_ET
+c <label>   233 11_6_ST
+c <label>   234 11_6_ET
+c <label>   235 11_7_ST
+c <label>   236 11_7_ET
+c <label>   237 11_8_ST
+c <label>   238 11_8_ET
+c <label>   239 11_9_ST
+c <label>   240 11_9_ET
+c <label>   241 12_0_ST
+c <label>   242 12_0_ET
+c <label>   243 12_1_ST
+c <label>   244 12_1_ET
+c <label>   245 12_2_ST
+c <label>   246 12_2_ET
+c <label>   247 12_3_ST
+c <label>   248 12_3_ET
+c <label>   249 12_4_ST
+c <label>   250 12_4_ET
+c <label>   251 12_5_ST
+c <label>   252 12_5_ET
+c <label>   253 12_6_ST
+c <label>   254 12_6_ET
+c <label>   255 12_7_ST
+c <label>   256 12_7_ET
+c <label>   257 12_8_ST
+c <label>   258 12_8_ET
+c <label>   259 12_9_ST
+c <label>   260 12_9_ET
+c <label>   261 13_0_ST
+c <label>   262 13_0_ET
+c <label>   263 13_1_ST
+c <label>   264 13_1_ET
+c <label>   265 13_2_ST
+c <label>   266 13_2_ET
+c <label>   267 13_3_ST
+c <label>   268 13_3_ET
+c <label>   269 13_4_ST
+c <label>   270 13_4_ET
+c <label>   271 13_5_ST
+c <label>   272 13_5_ET
+c <label>   273 13_6_ST
+c <label>   274 13_6_ET
+c <label>   275 13_7_ST
+c <label>   276 13_7_ET
+c <label>   277 13_8_ST
+c <label>   278 13_8_ET
+c <label>   279 13_9_ST
+c <label>   280 13_9_ET
+c <label>   281 14_0_ST
+c <label>   282 14_0_ET
+c <label>   283 14_1_ST
+c <label>   284 14_1_ET
+c <label>   285 14_2_ST
+c <label>   286 14_2_ET
+c <label>   287 14_3_ST
+c <label>   288 14_3_ET
+c <label>   289 14_4_ST
+c <label>   290 14_4_ET
+c <label>   291 14_5_ST
+c <label>   292 14_5_ET
+c <label>   293 14_6_ST
+c <label>   294 14_6_ET
+c <label>   295 14_7_ST
+c <label>   296 14_7_ET
+c <label>   297 14_8_ST
+c <label>   298 14_8_ET
+c <label>   299 14_9_ST
+c <label>   300 14_9_ET
+c <label>   301 15_0_ST
+c <label>   302 15_0_ET
+c <label>   303 15_1_ST
+c <label>   304 15_1_ET
+c <label>   305 15_2_ST
+c <label>   306 15_2_ET
+c <label>   307 15_3_ST
+c <label>   308 15_3_ET
+c <label>   309 15_4_ST
+c <label>   310 15_4_ET
+c <label>   311 15_5_ST
+c <label>   312 15_5_ET
+c <label>   313 15_6_ST
+c <label>   314 15_6_ET
+c <label>   315 15_7_ST
+c <label>   316 15_7_ET
+c <label>   317 15_8_ST
+c <label>   318 15_8_ET
+c <label>   319 15_9_ST
+c <label>   320 15_9_ET
+c <label>   321 z
+c --------------------------
+c following is multiagent data.
+c "c <num_agents> A" specifies that the problem has A agents.
+c "c <own> A L" specifies that the agent with id A owns the vertex with label L.
+c Agent id is 0-based.  The value -1 indicates a shared vertex.
+c <num_agents> 17
+c <own> 0 0_0_ST
+c <own> 0 0_0_ET
+c <own> 0 0_1_ST
+c <own> 0 0_1_ET
+c <own> 0 0_2_ST
+c <own> 0 0_2_ET
+c <own> 0 0_3_ST
+c <own> 0 0_3_ET
+c <own> 0 0_4_ST
+c <own> 0 0_4_ET
+c <own> 0 0_5_ST
+c <own> 0 0_5_ET
+c <own> 0 0_6_ST
+c <own> 0 0_6_ET
+c <own> 0 0_7_ST
+c <own> 0 0_7_ET
+c <own> 0 0_8_ST
+c <own> 0 0_8_ET
+c <own> 0 0_9_ST
+c <own> 0 0_9_ET
+c <own> 1 1_0_ST
+c <own> 1 1_0_ET
+c <own> 1 1_1_ST
+c <own> 1 1_1_ET
+c <own> 1 1_2_ST
+c <own> 1 1_2_ET
+c <own> 1 1_3_ST
+c <own> 1 1_3_ET
+c <own> 1 1_4_ST
+c <own> 1 1_4_ET
+c <own> 1 1_5_ST
+c <own> 1 1_5_ET
+c <own> 1 1_6_ST
+c <own> 1 1_6_ET
+c <own> 1 1_7_ST
+c <own> 1 1_7_ET
+c <own> 1 1_8_ST
+c <own> 1 1_8_ET
+c <own> 1 1_9_ST
+c <own> 1 1_9_ET
+c <own> 2 2_0_ST
+c <own> 2 2_0_ET
+c <own> 2 2_1_ST
+c <own> 2 2_1_ET
+c <own> 2 2_2_ST
+c <own> 2 2_2_ET
+c <own> 2 2_3_ST
+c <own> 2 2_3_ET
+c <own> 2 2_4_ST
+c <own> 2 2_4_ET
+c <own> 2 2_5_ST
+c <own> 2 2_5_ET
+c <own> 2 2_6_ST
+c <own> 2 2_6_ET
+c <own> 2 2_7_ST
+c <own> 2 2_7_ET
+c <own> 2 2_8_ST
+c <own> 2 2_8_ET
+c <own> 2 2_9_ST
+c <own> 2 2_9_ET
+c <own> 3 3_0_ST
+c <own> 3 3_0_ET
+c <own> 3 3_1_ST
+c <own> 3 3_1_ET
+c <own> 3 3_2_ST
+c <own> 3 3_2_ET
+c <own> 3 3_3_ST
+c <own> 3 3_3_ET
+c <own> 3 3_4_ST
+c <own> 3 3_4_ET
+c <own> 3 3_5_ST
+c <own> 3 3_5_ET
+c <own> 3 3_6_ST
+c <own> 3 3_6_ET
+c <own> 3 3_7_ST
+c <own> 3 3_7_ET
+c <own> 3 3_8_ST
+c <own> 3 3_8_ET
+c <own> 3 3_9_ST
+c <own> 3 3_9_ET
+c <own> 4 4_0_ST
+c <own> 4 4_0_ET
+c <own> 4 4_1_ST
+c <own> 4 4_1_ET
+c <own> 4 4_2_ST
+c <own> 4 4_2_ET
+c <own> 4 4_3_ST
+c <own> 4 4_3_ET
+c <own> 4 4_4_ST
+c <own> 4 4_4_ET
+c <own> 4 4_5_ST
+c <own> 4 4_5_ET
+c <own> 4 4_6_ST
+c <own> 4 4_6_ET
+c <own> 4 4_7_ST
+c <own> 4 4_7_ET
+c <own> 4 4_8_ST
+c <own> 4 4_8_ET
+c <own> 4 4_9_ST
+c <own> 4 4_9_ET
+c <own> 5 5_0_ST
+c <own> 5 5_0_ET
+c <own> 5 5_1_ST
+c <own> 5 5_1_ET
+c <own> 5 5_2_ST
+c <own> 5 5_2_ET
+c <own> 5 5_3_ST
+c <own> 5 5_3_ET
+c <own> 5 5_4_ST
+c <own> 5 5_4_ET
+c <own> 5 5_5_ST
+c <own> 5 5_5_ET
+c <own> 5 5_6_ST
+c <own> 5 5_6_ET
+c <own> 5 5_7_ST
+c <own> 5 5_7_ET
+c <own> 5 5_8_ST
+c <own> 5 5_8_ET
+c <own> 5 5_9_ST
+c <own> 5 5_9_ET
+c <own> 6 6_0_ST
+c <own> 6 6_0_ET
+c <own> 6 6_1_ST
+c <own> 6 6_1_ET
+c <own> 6 6_2_ST
+c <own> 6 6_2_ET
+c <own> 6 6_3_ST
+c <own> 6 6_3_ET
+c <own> 6 6_4_ST
+c <own> 6 6_4_ET
+c <own> 6 6_5_ST
+c <own> 6 6_5_ET
+c <own> 6 6_6_ST
+c <own> 6 6_6_ET
+c <own> 6 6_7_ST
+c <own> 6 6_7_ET
+c <own> 6 6_8_ST
+c <own> 6 6_8_ET
+c <own> 6 6_9_ST
+c <own> 6 6_9_ET
+c <own> 7 7_0_ST
+c <own> 7 7_0_ET
+c <own> 7 7_1_ST
+c <own> 7 7_1_ET
+c <own> 7 7_2_ST
+c <own> 7 7_2_ET
+c <own> 7 7_3_ST
+c <own> 7 7_3_ET
+c <own> 7 7_4_ST
+c <own> 7 7_4_ET
+c <own> 7 7_5_ST
+c <own> 7 7_5_ET
+c <own> 7 7_6_ST
+c <own> 7 7_6_ET
+c <own> 7 7_7_ST
+c <own> 7 7_7_ET
+c <own> 7 7_8_ST
+c <own> 7 7_8_ET
+c <own> 7 7_9_ST
+c <own> 7 7_9_ET
+c <own> 8 8_0_ST
+c <own> 8 8_0_ET
+c <own> 8 8_1_ST
+c <own> 8 8_1_ET
+c <own> 8 8_2_ST
+c <own> 8 8_2_ET
+c <own> 8 8_3_ST
+c <own> 8 8_3_ET
+c <own> 8 8_4_ST
+c <own> 8 8_4_ET
+c <own> 8 8_5_ST
+c <own> 8 8_5_ET
+c <own> 8 8_6_ST
+c <own> 8 8_6_ET
+c <own> 8 8_7_ST
+c <own> 8 8_7_ET
+c <own> 8 8_8_ST
+c <own> 8 8_8_ET
+c <own> 8 8_9_ST
+c <own> 8 8_9_ET
+c <own> 9 9_0_ST
+c <own> 9 9_0_ET
+c <own> 9 9_1_ST
+c <own> 9 9_1_ET
+c <own> 9 9_2_ST
+c <own> 9 9_2_ET
+c <own> 9 9_3_ST
+c <own> 9 9_3_ET
+c <own> 9 9_4_ST
+c <own> 9 9_4_ET
+c <own> 9 9_5_ST
+c <own> 9 9_5_ET
+c <own> 9 9_6_ST
+c <own> 9 9_6_ET
+c <own> 9 9_7_ST
+c <own> 9 9_7_ET
+c <own> 9 9_8_ST
+c <own> 9 9_8_ET
+c <own> 9 9_9_ST
+c <own> 9 9_9_ET
+c <own> 10 10_0_ST
+c <own> 10 10_0_ET
+c <own> 10 10_1_ST
+c <own> 10 10_1_ET
+c <own> 10 10_2_ST
+c <own> 10 10_2_ET
+c <own> 10 10_3_ST
+c <own> 10 10_3_ET
+c <own> 10 10_4_ST
+c <own> 10 10_4_ET
+c <own> 10 10_5_ST
+c <own> 10 10_5_ET
+c <own> 10 10_6_ST
+c <own> 10 10_6_ET
+c <own> 10 10_7_ST
+c <own> 10 10_7_ET
+c <own> 10 10_8_ST
+c <own> 10 10_8_ET
+c <own> 10 10_9_ST
+c <own> 10 10_9_ET
+c <own> 11 11_0_ST
+c <own> 11 11_0_ET
+c <own> 11 11_1_ST
+c <own> 11 11_1_ET
+c <own> 11 11_2_ST
+c <own> 11 11_2_ET
+c <own> 11 11_3_ST
+c <own> 11 11_3_ET
+c <own> 11 11_4_ST
+c <own> 11 11_4_ET
+c <own> 11 11_5_ST
+c <own> 11 11_5_ET
+c <own> 11 11_6_ST
+c <own> 11 11_6_ET
+c <own> 11 11_7_ST
+c <own> 11 11_7_ET
+c <own> 11 11_8_ST
+c <own> 11 11_8_ET
+c <own> 11 11_9_ST
+c <own> 11 11_9_ET
+c <own> 12 12_0_ST
+c <own> 12 12_0_ET
+c <own> 12 12_1_ST
+c <own> 12 12_1_ET
+c <own> 12 12_2_ST
+c <own> 12 12_2_ET
+c <own> 12 12_3_ST
+c <own> 12 12_3_ET
+c <own> 12 12_4_ST
+c <own> 12 12_4_ET
+c <own> 12 12_5_ST
+c <own> 12 12_5_ET
+c <own> 12 12_6_ST
+c <own> 12 12_6_ET
+c <own> 12 12_7_ST
+c <own> 12 12_7_ET
+c <own> 12 12_8_ST
+c <own> 12 12_8_ET
+c <own> 12 12_9_ST
+c <own> 12 12_9_ET
+c <own> 13 13_0_ST
+c <own> 13 13_0_ET
+c <own> 13 13_1_ST
+c <own> 13 13_1_ET
+c <own> 13 13_2_ST
+c <own> 13 13_2_ET
+c <own> 13 13_3_ST
+c <own> 13 13_3_ET
+c <own> 13 13_4_ST
+c <own> 13 13_4_ET
+c <own> 13 13_5_ST
+c <own> 13 13_5_ET
+c <own> 13 13_6_ST
+c <own> 13 13_6_ET
+c <own> 13 13_7_ST
+c <own> 13 13_7_ET
+c <own> 13 13_8_ST
+c <own> 13 13_8_ET
+c <own> 13 13_9_ST
+c <own> 13 13_9_ET
+c <own> 14 14_0_ST
+c <own> 14 14_0_ET
+c <own> 14 14_1_ST
+c <own> 14 14_1_ET
+c <own> 14 14_2_ST
+c <own> 14 14_2_ET
+c <own> 14 14_3_ST
+c <own> 14 14_3_ET
+c <own> 14 14_4_ST
+c <own> 14 14_4_ET
+c <own> 14 14_5_ST
+c <own> 14 14_5_ET
+c <own> 14 14_6_ST
+c <own> 14 14_6_ET
+c <own> 14 14_7_ST
+c <own> 14 14_7_ET
+c <own> 14 14_8_ST
+c <own> 14 14_8_ET
+c <own> 14 14_9_ST
+c <own> 14 14_9_ET
+c <own> 15 15_0_ST
+c <own> 15 15_0_ET
+c <own> 15 15_1_ST
+c <own> 15 15_1_ET
+c <own> 15 15_2_ST
+c <own> 15 15_2_ET
+c <own> 15 15_3_ST
+c <own> 15 15_3_ET
+c <own> 15 15_4_ST
+c <own> 15 15_4_ET
+c <own> 15 15_5_ST
+c <own> 15 15_5_ET
+c <own> 15 15_6_ST
+c <own> 15 15_6_ET
+c <own> 15 15_7_ST
+c <own> 15 15_7_ET
+c <own> 15 15_8_ST
+c <own> 15 15_8_ET
+c <own> 15 15_9_ST
+c <own> 15 15_9_ET
+c <own> 16 z
+c --------------------------
+c END OF HEADER; problem line and arc data follow
+p sp 321 3802
+a 1 2 inf
+a 2 1 inf
+a 1 3 inf
+a 3 1 inf
+a 1 5 inf
+a 5 1 inf
+a 1 7 inf
+a 7 1 inf
+a 1 11 inf
+a 11 1 inf
+a 1 13 inf
+a 13 1 inf
+a 1 14 inf
+a 14 1 inf
+a 1 15 inf
+a 15 1 inf
+a 1 16 inf
+a 16 1 inf
+a 1 17 inf
+a 17 1 inf
+a 1 19 inf
+a 19 1 inf
+a 1 49 inf
+a 49 1 inf
+a 1 83 inf
+a 83 1 inf
+a 1 104 inf
+a 104 1 inf
+a 1 150 inf
+a 150 1 inf
+a 1 211 inf
+a 211 1 inf
+a 1 230 inf
+a 230 1 inf
+a 1 296 inf
+a 296 1 inf
+a 1 321 inf
+a 321 1 inf
+a 2 321 inf
+a 321 2 inf
+a 3 4 inf
+a 4 3 inf
+a 3 5 inf
+a 5 3 inf
+a 3 9 inf
+a 9 3 inf
+a 3 11 inf
+a 11 3 inf
+a 3 13 inf
+a 13 3 inf
+a 3 15 inf
+a 15 3 inf
+a 3 17 inf
+a 17 3 inf
+a 3 19 inf
+a 19 3 inf
+a 3 321 inf
+a 321 3 inf
+a 4 321 inf
+a 321 4 inf
+a 5 6 inf
+a 6 5 inf
+a 5 7 inf
+a 7 5 inf
+a 5 9 inf
+a 9 5 inf
+a 5 13 inf
+a 13 5 inf
+a 5 14 inf
+a 14 5 inf
+a 5 15 inf
+a 15 5 inf
+a 5 16 inf
+a 16 5 inf
+a 5 17 inf
+a 17 5 inf
+a 5 19 inf
+a 19 5 inf
+a 5 49 inf
+a 49 5 inf
+a 5 83 inf
+a 83 5 inf
+a 5 87 inf
+a 87 5 inf
+a 5 88 inf
+a 88 5 inf
+a 5 104 inf
+a 104 5 inf
+a 5 118 inf
+a 118 5 inf
+a 5 150 inf
+a 150 5 inf
+a 5 211 inf
+a 211 5 inf
+a 5 230 inf
+a 230 5 inf
+a 5 296 inf
+a 296 5 inf
+a 5 321 inf
+a 321 5 inf
+a 6 321 inf
+a 321 6 inf
+a 7 8 inf
+a 8 7 inf
+a 7 13 inf
+a 13 7 inf
+a 7 15 inf
+a 15 7 inf
+a 7 17 inf
+a 17 7 inf
+a 7 19 inf
+a 19 7 inf
+a 7 321 inf
+a 321 7 inf
+a 8 321 inf
+a 321 8 inf
+a 9 10 inf
+a 10 9 inf
+a 9 13 inf
+a 13 9 inf
+a 9 17 inf
+a 17 9 inf
+a 9 19 inf
+a 19 9 inf
+a 9 321 inf
+a 321 9 inf
+a 10 321 inf
+a 321 10 inf
+a 11 12 inf
+a 12 11 inf
+a 11 15 inf
+a 15 11 inf
+a 11 19 inf
+a 19 11 inf
+a 11 321 inf
+a 321 11 inf
+a 12 321 inf
+a 321 12 inf
+a 13 14 inf
+a 14 13 inf
+a 13 15 inf
+a 15 13 inf
+a 13 17 inf
+a 17 13 inf
+a 13 19 inf
+a 19 13 inf
+a 13 321 inf
+a 321 13 inf
+a 14 15 inf
+a 15 14 inf
+a 14 16 inf
+a 16 14 inf
+a 14 17 inf
+a 17 14 inf
+a 14 19 inf
+a 19 14 inf
+a 14 49 inf
+a 49 14 inf
+a 14 211 inf
+a 211 14 inf
+a 14 321 inf
+a 321 14 inf
+a 15 16 inf
+a 16 15 inf
+a 15 17 inf
+a 17 15 inf
+a 15 19 inf
+a 19 15 inf
+a 15 321 inf
+a 321 15 inf
+a 16 17 inf
+a 17 16 inf
+a 16 19 inf
+a 19 16 inf
+a 16 49 inf
+a 49 16 inf
+a 16 321 inf
+a 321 16 inf
+a 17 18 inf
+a 18 17 inf
+a 17 19 inf
+a 19 17 inf
+a 17 49 inf
+a 49 17 inf
+a 17 83 inf
+a 83 17 inf
+a 17 88 inf
+a 88 17 inf
+a 17 104 inf
+a 104 17 inf
+a 17 150 inf
+a 150 17 inf
+a 17 211 inf
+a 211 17 inf
+a 17 230 inf
+a 230 17 inf
+a 17 296 inf
+a 296 17 inf
+a 17 321 inf
+a 321 17 inf
+a 18 321 inf
+a 321 18 inf
+a 19 20 inf
+a 20 19 inf
+a 19 49 inf
+a 49 19 inf
+a 19 83 inf
+a 83 19 inf
+a 19 87 inf
+a 87 19 inf
+a 19 88 inf
+a 88 19 inf
+a 19 89 inf
+a 89 19 inf
+a 19 102 inf
+a 102 19 inf
+a 19 103 inf
+a 103 19 inf
+a 19 104 inf
+a 104 19 inf
+a 19 107 inf
+a 107 19 inf
+a 19 110 inf
+a 110 19 inf
+a 19 116 inf
+a 116 19 inf
+a 19 118 inf
+a 118 19 inf
+a 19 145 inf
+a 145 19 inf
+a 19 150 inf
+a 150 19 inf
+a 19 211 inf
+a 211 19 inf
+a 19 227 inf
+a 227 19 inf
+a 19 230 inf
+a 230 19 inf
+a 19 236 inf
+a 236 19 inf
+a 19 273 inf
+a 273 19 inf
+a 19 293 inf
+a 293 19 inf
+a 19 296 inf
+a 296 19 inf
+a 19 321 inf
+a 321 19 inf
+a 20 321 inf
+a 321 20 inf
+a 21 22 inf
+a 22 21 inf
+a 21 25 inf
+a 25 21 inf
+a 21 27 inf
+a 27 21 inf
+a 21 29 inf
+a 29 21 inf
+a 21 31 inf
+a 31 21 inf
+a 21 33 inf
+a 33 21 inf
+a 21 35 inf
+a 35 21 inf
+a 21 37 inf
+a 37 21 inf
+a 21 321 inf
+a 321 21 inf
+a 22 321 inf
+a 321 22 inf
+a 23 24 inf
+a 24 23 inf
+a 23 25 inf
+a 25 23 inf
+a 23 27 inf
+a 27 23 inf
+a 23 29 inf
+a 29 23 inf
+a 23 31 inf
+a 31 23 inf
+a 23 35 inf
+a 35 23 inf
+a 23 37 inf
+a 37 23 inf
+a 23 39 inf
+a 39 23 inf
+a 23 321 inf
+a 321 23 inf
+a 24 321 inf
+a 321 24 inf
+a 25 26 inf
+a 26 25 inf
+a 25 27 inf
+a 27 25 inf
+a 25 29 inf
+a 29 25 inf
+a 25 31 inf
+a 31 25 inf
+a 25 35 inf
+a 35 25 inf
+a 25 37 inf
+a 37 25 inf
+a 25 39 inf
+a 39 25 inf
+a 25 321 inf
+a 321 25 inf
+a 26 321 inf
+a 321 26 inf
+a 27 28 inf
+a 28 27 inf
+a 27 29 inf
+a 29 27 inf
+a 27 31 inf
+a 31 27 inf
+a 27 33 inf
+a 33 27 inf
+a 27 35 inf
+a 35 27 inf
+a 27 37 inf
+a 37 27 inf
+a 27 321 inf
+a 321 27 inf
+a 28 321 inf
+a 321 28 inf
+a 29 30 inf
+a 30 29 inf
+a 29 31 inf
+a 31 29 inf
+a 29 33 inf
+a 33 29 inf
+a 29 35 inf
+a 35 29 inf
+a 29 37 inf
+a 37 29 inf
+a 29 321 inf
+a 321 29 inf
+a 30 321 inf
+a 321 30 inf
+a 31 32 inf
+a 32 31 inf
+a 31 33 inf
+a 33 31 inf
+a 31 35 inf
+a 35 31 inf
+a 31 37 inf
+a 37 31 inf
+a 31 39 inf
+a 39 31 inf
+a 31 321 inf
+a 321 31 inf
+a 32 321 inf
+a 321 32 inf
+a 33 34 inf
+a 34 33 inf
+a 33 321 inf
+a 321 33 inf
+a 34 321 inf
+a 321 34 inf
+a 35 36 inf
+a 36 35 inf
+a 35 37 inf
+a 37 35 inf
+a 35 39 inf
+a 39 35 inf
+a 35 321 inf
+a 321 35 inf
+a 36 321 inf
+a 321 36 inf
+a 37 38 inf
+a 38 37 inf
+a 37 74 inf
+a 74 37 inf
+a 37 284 inf
+a 284 37 inf
+a 37 321 inf
+a 321 37 inf
+a 38 321 inf
+a 321 38 inf
+a 39 40 inf
+a 40 39 inf
+a 39 321 inf
+a 321 39 inf
+a 40 321 inf
+a 321 40 inf
+a 41 42 inf
+a 42 41 inf
+a 41 43 inf
+a 43 41 inf
+a 41 47 inf
+a 47 41 inf
+a 41 53 inf
+a 53 41 inf
+a 41 55 inf
+a 55 41 inf
+a 41 57 inf
+a 57 41 inf
+a 41 321 inf
+a 321 41 inf
+a 42 43 inf
+a 43 42 inf
+a 42 44 inf
+a 44 42 inf
+a 42 45 inf
+a 45 42 inf
+a 42 47 inf
+a 47 42 inf
+a 42 49 inf
+a 49 42 inf
+a 42 53 inf
+a 53 42 inf
+a 42 55 inf
+a 55 42 inf
+a 42 56 inf
+a 56 42 inf
+a 42 57 inf
+a 57 42 inf
+a 42 86 inf
+a 86 42 inf
+a 42 102 inf
+a 102 42 inf
+a 42 145 inf
+a 145 42 inf
+a 42 147 inf
+a 147 42 inf
+a 42 149 inf
+a 149 42 inf
+a 42 150 inf
+a 150 42 inf
+a 42 152 inf
+a 152 42 inf
+a 42 153 inf
+a 153 42 inf
+a 42 157 inf
+a 157 42 inf
+a 42 165 inf
+a 165 42 inf
+a 42 290 inf
+a 290 42 inf
+a 42 292 inf
+a 292 42 inf
+a 42 321 inf
+a 321 42 inf
+a 43 44 inf
+a 44 43 inf
+a 43 45 inf
+a 45 43 inf
+a 43 47 inf
+a 47 43 inf
+a 43 49 inf
+a 49 43 inf
+a 43 53 inf
+a 53 43 inf
+a 43 55 inf
+a 55 43 inf
+a 43 57 inf
+a 57 43 inf
+a 43 59 inf
+a 59 43 inf
+a 43 321 inf
+a 321 43 inf
+a 44 45 inf
+a 45 44 inf
+a 44 47 inf
+a 47 44 inf
+a 44 49 inf
+a 49 44 inf
+a 44 53 inf
+a 53 44 inf
+a 44 55 inf
+a 55 44 inf
+a 44 56 inf
+a 56 44 inf
+a 44 57 inf
+a 57 44 inf
+a 44 86 inf
+a 86 44 inf
+a 44 290 inf
+a 290 44 inf
+a 44 321 inf
+a 321 44 inf
+a 45 46 inf
+a 46 45 inf
+a 45 47 inf
+a 47 45 inf
+a 45 49 inf
+a 49 45 inf
+a 45 51 inf
+a 51 45 inf
+a 45 53 inf
+a 53 45 inf
+a 45 55 inf
+a 55 45 inf
+a 45 56 inf
+a 56 45 inf
+a 45 57 inf
+a 57 45 inf
+a 45 59 inf
+a 59 45 inf
+a 45 83 inf
+a 83 45 inf
+a 45 86 inf
+a 86 45 inf
+a 45 87 inf
+a 87 45 inf
+a 45 89 inf
+a 89 45 inf
+a 45 96 inf
+a 96 45 inf
+a 45 102 inf
+a 102 45 inf
+a 45 103 inf
+a 103 45 inf
+a 45 110 inf
+a 110 45 inf
+a 45 118 inf
+a 118 45 inf
+a 45 145 inf
+a 145 45 inf
+a 45 147 inf
+a 147 45 inf
+a 45 149 inf
+a 149 45 inf
+a 45 150 inf
+a 150 45 inf
+a 45 153 inf
+a 153 45 inf
+a 45 157 inf
+a 157 45 inf
+a 45 158 inf
+a 158 45 inf
+a 45 162 inf
+a 162 45 inf
+a 45 164 inf
+a 164 45 inf
+a 45 165 inf
+a 165 45 inf
+a 45 176 inf
+a 176 45 inf
+a 45 177 inf
+a 177 45 inf
+a 45 179 inf
+a 179 45 inf
+a 45 227 inf
+a 227 45 inf
+a 45 236 inf
+a 236 45 inf
+a 45 257 inf
+a 257 45 inf
+a 45 282 inf
+a 282 45 inf
+a 45 284 inf
+a 284 45 inf
+a 45 289 inf
+a 289 45 inf
+a 45 290 inf
+a 290 45 inf
+a 45 292 inf
+a 292 45 inf
+a 45 293 inf
+a 293 45 inf
+a 45 296 inf
+a 296 45 inf
+a 45 317 inf
+a 317 45 inf
+a 45 318 inf
+a 318 45 inf
+a 45 321 inf
+a 321 45 inf
+a 46 87 inf
+a 87 46 inf
+a 46 153 inf
+a 153 46 inf
+a 46 162 inf
+a 162 46 inf
+a 46 164 inf
+a 164 46 inf
+a 46 177 inf
+a 177 46 inf
+a 46 282 inf
+a 282 46 inf
+a 46 284 inf
+a 284 46 inf
+a 46 290 inf
+a 290 46 inf
+a 46 305 inf
+a 305 46 inf
+a 46 308 inf
+a 308 46 inf
+a 46 317 inf
+a 317 46 inf
+a 46 321 inf
+a 321 46 inf
+a 47 48 inf
+a 48 47 inf
+a 47 49 inf
+a 49 47 inf
+a 47 53 inf
+a 53 47 inf
+a 47 55 inf
+a 55 47 inf
+a 47 57 inf
+a 57 47 inf
+a 47 59 inf
+a 59 47 inf
+a 47 321 inf
+a 321 47 inf
+a 48 321 inf
+a 321 48 inf
+a 49 50 inf
+a 50 49 inf
+a 49 51 inf
+a 51 49 inf
+a 49 53 inf
+a 53 49 inf
+a 49 55 inf
+a 55 49 inf
+a 49 56 inf
+a 56 49 inf
+a 49 57 inf
+a 57 49 inf
+a 49 59 inf
+a 59 49 inf
+a 49 83 inf
+a 83 49 inf
+a 49 86 inf
+a 86 49 inf
+a 49 87 inf
+a 87 49 inf
+a 49 88 inf
+a 88 49 inf
+a 49 89 inf
+a 89 49 inf
+a 49 96 inf
+a 96 49 inf
+a 49 102 inf
+a 102 49 inf
+a 49 103 inf
+a 103 49 inf
+a 49 104 inf
+a 104 49 inf
+a 49 110 inf
+a 110 49 inf
+a 49 118 inf
+a 118 49 inf
+a 49 145 inf
+a 145 49 inf
+a 49 147 inf
+a 147 49 inf
+a 49 150 inf
+a 150 49 inf
+a 49 153 inf
+a 153 49 inf
+a 49 162 inf
+a 162 49 inf
+a 49 165 inf
+a 165 49 inf
+a 49 176 inf
+a 176 49 inf
+a 49 177 inf
+a 177 49 inf
+a 49 179 inf
+a 179 49 inf
+a 49 211 inf
+a 211 49 inf
+a 49 227 inf
+a 227 49 inf
+a 49 230 inf
+a 230 49 inf
+a 49 236 inf
+a 236 49 inf
+a 49 282 inf
+a 282 49 inf
+a 49 284 inf
+a 284 49 inf
+a 49 289 inf
+a 289 49 inf
+a 49 290 inf
+a 290 49 inf
+a 49 292 inf
+a 292 49 inf
+a 49 293 inf
+a 293 49 inf
+a 49 296 inf
+a 296 49 inf
+a 49 321 inf
+a 321 49 inf
+a 50 321 inf
+a 321 50 inf
+a 51 52 inf
+a 52 51 inf
+a 51 55 inf
+a 55 51 inf
+a 51 57 inf
+a 57 51 inf
+a 51 59 inf
+a 59 51 inf
+a 51 321 inf
+a 321 51 inf
+a 52 321 inf
+a 321 52 inf
+a 53 54 inf
+a 54 53 inf
+a 53 55 inf
+a 55 53 inf
+a 53 57 inf
+a 57 53 inf
+a 53 59 inf
+a 59 53 inf
+a 53 321 inf
+a 321 53 inf
+a 54 321 inf
+a 321 54 inf
+a 55 56 inf
+a 56 55 inf
+a 55 57 inf
+a 57 55 inf
+a 55 59 inf
+a 59 55 inf
+a 55 321 inf
+a 321 55 inf
+a 56 57 inf
+a 57 56 inf
+a 56 86 inf
+a 86 56 inf
+a 56 321 inf
+a 321 56 inf
+a 57 58 inf
+a 58 57 inf
+a 57 59 inf
+a 59 57 inf
+a 57 321 inf
+a 321 57 inf
+a 58 321 inf
+a 321 58 inf
+a 59 60 inf
+a 60 59 inf
+a 59 321 inf
+a 321 59 inf
+a 60 321 inf
+a 321 60 inf
+a 61 62 inf
+a 62 61 inf
+a 61 63 inf
+a 63 61 inf
+a 61 65 inf
+a 65 61 inf
+a 61 66 inf
+a 66 61 inf
+a 61 67 inf
+a 67 61 inf
+a 61 69 inf
+a 69 61 inf
+a 61 73 inf
+a 73 61 inf
+a 61 74 inf
+a 74 61 inf
+a 61 75 inf
+a 75 61 inf
+a 61 77 inf
+a 77 61 inf
+a 61 79 inf
+a 79 61 inf
+a 61 87 inf
+a 87 61 inf
+a 61 177 inf
+a 177 61 inf
+a 61 321 inf
+a 321 61 inf
+a 62 321 inf
+a 321 62 inf
+a 63 64 inf
+a 64 63 inf
+a 63 65 inf
+a 65 63 inf
+a 63 66 inf
+a 66 63 inf
+a 63 67 inf
+a 67 63 inf
+a 63 71 inf
+a 71 63 inf
+a 63 73 inf
+a 73 63 inf
+a 63 74 inf
+a 74 63 inf
+a 63 75 inf
+a 75 63 inf
+a 63 77 inf
+a 77 63 inf
+a 63 79 inf
+a 79 63 inf
+a 63 321 inf
+a 321 63 inf
+a 64 321 inf
+a 321 64 inf
+a 65 66 inf
+a 66 65 inf
+a 65 67 inf
+a 67 65 inf
+a 65 75 inf
+a 75 65 inf
+a 65 79 inf
+a 79 65 inf
+a 65 321 inf
+a 321 65 inf
+a 66 67 inf
+a 67 66 inf
+a 66 74 inf
+a 74 66 inf
+a 66 75 inf
+a 75 66 inf
+a 66 79 inf
+a 79 66 inf
+a 66 87 inf
+a 87 66 inf
+a 66 321 inf
+a 321 66 inf
+a 67 68 inf
+a 68 67 inf
+a 67 69 inf
+a 69 67 inf
+a 67 73 inf
+a 73 67 inf
+a 67 74 inf
+a 74 67 inf
+a 67 75 inf
+a 75 67 inf
+a 67 77 inf
+a 77 67 inf
+a 67 79 inf
+a 79 67 inf
+a 67 321 inf
+a 321 67 inf
+a 68 321 inf
+a 321 68 inf
+a 69 70 inf
+a 70 69 inf
+a 69 73 inf
+a 73 69 inf
+a 69 77 inf
+a 77 69 inf
+a 69 321 inf
+a 321 69 inf
+a 70 321 inf
+a 321 70 inf
+a 71 72 inf
+a 72 71 inf
+a 71 73 inf
+a 73 71 inf
+a 71 75 inf
+a 75 71 inf
+a 71 77 inf
+a 77 71 inf
+a 71 79 inf
+a 79 71 inf
+a 71 321 inf
+a 321 71 inf
+a 72 321 inf
+a 321 72 inf
+a 73 74 inf
+a 74 73 inf
+a 73 75 inf
+a 75 73 inf
+a 73 77 inf
+a 77 73 inf
+a 73 79 inf
+a 79 73 inf
+a 73 321 inf
+a 321 73 inf
+a 74 75 inf
+a 75 74 inf
+a 74 77 inf
+a 77 74 inf
+a 74 79 inf
+a 79 74 inf
+a 74 87 inf
+a 87 74 inf
+a 74 153 inf
+a 153 74 inf
+a 74 164 inf
+a 164 74 inf
+a 74 177 inf
+a 177 74 inf
+a 74 182 inf
+a 182 74 inf
+a 74 196 inf
+a 196 74 inf
+a 74 284 inf
+a 284 74 inf
+a 74 321 inf
+a 321 74 inf
+a 75 76 inf
+a 76 75 inf
+a 75 77 inf
+a 77 75 inf
+a 75 79 inf
+a 79 75 inf
+a 75 321 inf
+a 321 75 inf
+a 76 321 inf
+a 321 76 inf
+a 77 78 inf
+a 78 77 inf
+a 77 79 inf
+a 79 77 inf
+a 77 321 inf
+a 321 77 inf
+a 78 321 inf
+a 321 78 inf
+a 79 80 inf
+a 80 79 inf
+a 79 321 inf
+a 321 79 inf
+a 80 321 inf
+a 321 80 inf
+a 81 82 inf
+a 82 81 inf
+a 81 83 inf
+a 83 81 inf
+a 81 87 inf
+a 87 81 inf
+a 81 89 inf
+a 89 81 inf
+a 81 91 inf
+a 91 81 inf
+a 81 93 inf
+a 93 81 inf
+a 81 95 inf
+a 95 81 inf
+a 81 97 inf
+a 97 81 inf
+a 81 99 inf
+a 99 81 inf
+a 81 321 inf
+a 321 81 inf
+a 82 83 inf
+a 83 82 inf
+a 82 86 inf
+a 86 82 inf
+a 82 87 inf
+a 87 82 inf
+a 82 89 inf
+a 89 82 inf
+a 82 91 inf
+a 91 82 inf
+a 82 95 inf
+a 95 82 inf
+a 82 96 inf
+a 96 82 inf
+a 82 97 inf
+a 97 82 inf
+a 82 98 inf
+a 98 82 inf
+a 82 99 inf
+a 99 82 inf
+a 82 289 inf
+a 289 82 inf
+a 82 321 inf
+a 321 82 inf
+a 83 84 inf
+a 84 83 inf
+a 83 86 inf
+a 86 83 inf
+a 83 87 inf
+a 87 83 inf
+a 83 88 inf
+a 88 83 inf
+a 83 89 inf
+a 89 83 inf
+a 83 91 inf
+a 91 83 inf
+a 83 93 inf
+a 93 83 inf
+a 83 95 inf
+a 95 83 inf
+a 83 96 inf
+a 96 83 inf
+a 83 97 inf
+a 97 83 inf
+a 83 98 inf
+a 98 83 inf
+a 83 99 inf
+a 99 83 inf
+a 83 102 inf
+a 102 83 inf
+a 83 103 inf
+a 103 83 inf
+a 83 104 inf
+a 104 83 inf
+a 83 110 inf
+a 110 83 inf
+a 83 118 inf
+a 118 83 inf
+a 83 145 inf
+a 145 83 inf
+a 83 150 inf
+a 150 83 inf
+a 83 153 inf
+a 153 83 inf
+a 83 162 inf
+a 162 83 inf
+a 83 164 inf
+a 164 83 inf
+a 83 165 inf
+a 165 83 inf
+a 83 176 inf
+a 176 83 inf
+a 83 177 inf
+a 177 83 inf
+a 83 179 inf
+a 179 83 inf
+a 83 211 inf
+a 211 83 inf
+a 83 212 inf
+a 212 83 inf
+a 83 227 inf
+a 227 83 inf
+a 83 230 inf
+a 230 83 inf
+a 83 236 inf
+a 236 83 inf
+a 83 282 inf
+a 282 83 inf
+a 83 284 inf
+a 284 83 inf
+a 83 289 inf
+a 289 83 inf
+a 83 290 inf
+a 290 83 inf
+a 83 293 inf
+a 293 83 inf
+a 83 296 inf
+a 296 83 inf
+a 83 321 inf
+a 321 83 inf
+a 84 321 inf
+a 321 84 inf
+a 85 86 inf
+a 86 85 inf
+a 85 89 inf
+a 89 85 inf
+a 85 91 inf
+a 91 85 inf
+a 85 95 inf
+a 95 85 inf
+a 85 97 inf
+a 97 85 inf
+a 85 99 inf
+a 99 85 inf
+a 85 321 inf
+a 321 85 inf
+a 86 87 inf
+a 87 86 inf
+a 86 89 inf
+a 89 86 inf
+a 86 91 inf
+a 91 86 inf
+a 86 95 inf
+a 95 86 inf
+a 86 96 inf
+a 96 86 inf
+a 86 97 inf
+a 97 86 inf
+a 86 98 inf
+a 98 86 inf
+a 86 99 inf
+a 99 86 inf
+a 86 102 inf
+a 102 86 inf
+a 86 103 inf
+a 103 86 inf
+a 86 110 inf
+a 110 86 inf
+a 86 118 inf
+a 118 86 inf
+a 86 145 inf
+a 145 86 inf
+a 86 147 inf
+a 147 86 inf
+a 86 150 inf
+a 150 86 inf
+a 86 153 inf
+a 153 86 inf
+a 86 162 inf
+a 162 86 inf
+a 86 164 inf
+a 164 86 inf
+a 86 165 inf
+a 165 86 inf
+a 86 176 inf
+a 176 86 inf
+a 86 177 inf
+a 177 86 inf
+a 86 179 inf
+a 179 86 inf
+a 86 227 inf
+a 227 86 inf
+a 86 236 inf
+a 236 86 inf
+a 86 282 inf
+a 282 86 inf
+a 86 284 inf
+a 284 86 inf
+a 86 289 inf
+a 289 86 inf
+a 86 290 inf
+a 290 86 inf
+a 86 292 inf
+a 292 86 inf
+a 86 293 inf
+a 293 86 inf
+a 86 296 inf
+a 296 86 inf
+a 86 321 inf
+a 321 86 inf
+a 87 88 inf
+a 88 87 inf
+a 87 89 inf
+a 89 87 inf
+a 87 91 inf
+a 91 87 inf
+a 87 95 inf
+a 95 87 inf
+a 87 96 inf
+a 96 87 inf
+a 87 97 inf
+a 97 87 inf
+a 87 98 inf
+a 98 87 inf
+a 87 99 inf
+a 99 87 inf
+a 87 102 inf
+a 102 87 inf
+a 87 103 inf
+a 103 87 inf
+a 87 104 inf
+a 104 87 inf
+a 87 110 inf
+a 110 87 inf
+a 87 118 inf
+a 118 87 inf
+a 87 145 inf
+a 145 87 inf
+a 87 150 inf
+a 150 87 inf
+a 87 153 inf
+a 153 87 inf
+a 87 162 inf
+a 162 87 inf
+a 87 164 inf
+a 164 87 inf
+a 87 165 inf
+a 165 87 inf
+a 87 176 inf
+a 176 87 inf
+a 87 177 inf
+a 177 87 inf
+a 87 179 inf
+a 179 87 inf
+a 87 196 inf
+a 196 87 inf
+a 87 227 inf
+a 227 87 inf
+a 87 230 inf
+a 230 87 inf
+a 87 236 inf
+a 236 87 inf
+a 87 282 inf
+a 282 87 inf
+a 87 284 inf
+a 284 87 inf
+a 87 289 inf
+a 289 87 inf
+a 87 290 inf
+a 290 87 inf
+a 87 293 inf
+a 293 87 inf
+a 87 296 inf
+a 296 87 inf
+a 87 305 inf
+a 305 87 inf
+a 87 317 inf
+a 317 87 inf
+a 87 321 inf
+a 321 87 inf
+a 88 104 inf
+a 104 88 inf
+a 88 150 inf
+a 150 88 inf
+a 88 230 inf
+a 230 88 inf
+a 88 296 inf
+a 296 88 inf
+a 88 321 inf
+a 321 88 inf
+a 89 90 inf
+a 90 89 inf
+a 89 91 inf
+a 91 89 inf
+a 89 93 inf
+a 93 89 inf
+a 89 95 inf
+a 95 89 inf
+a 89 96 inf
+a 96 89 inf
+a 89 97 inf
+a 97 89 inf
+a 89 98 inf
+a 98 89 inf
+a 89 99 inf
+a 99 89 inf
+a 89 102 inf
+a 102 89 inf
+a 89 103 inf
+a 103 89 inf
+a 89 104 inf
+a 104 89 inf
+a 89 110 inf
+a 110 89 inf
+a 89 118 inf
+a 118 89 inf
+a 89 145 inf
+a 145 89 inf
+a 89 150 inf
+a 150 89 inf
+a 89 153 inf
+a 153 89 inf
+a 89 162 inf
+a 162 89 inf
+a 89 164 inf
+a 164 89 inf
+a 89 165 inf
+a 165 89 inf
+a 89 176 inf
+a 176 89 inf
+a 89 177 inf
+a 177 89 inf
+a 89 179 inf
+a 179 89 inf
+a 89 224 inf
+a 224 89 inf
+a 89 227 inf
+a 227 89 inf
+a 89 230 inf
+a 230 89 inf
+a 89 236 inf
+a 236 89 inf
+a 89 282 inf
+a 282 89 inf
+a 89 284 inf
+a 284 89 inf
+a 89 289 inf
+a 289 89 inf
+a 89 290 inf
+a 290 89 inf
+a 89 293 inf
+a 293 89 inf
+a 89 296 inf
+a 296 89 inf
+a 89 321 inf
+a 321 89 inf
+a 90 321 inf
+a 321 90 inf
+a 91 92 inf
+a 92 91 inf
+a 91 93 inf
+a 93 91 inf
+a 91 95 inf
+a 95 91 inf
+a 91 96 inf
+a 96 91 inf
+a 91 97 inf
+a 97 91 inf
+a 91 98 inf
+a 98 91 inf
+a 91 99 inf
+a 99 91 inf
+a 91 321 inf
+a 321 91 inf
+a 92 321 inf
+a 321 92 inf
+a 93 94 inf
+a 94 93 inf
+a 93 99 inf
+a 99 93 inf
+a 93 321 inf
+a 321 93 inf
+a 94 321 inf
+a 321 94 inf
+a 95 96 inf
+a 96 95 inf
+a 95 97 inf
+a 97 95 inf
+a 95 99 inf
+a 99 95 inf
+a 95 321 inf
+a 321 95 inf
+a 96 97 inf
+a 97 96 inf
+a 96 98 inf
+a 98 96 inf
+a 96 99 inf
+a 99 96 inf
+a 96 102 inf
+a 102 96 inf
+a 96 103 inf
+a 103 96 inf
+a 96 110 inf
+a 110 96 inf
+a 96 118 inf
+a 118 96 inf
+a 96 145 inf
+a 145 96 inf
+a 96 150 inf
+a 150 96 inf
+a 96 153 inf
+a 153 96 inf
+a 96 162 inf
+a 162 96 inf
+a 96 164 inf
+a 164 96 inf
+a 96 165 inf
+a 165 96 inf
+a 96 176 inf
+a 176 96 inf
+a 96 177 inf
+a 177 96 inf
+a 96 179 inf
+a 179 96 inf
+a 96 227 inf
+a 227 96 inf
+a 96 236 inf
+a 236 96 inf
+a 96 241 inf
+a 241 96 inf
+a 96 257 inf
+a 257 96 inf
+a 96 282 inf
+a 282 96 inf
+a 96 284 inf
+a 284 96 inf
+a 96 289 inf
+a 289 96 inf
+a 96 290 inf
+a 290 96 inf
+a 96 293 inf
+a 293 96 inf
+a 96 296 inf
+a 296 96 inf
+a 96 317 inf
+a 317 96 inf
+a 96 318 inf
+a 318 96 inf
+a 96 321 inf
+a 321 96 inf
+a 97 98 inf
+a 98 97 inf
+a 97 99 inf
+a 99 97 inf
+a 97 321 inf
+a 321 97 inf
+a 98 99 inf
+a 99 98 inf
+a 98 110 inf
+a 110 98 inf
+a 98 118 inf
+a 118 98 inf
+a 98 162 inf
+a 162 98 inf
+a 98 163 inf
+a 163 98 inf
+a 98 164 inf
+a 164 98 inf
+a 98 165 inf
+a 165 98 inf
+a 98 168 inf
+a 168 98 inf
+a 98 172 inf
+a 172 98 inf
+a 98 176 inf
+a 176 98 inf
+a 98 177 inf
+a 177 98 inf
+a 98 179 inf
+a 179 98 inf
+a 98 289 inf
+a 289 98 inf
+a 98 321 inf
+a 321 98 inf
+a 99 100 inf
+a 100 99 inf
+a 99 321 inf
+a 321 99 inf
+a 100 321 inf
+a 321 100 inf
+a 101 102 inf
+a 102 101 inf
+a 101 105 inf
+a 105 101 inf
+a 101 107 inf
+a 107 101 inf
+a 101 109 inf
+a 109 101 inf
+a 101 111 inf
+a 111 101 inf
+a 101 113 inf
+a 113 101 inf
+a 101 321 inf
+a 321 101 inf
+a 102 103 inf
+a 103 102 inf
+a 102 105 inf
+a 105 102 inf
+a 102 107 inf
+a 107 102 inf
+a 102 109 inf
+a 109 102 inf
+a 102 110 inf
+a 110 102 inf
+a 102 111 inf
+a 111 102 inf
+a 102 113 inf
+a 113 102 inf
+a 102 116 inf
+a 116 102 inf
+a 102 118 inf
+a 118 102 inf
+a 102 119 inf
+a 119 102 inf
+a 102 144 inf
+a 144 102 inf
+a 102 145 inf
+a 145 102 inf
+a 102 147 inf
+a 147 102 inf
+a 102 149 inf
+a 149 102 inf
+a 102 150 inf
+a 150 102 inf
+a 102 152 inf
+a 152 102 inf
+a 102 153 inf
+a 153 102 inf
+a 102 157 inf
+a 157 102 inf
+a 102 162 inf
+a 162 102 inf
+a 102 164 inf
+a 164 102 inf
+a 102 165 inf
+a 165 102 inf
+a 102 176 inf
+a 176 102 inf
+a 102 177 inf
+a 177 102 inf
+a 102 179 inf
+a 179 102 inf
+a 102 227 inf
+a 227 102 inf
+a 102 236 inf
+a 236 102 inf
+a 102 241 inf
+a 241 102 inf
+a 102 242 inf
+a 242 102 inf
+a 102 257 inf
+a 257 102 inf
+a 102 282 inf
+a 282 102 inf
+a 102 284 inf
+a 284 102 inf
+a 102 289 inf
+a 289 102 inf
+a 102 290 inf
+a 290 102 inf
+a 102 292 inf
+a 292 102 inf
+a 102 293 inf
+a 293 102 inf
+a 102 296 inf
+a 296 102 inf
+a 102 317 inf
+a 317 102 inf
+a 102 318 inf
+a 318 102 inf
+a 102 321 inf
+a 321 102 inf
+a 103 104 inf
+a 104 103 inf
+a 103 105 inf
+a 105 103 inf
+a 103 107 inf
+a 107 103 inf
+a 103 109 inf
+a 109 103 inf
+a 103 110 inf
+a 110 103 inf
+a 103 111 inf
+a 111 103 inf
+a 103 113 inf
+a 113 103 inf
+a 103 115 inf
+a 115 103 inf
+a 103 116 inf
+a 116 103 inf
+a 103 117 inf
+a 117 103 inf
+a 103 118 inf
+a 118 103 inf
+a 103 119 inf
+a 119 103 inf
+a 103 145 inf
+a 145 103 inf
+a 103 147 inf
+a 147 103 inf
+a 103 150 inf
+a 150 103 inf
+a 103 153 inf
+a 153 103 inf
+a 103 162 inf
+a 162 103 inf
+a 103 165 inf
+a 165 103 inf
+a 103 176 inf
+a 176 103 inf
+a 103 177 inf
+a 177 103 inf
+a 103 179 inf
+a 179 103 inf
+a 103 227 inf
+a 227 103 inf
+a 103 236 inf
+a 236 103 inf
+a 103 282 inf
+a 282 103 inf
+a 103 284 inf
+a 284 103 inf
+a 103 286 inf
+a 286 103 inf
+a 103 289 inf
+a 289 103 inf
+a 103 290 inf
+a 290 103 inf
+a 103 292 inf
+a 292 103 inf
+a 103 293 inf
+a 293 103 inf
+a 103 296 inf
+a 296 103 inf
+a 103 298 inf
+a 298 103 inf
+a 103 321 inf
+a 321 103 inf
+a 104 118 inf
+a 118 104 inf
+a 104 150 inf
+a 150 104 inf
+a 104 211 inf
+a 211 104 inf
+a 104 217 inf
+a 217 104 inf
+a 104 219 inf
+a 219 104 inf
+a 104 227 inf
+a 227 104 inf
+a 104 230 inf
+a 230 104 inf
+a 104 236 inf
+a 236 104 inf
+a 104 293 inf
+a 293 104 inf
+a 104 296 inf
+a 296 104 inf
+a 104 321 inf
+a 321 104 inf
+a 105 106 inf
+a 106 105 inf
+a 105 107 inf
+a 107 105 inf
+a 105 109 inf
+a 109 105 inf
+a 105 110 inf
+a 110 105 inf
+a 105 111 inf
+a 111 105 inf
+a 105 113 inf
+a 113 105 inf
+a 105 115 inf
+a 115 105 inf
+a 105 116 inf
+a 116 105 inf
+a 105 117 inf
+a 117 105 inf
+a 105 118 inf
+a 118 105 inf
+a 105 119 inf
+a 119 105 inf
+a 105 321 inf
+a 321 105 inf
+a 106 321 inf
+a 321 106 inf
+a 107 108 inf
+a 108 107 inf
+a 107 109 inf
+a 109 107 inf
+a 107 110 inf
+a 110 107 inf
+a 107 111 inf
+a 111 107 inf
+a 107 113 inf
+a 113 107 inf
+a 107 115 inf
+a 115 107 inf
+a 107 116 inf
+a 116 107 inf
+a 107 118 inf
+a 118 107 inf
+a 107 119 inf
+a 119 107 inf
+a 107 145 inf
+a 145 107 inf
+a 107 321 inf
+a 321 107 inf
+a 108 321 inf
+a 321 108 inf
+a 109 110 inf
+a 110 109 inf
+a 109 111 inf
+a 111 109 inf
+a 109 113 inf
+a 113 109 inf
+a 109 117 inf
+a 117 109 inf
+a 109 118 inf
+a 118 109 inf
+a 109 119 inf
+a 119 109 inf
+a 109 321 inf
+a 321 109 inf
+a 110 111 inf
+a 111 110 inf
+a 110 113 inf
+a 113 110 inf
+a 110 116 inf
+a 116 110 inf
+a 110 118 inf
+a 118 110 inf
+a 110 119 inf
+a 119 110 inf
+a 110 145 inf
+a 145 110 inf
+a 110 150 inf
+a 150 110 inf
+a 110 153 inf
+a 153 110 inf
+a 110 162 inf
+a 162 110 inf
+a 110 163 inf
+a 163 110 inf
+a 110 164 inf
+a 164 110 inf
+a 110 165 inf
+a 165 110 inf
+a 110 172 inf
+a 172 110 inf
+a 110 176 inf
+a 176 110 inf
+a 110 177 inf
+a 177 110 inf
+a 110 179 inf
+a 179 110 inf
+a 110 227 inf
+a 227 110 inf
+a 110 236 inf
+a 236 110 inf
+a 110 241 inf
+a 241 110 inf
+a 110 243 inf
+a 243 110 inf
+a 110 257 inf
+a 257 110 inf
+a 110 282 inf
+a 282 110 inf
+a 110 284 inf
+a 284 110 inf
+a 110 289 inf
+a 289 110 inf
+a 110 290 inf
+a 290 110 inf
+a 110 293 inf
+a 293 110 inf
+a 110 296 inf
+a 296 110 inf
+a 110 317 inf
+a 317 110 inf
+a 110 318 inf
+a 318 110 inf
+a 110 321 inf
+a 321 110 inf
+a 111 112 inf
+a 112 111 inf
+a 111 113 inf
+a 113 111 inf
+a 111 117 inf
+a 117 111 inf
+a 111 118 inf
+a 118 111 inf
+a 111 119 inf
+a 119 111 inf
+a 111 321 inf
+a 321 111 inf
+a 112 321 inf
+a 321 112 inf
+a 113 114 inf
+a 114 113 inf
+a 113 117 inf
+a 117 113 inf
+a 113 118 inf
+a 118 113 inf
+a 113 119 inf
+a 119 113 inf
+a 113 321 inf
+a 321 113 inf
+a 114 321 inf
+a 321 114 inf
+a 115 116 inf
+a 116 115 inf
+a 115 119 inf
+a 119 115 inf
+a 115 321 inf
+a 321 115 inf
+a 116 118 inf
+a 118 116 inf
+a 116 119 inf
+a 119 116 inf
+a 116 145 inf
+a 145 116 inf
+a 116 267 inf
+a 267 116 inf
+a 116 273 inf
+a 273 116 inf
+a 116 321 inf
+a 321 116 inf
+a 117 118 inf
+a 118 117 inf
+a 117 119 inf
+a 119 117 inf
+a 117 321 inf
+a 321 117 inf
+a 118 119 inf
+a 119 118 inf
+a 118 145 inf
+a 145 118 inf
+a 118 150 inf
+a 150 118 inf
+a 118 153 inf
+a 153 118 inf
+a 118 162 inf
+a 162 118 inf
+a 118 163 inf
+a 163 118 inf
+a 118 164 inf
+a 164 118 inf
+a 118 165 inf
+a 165 118 inf
+a 118 176 inf
+a 176 118 inf
+a 118 177 inf
+a 177 118 inf
+a 118 179 inf
+a 179 118 inf
+a 118 227 inf
+a 227 118 inf
+a 118 230 inf
+a 230 118 inf
+a 118 236 inf
+a 236 118 inf
+a 118 282 inf
+a 282 118 inf
+a 118 284 inf
+a 284 118 inf
+a 118 289 inf
+a 289 118 inf
+a 118 290 inf
+a 290 118 inf
+a 118 293 inf
+a 293 118 inf
+a 118 296 inf
+a 296 118 inf
+a 118 321 inf
+a 321 118 inf
+a 119 120 inf
+a 120 119 inf
+a 119 321 inf
+a 321 119 inf
+a 120 321 inf
+a 321 120 inf
+a 121 122 inf
+a 122 121 inf
+a 121 123 inf
+a 123 121 inf
+a 121 125 inf
+a 125 121 inf
+a 121 129 inf
+a 129 121 inf
+a 121 131 inf
+a 131 121 inf
+a 121 133 inf
+a 133 121 inf
+a 121 135 inf
+a 135 121 inf
+a 121 137 inf
+a 137 121 inf
+a 121 139 inf
+a 139 121 inf
+a 121 321 inf
+a 321 121 inf
+a 122 321 inf
+a 321 122 inf
+a 123 124 inf
+a 124 123 inf
+a 123 125 inf
+a 125 123 inf
+a 123 127 inf
+a 127 123 inf
+a 123 129 inf
+a 129 123 inf
+a 123 131 inf
+a 131 123 inf
+a 123 133 inf
+a 133 123 inf
+a 123 135 inf
+a 135 123 inf
+a 123 137 inf
+a 137 123 inf
+a 123 139 inf
+a 139 123 inf
+a 123 321 inf
+a 321 123 inf
+a 124 321 inf
+a 321 124 inf
+a 125 126 inf
+a 126 125 inf
+a 125 127 inf
+a 127 125 inf
+a 125 129 inf
+a 129 125 inf
+a 125 131 inf
+a 131 125 inf
+a 125 133 inf
+a 133 125 inf
+a 125 135 inf
+a 135 125 inf
+a 125 137 inf
+a 137 125 inf
+a 125 139 inf
+a 139 125 inf
+a 125 321 inf
+a 321 125 inf
+a 126 321 inf
+a 321 126 inf
+a 127 128 inf
+a 128 127 inf
+a 127 129 inf
+a 129 127 inf
+a 127 133 inf
+a 133 127 inf
+a 127 135 inf
+a 135 127 inf
+a 127 321 inf
+a 321 127 inf
+a 128 321 inf
+a 321 128 inf
+a 129 130 inf
+a 130 129 inf
+a 129 131 inf
+a 131 129 inf
+a 129 133 inf
+a 133 129 inf
+a 129 135 inf
+a 135 129 inf
+a 129 137 inf
+a 137 129 inf
+a 129 139 inf
+a 139 129 inf
+a 129 162 inf
+a 162 129 inf
+a 129 196 inf
+a 196 129 inf
+a 129 290 inf
+a 290 129 inf
+a 129 305 inf
+a 305 129 inf
+a 129 321 inf
+a 321 129 inf
+a 130 162 inf
+a 162 130 inf
+a 130 321 inf
+a 321 130 inf
+a 131 132 inf
+a 132 131 inf
+a 131 133 inf
+a 133 131 inf
+a 131 139 inf
+a 139 131 inf
+a 131 321 inf
+a 321 131 inf
+a 132 321 inf
+a 321 132 inf
+a 133 134 inf
+a 134 133 inf
+a 133 135 inf
+a 135 133 inf
+a 133 137 inf
+a 137 133 inf
+a 133 139 inf
+a 139 133 inf
+a 133 321 inf
+a 321 133 inf
+a 134 321 inf
+a 321 134 inf
+a 135 136 inf
+a 136 135 inf
+a 135 137 inf
+a 137 135 inf
+a 135 139 inf
+a 139 135 inf
+a 135 321 inf
+a 321 135 inf
+a 136 321 inf
+a 321 136 inf
+a 137 138 inf
+a 138 137 inf
+a 137 139 inf
+a 139 137 inf
+a 137 321 inf
+a 321 137 inf
+a 138 321 inf
+a 321 138 inf
+a 139 140 inf
+a 140 139 inf
+a 139 196 inf
+a 196 139 inf
+a 139 290 inf
+a 290 139 inf
+a 139 321 inf
+a 321 139 inf
+a 140 196 inf
+a 196 140 inf
+a 140 321 inf
+a 321 140 inf
+a 141 142 inf
+a 142 141 inf
+a 141 143 inf
+a 143 141 inf
+a 141 145 inf
+a 145 141 inf
+a 141 147 inf
+a 147 141 inf
+a 141 149 inf
+a 149 141 inf
+a 141 151 inf
+a 151 141 inf
+a 141 152 inf
+a 152 141 inf
+a 141 153 inf
+a 153 141 inf
+a 141 155 inf
+a 155 141 inf
+a 141 157 inf
+a 157 141 inf
+a 141 159 inf
+a 159 141 inf
+a 141 321 inf
+a 321 141 inf
+a 142 321 inf
+a 321 142 inf
+a 143 144 inf
+a 144 143 inf
+a 143 145 inf
+a 145 143 inf
+a 143 147 inf
+a 147 143 inf
+a 143 149 inf
+a 149 143 inf
+a 143 151 inf
+a 151 143 inf
+a 143 152 inf
+a 152 143 inf
+a 143 153 inf
+a 153 143 inf
+a 143 155 inf
+a 155 143 inf
+a 143 157 inf
+a 157 143 inf
+a 143 159 inf
+a 159 143 inf
+a 143 321 inf
+a 321 143 inf
+a 144 145 inf
+a 145 144 inf
+a 144 147 inf
+a 147 144 inf
+a 144 149 inf
+a 149 144 inf
+a 144 152 inf
+a 152 144 inf
+a 144 153 inf
+a 153 144 inf
+a 144 155 inf
+a 155 144 inf
+a 144 157 inf
+a 157 144 inf
+a 144 321 inf
+a 321 144 inf
+a 145 146 inf
+a 146 145 inf
+a 145 147 inf
+a 147 145 inf
+a 145 149 inf
+a 149 145 inf
+a 145 150 inf
+a 150 145 inf
+a 145 152 inf
+a 152 145 inf
+a 145 153 inf
+a 153 145 inf
+a 145 155 inf
+a 155 145 inf
+a 145 157 inf
+a 157 145 inf
+a 145 162 inf
+a 162 145 inf
+a 145 165 inf
+a 165 145 inf
+a 145 176 inf
+a 176 145 inf
+a 145 177 inf
+a 177 145 inf
+a 145 179 inf
+a 179 145 inf
+a 145 227 inf
+a 227 145 inf
+a 145 236 inf
+a 236 145 inf
+a 145 267 inf
+a 267 145 inf
+a 145 273 inf
+a 273 145 inf
+a 145 276 inf
+a 276 145 inf
+a 145 282 inf
+a 282 145 inf
+a 145 284 inf
+a 284 145 inf
+a 145 289 inf
+a 289 145 inf
+a 145 290 inf
+a 290 145 inf
+a 145 292 inf
+a 292 145 inf
+a 145 293 inf
+a 293 145 inf
+a 145 296 inf
+a 296 145 inf
+a 145 321 inf
+a 321 145 inf
+a 146 321 inf
+a 321 146 inf
+a 147 148 inf
+a 148 147 inf
+a 147 149 inf
+a 149 147 inf
+a 147 150 inf
+a 150 147 inf
+a 147 151 inf
+a 151 147 inf
+a 147 152 inf
+a 152 147 inf
+a 147 153 inf
+a 153 147 inf
+a 147 155 inf
+a 155 147 inf
+a 147 157 inf
+a 157 147 inf
+a 147 159 inf
+a 159 147 inf
+a 147 165 inf
+a 165 147 inf
+a 147 282 inf
+a 282 147 inf
+a 147 284 inf
+a 284 147 inf
+a 147 289 inf
+a 289 147 inf
+a 147 290 inf
+a 290 147 inf
+a 147 292 inf
+a 292 147 inf
+a 147 293 inf
+a 293 147 inf
+a 147 296 inf
+a 296 147 inf
+a 147 298 inf
+a 298 147 inf
+a 147 321 inf
+a 321 147 inf
+a 148 321 inf
+a 321 148 inf
+a 149 150 inf
+a 150 149 inf
+a 149 151 inf
+a 151 149 inf
+a 149 152 inf
+a 152 149 inf
+a 149 153 inf
+a 153 149 inf
+a 149 155 inf
+a 155 149 inf
+a 149 157 inf
+a 157 149 inf
+a 149 159 inf
+a 159 149 inf
+a 149 165 inf
+a 165 149 inf
+a 149 292 inf
+a 292 149 inf
+a 149 321 inf
+a 321 149 inf
+a 150 153 inf
+a 153 150 inf
+a 150 162 inf
+a 162 150 inf
+a 150 165 inf
+a 165 150 inf
+a 150 176 inf
+a 176 150 inf
+a 150 177 inf
+a 177 150 inf
+a 150 179 inf
+a 179 150 inf
+a 150 211 inf
+a 211 150 inf
+a 150 215 inf
+a 215 150 inf
+a 150 217 inf
+a 217 150 inf
+a 150 219 inf
+a 219 150 inf
+a 150 227 inf
+a 227 150 inf
+a 150 230 inf
+a 230 150 inf
+a 150 236 inf
+a 236 150 inf
+a 150 282 inf
+a 282 150 inf
+a 150 284 inf
+a 284 150 inf
+a 150 289 inf
+a 289 150 inf
+a 150 290 inf
+a 290 150 inf
+a 150 292 inf
+a 292 150 inf
+a 150 293 inf
+a 293 150 inf
+a 150 296 inf
+a 296 150 inf
+a 150 321 inf
+a 321 150 inf
+a 151 152 inf
+a 152 151 inf
+a 151 153 inf
+a 153 151 inf
+a 151 155 inf
+a 155 151 inf
+a 151 157 inf
+a 157 151 inf
+a 151 321 inf
+a 321 151 inf
+a 152 153 inf
+a 153 152 inf
+a 152 155 inf
+a 155 152 inf
+a 152 157 inf
+a 157 152 inf
+a 152 321 inf
+a 321 152 inf
+a 153 154 inf
+a 154 153 inf
+a 153 155 inf
+a 155 153 inf
+a 153 157 inf
+a 157 153 inf
+a 153 159 inf
+a 159 153 inf
+a 153 162 inf
+a 162 153 inf
+a 153 164 inf
+a 164 153 inf
+a 153 165 inf
+a 165 153 inf
+a 153 176 inf
+a 176 153 inf
+a 153 177 inf
+a 177 153 inf
+a 153 179 inf
+a 179 153 inf
+a 153 182 inf
+a 182 153 inf
+a 153 196 inf
+a 196 153 inf
+a 153 227 inf
+a 227 153 inf
+a 153 236 inf
+a 236 153 inf
+a 153 282 inf
+a 282 153 inf
+a 153 284 inf
+a 284 153 inf
+a 153 289 inf
+a 289 153 inf
+a 153 290 inf
+a 290 153 inf
+a 153 292 inf
+a 292 153 inf
+a 153 293 inf
+a 293 153 inf
+a 153 296 inf
+a 296 153 inf
+a 153 305 inf
+a 305 153 inf
+a 153 317 inf
+a 317 153 inf
+a 153 321 inf
+a 321 153 inf
+a 154 321 inf
+a 321 154 inf
+a 155 156 inf
+a 156 155 inf
+a 155 157 inf
+a 157 155 inf
+a 155 159 inf
+a 159 155 inf
+a 155 321 inf
+a 321 155 inf
+a 156 321 inf
+a 321 156 inf
+a 157 158 inf
+a 158 157 inf
+a 157 292 inf
+a 292 157 inf
+a 157 321 inf
+a 321 157 inf
+a 158 321 inf
+a 321 158 inf
+a 159 160 inf
+a 160 159 inf
+a 159 321 inf
+a 321 159 inf
+a 160 321 inf
+a 321 160 inf
+a 161 162 inf
+a 162 161 inf
+a 161 163 inf
+a 163 161 inf
+a 161 165 inf
+a 165 161 inf
+a 161 167 inf
+a 167 161 inf
+a 161 168 inf
+a 168 161 inf
+a 161 169 inf
+a 169 161 inf
+a 161 171 inf
+a 171 161 inf
+a 161 172 inf
+a 172 161 inf
+a 161 173 inf
+a 173 161 inf
+a 161 175 inf
+a 175 161 inf
+a 161 176 inf
+a 176 161 inf
+a 161 177 inf
+a 177 161 inf
+a 161 179 inf
+a 179 161 inf
+a 161 321 inf
+a 321 161 inf
+a 162 163 inf
+a 163 162 inf
+a 162 164 inf
+a 164 162 inf
+a 162 165 inf
+a 165 162 inf
+a 162 168 inf
+a 168 162 inf
+a 162 172 inf
+a 172 162 inf
+a 162 176 inf
+a 176 162 inf
+a 162 177 inf
+a 177 162 inf
+a 162 179 inf
+a 179 162 inf
+a 162 196 inf
+a 196 162 inf
+a 162 227 inf
+a 227 162 inf
+a 162 236 inf
+a 236 162 inf
+a 162 282 inf
+a 282 162 inf
+a 162 284 inf
+a 284 162 inf
+a 162 289 inf
+a 289 162 inf
+a 162 290 inf
+a 290 162 inf
+a 162 293 inf
+a 293 162 inf
+a 162 296 inf
+a 296 162 inf
+a 162 305 inf
+a 305 162 inf
+a 162 317 inf
+a 317 162 inf
+a 162 321 inf
+a 321 162 inf
+a 163 164 inf
+a 164 163 inf
+a 163 165 inf
+a 165 163 inf
+a 163 167 inf
+a 167 163 inf
+a 163 168 inf
+a 168 163 inf
+a 163 169 inf
+a 169 163 inf
+a 163 171 inf
+a 171 163 inf
+a 163 172 inf
+a 172 163 inf
+a 163 173 inf
+a 173 163 inf
+a 163 175 inf
+a 175 163 inf
+a 163 176 inf
+a 176 163 inf
+a 163 177 inf
+a 177 163 inf
+a 163 179 inf
+a 179 163 inf
+a 163 321 inf
+a 321 163 inf
+a 164 165 inf
+a 165 164 inf
+a 164 176 inf
+a 176 164 inf
+a 164 177 inf
+a 177 164 inf
+a 164 179 inf
+a 179 164 inf
+a 164 182 inf
+a 182 164 inf
+a 164 196 inf
+a 196 164 inf
+a 164 198 inf
+a 198 164 inf
+a 164 227 inf
+a 227 164 inf
+a 164 236 inf
+a 236 164 inf
+a 164 282 inf
+a 282 164 inf
+a 164 284 inf
+a 284 164 inf
+a 164 289 inf
+a 289 164 inf
+a 164 290 inf
+a 290 164 inf
+a 164 305 inf
+a 305 164 inf
+a 164 317 inf
+a 317 164 inf
+a 164 321 inf
+a 321 164 inf
+a 165 166 inf
+a 166 165 inf
+a 165 167 inf
+a 167 165 inf
+a 165 168 inf
+a 168 165 inf
+a 165 169 inf
+a 169 165 inf
+a 165 172 inf
+a 172 165 inf
+a 165 173 inf
+a 173 165 inf
+a 165 175 inf
+a 175 165 inf
+a 165 176 inf
+a 176 165 inf
+a 165 177 inf
+a 177 165 inf
+a 165 179 inf
+a 179 165 inf
+a 165 227 inf
+a 227 165 inf
+a 165 236 inf
+a 236 165 inf
+a 165 282 inf
+a 282 165 inf
+a 165 284 inf
+a 284 165 inf
+a 165 289 inf
+a 289 165 inf
+a 165 290 inf
+a 290 165 inf
+a 165 292 inf
+a 292 165 inf
+a 165 293 inf
+a 293 165 inf
+a 165 296 inf
+a 296 165 inf
+a 165 321 inf
+a 321 165 inf
+a 166 321 inf
+a 321 166 inf
+a 167 168 inf
+a 168 167 inf
+a 167 169 inf
+a 169 167 inf
+a 167 171 inf
+a 171 167 inf
+a 167 172 inf
+a 172 167 inf
+a 167 173 inf
+a 173 167 inf
+a 167 177 inf
+a 177 167 inf
+a 167 179 inf
+a 179 167 inf
+a 167 321 inf
+a 321 167 inf
+a 168 169 inf
+a 169 168 inf
+a 168 172 inf
+a 172 168 inf
+a 168 173 inf
+a 173 168 inf
+a 168 176 inf
+a 176 168 inf
+a 168 177 inf
+a 177 168 inf
+a 168 179 inf
+a 179 168 inf
+a 168 321 inf
+a 321 168 inf
+a 169 170 inf
+a 170 169 inf
+a 169 172 inf
+a 172 169 inf
+a 169 173 inf
+a 173 169 inf
+a 169 175 inf
+a 175 169 inf
+a 169 176 inf
+a 176 169 inf
+a 169 177 inf
+a 177 169 inf
+a 169 179 inf
+a 179 169 inf
+a 169 321 inf
+a 321 169 inf
+a 170 321 inf
+a 321 170 inf
+a 171 172 inf
+a 172 171 inf
+a 171 177 inf
+a 177 171 inf
+a 171 179 inf
+a 179 171 inf
+a 171 321 inf
+a 321 171 inf
+a 172 173 inf
+a 173 172 inf
+a 172 176 inf
+a 176 172 inf
+a 172 177 inf
+a 177 172 inf
+a 172 179 inf
+a 179 172 inf
+a 172 321 inf
+a 321 172 inf
+a 173 174 inf
+a 174 173 inf
+a 173 175 inf
+a 175 173 inf
+a 173 176 inf
+a 176 173 inf
+a 173 177 inf
+a 177 173 inf
+a 173 179 inf
+a 179 173 inf
+a 173 321 inf
+a 321 173 inf
+a 174 321 inf
+a 321 174 inf
+a 175 176 inf
+a 176 175 inf
+a 175 177 inf
+a 177 175 inf
+a 175 321 inf
+a 321 175 inf
+a 176 177 inf
+a 177 176 inf
+a 176 179 inf
+a 179 176 inf
+a 176 227 inf
+a 227 176 inf
+a 176 236 inf
+a 236 176 inf
+a 176 257 inf
+a 257 176 inf
+a 176 282 inf
+a 282 176 inf
+a 176 284 inf
+a 284 176 inf
+a 176 289 inf
+a 289 176 inf
+a 176 290 inf
+a 290 176 inf
+a 176 293 inf
+a 293 176 inf
+a 176 296 inf
+a 296 176 inf
+a 176 317 inf
+a 317 176 inf
+a 176 318 inf
+a 318 176 inf
+a 176 321 inf
+a 321 176 inf
+a 177 178 inf
+a 178 177 inf
+a 177 179 inf
+a 179 177 inf
+a 177 196 inf
+a 196 177 inf
+a 177 227 inf
+a 227 177 inf
+a 177 236 inf
+a 236 177 inf
+a 177 282 inf
+a 282 177 inf
+a 177 284 inf
+a 284 177 inf
+a 177 289 inf
+a 289 177 inf
+a 177 290 inf
+a 290 177 inf
+a 177 293 inf
+a 293 177 inf
+a 177 296 inf
+a 296 177 inf
+a 177 305 inf
+a 305 177 inf
+a 177 317 inf
+a 317 177 inf
+a 177 321 inf
+a 321 177 inf
+a 178 321 inf
+a 321 178 inf
+a 179 180 inf
+a 180 179 inf
+a 179 227 inf
+a 227 179 inf
+a 179 236 inf
+a 236 179 inf
+a 179 282 inf
+a 282 179 inf
+a 179 284 inf
+a 284 179 inf
+a 179 289 inf
+a 289 179 inf
+a 179 290 inf
+a 290 179 inf
+a 179 293 inf
+a 293 179 inf
+a 179 296 inf
+a 296 179 inf
+a 179 317 inf
+a 317 179 inf
+a 179 321 inf
+a 321 179 inf
+a 180 321 inf
+a 321 180 inf
+a 181 182 inf
+a 182 181 inf
+a 181 183 inf
+a 183 181 inf
+a 181 185 inf
+a 185 181 inf
+a 181 189 inf
+a 189 181 inf
+a 181 191 inf
+a 191 181 inf
+a 181 193 inf
+a 193 181 inf
+a 181 195 inf
+a 195 181 inf
+a 181 197 inf
+a 197 181 inf
+a 181 198 inf
+a 198 181 inf
+a 181 199 inf
+a 199 181 inf
+a 181 321 inf
+a 321 181 inf
+a 182 183 inf
+a 183 182 inf
+a 182 185 inf
+a 185 182 inf
+a 182 191 inf
+a 191 182 inf
+a 182 195 inf
+a 195 182 inf
+a 182 196 inf
+a 196 182 inf
+a 182 198 inf
+a 198 182 inf
+a 182 321 inf
+a 321 182 inf
+a 183 184 inf
+a 184 183 inf
+a 183 185 inf
+a 185 183 inf
+a 183 187 inf
+a 187 183 inf
+a 183 191 inf
+a 191 183 inf
+a 183 193 inf
+a 193 183 inf
+a 183 195 inf
+a 195 183 inf
+a 183 197 inf
+a 197 183 inf
+a 183 198 inf
+a 198 183 inf
+a 183 199 inf
+a 199 183 inf
+a 183 321 inf
+a 321 183 inf
+a 184 321 inf
+a 321 184 inf
+a 185 186 inf
+a 186 185 inf
+a 185 187 inf
+a 187 185 inf
+a 185 189 inf
+a 189 185 inf
+a 185 191 inf
+a 191 185 inf
+a 185 193 inf
+a 193 185 inf
+a 185 195 inf
+a 195 185 inf
+a 185 196 inf
+a 196 185 inf
+a 185 197 inf
+a 197 185 inf
+a 185 198 inf
+a 198 185 inf
+a 185 199 inf
+a 199 185 inf
+a 185 321 inf
+a 321 185 inf
+a 186 321 inf
+a 321 186 inf
+a 187 188 inf
+a 188 187 inf
+a 187 191 inf
+a 191 187 inf
+a 187 193 inf
+a 193 187 inf
+a 187 195 inf
+a 195 187 inf
+a 187 199 inf
+a 199 187 inf
+a 187 321 inf
+a 321 187 inf
+a 188 321 inf
+a 321 188 inf
+a 189 190 inf
+a 190 189 inf
+a 189 199 inf
+a 199 189 inf
+a 189 321 inf
+a 321 189 inf
+a 190 321 inf
+a 321 190 inf
+a 191 192 inf
+a 192 191 inf
+a 191 193 inf
+a 193 191 inf
+a 191 195 inf
+a 195 191 inf
+a 191 197 inf
+a 197 191 inf
+a 191 198 inf
+a 198 191 inf
+a 191 199 inf
+a 199 191 inf
+a 191 321 inf
+a 321 191 inf
+a 192 321 inf
+a 321 192 inf
+a 193 194 inf
+a 194 193 inf
+a 193 195 inf
+a 195 193 inf
+a 193 199 inf
+a 199 193 inf
+a 193 321 inf
+a 321 193 inf
+a 194 321 inf
+a 321 194 inf
+a 195 196 inf
+a 196 195 inf
+a 195 197 inf
+a 197 195 inf
+a 195 198 inf
+a 198 195 inf
+a 195 199 inf
+a 199 195 inf
+a 195 321 inf
+a 321 195 inf
+a 196 198 inf
+a 198 196 inf
+a 196 284 inf
+a 284 196 inf
+a 196 290 inf
+a 290 196 inf
+a 196 305 inf
+a 305 196 inf
+a 196 321 inf
+a 321 196 inf
+a 197 198 inf
+a 198 197 inf
+a 197 321 inf
+a 321 197 inf
+a 198 321 inf
+a 321 198 inf
+a 199 200 inf
+a 200 199 inf
+a 199 321 inf
+a 321 199 inf
+a 200 321 inf
+a 321 200 inf
+a 201 202 inf
+a 202 201 inf
+a 201 203 inf
+a 203 201 inf
+a 201 205 inf
+a 205 201 inf
+a 201 209 inf
+a 209 201 inf
+a 201 213 inf
+a 213 201 inf
+a 201 219 inf
+a 219 201 inf
+a 201 321 inf
+a 321 201 inf
+a 202 321 inf
+a 321 202 inf
+a 203 204 inf
+a 204 203 inf
+a 203 205 inf
+a 205 203 inf
+a 203 207 inf
+a 207 203 inf
+a 203 209 inf
+a 209 203 inf
+a 203 211 inf
+a 211 203 inf
+a 203 213 inf
+a 213 203 inf
+a 203 215 inf
+a 215 203 inf
+a 203 217 inf
+a 217 203 inf
+a 203 219 inf
+a 219 203 inf
+a 203 321 inf
+a 321 203 inf
+a 204 321 inf
+a 321 204 inf
+a 205 206 inf
+a 206 205 inf
+a 205 207 inf
+a 207 205 inf
+a 205 209 inf
+a 209 205 inf
+a 205 211 inf
+a 211 205 inf
+a 205 213 inf
+a 213 205 inf
+a 205 215 inf
+a 215 205 inf
+a 205 217 inf
+a 217 205 inf
+a 205 219 inf
+a 219 205 inf
+a 205 321 inf
+a 321 205 inf
+a 206 321 inf
+a 321 206 inf
+a 207 208 inf
+a 208 207 inf
+a 207 211 inf
+a 211 207 inf
+a 207 213 inf
+a 213 207 inf
+a 207 215 inf
+a 215 207 inf
+a 207 217 inf
+a 217 207 inf
+a 207 321 inf
+a 321 207 inf
+a 208 321 inf
+a 321 208 inf
+a 209 210 inf
+a 210 209 inf
+a 209 211 inf
+a 211 209 inf
+a 209 213 inf
+a 213 209 inf
+a 209 215 inf
+a 215 209 inf
+a 209 217 inf
+a 217 209 inf
+a 209 219 inf
+a 219 209 inf
+a 209 321 inf
+a 321 209 inf
+a 210 321 inf
+a 321 210 inf
+a 211 212 inf
+a 212 211 inf
+a 211 213 inf
+a 213 211 inf
+a 211 215 inf
+a 215 211 inf
+a 211 217 inf
+a 217 211 inf
+a 211 219 inf
+a 219 211 inf
+a 211 230 inf
+a 230 211 inf
+a 211 321 inf
+a 321 211 inf
+a 212 321 inf
+a 321 212 inf
+a 213 214 inf
+a 214 213 inf
+a 213 215 inf
+a 215 213 inf
+a 213 217 inf
+a 217 213 inf
+a 213 219 inf
+a 219 213 inf
+a 213 321 inf
+a 321 213 inf
+a 214 321 inf
+a 321 214 inf
+a 215 216 inf
+a 216 215 inf
+a 215 217 inf
+a 217 215 inf
+a 215 219 inf
+a 219 215 inf
+a 215 321 inf
+a 321 215 inf
+a 216 321 inf
+a 321 216 inf
+a 217 218 inf
+a 218 217 inf
+a 217 219 inf
+a 219 217 inf
+a 217 230 inf
+a 230 217 inf
+a 217 321 inf
+a 321 217 inf
+a 218 321 inf
+a 321 218 inf
+a 219 220 inf
+a 220 219 inf
+a 219 321 inf
+a 321 219 inf
+a 220 321 inf
+a 321 220 inf
+a 221 222 inf
+a 222 221 inf
+a 221 225 inf
+a 225 221 inf
+a 221 227 inf
+a 227 221 inf
+a 221 231 inf
+a 231 221 inf
+a 221 233 inf
+a 233 221 inf
+a 221 235 inf
+a 235 221 inf
+a 221 237 inf
+a 237 221 inf
+a 221 239 inf
+a 239 221 inf
+a 221 321 inf
+a 321 221 inf
+a 222 321 inf
+a 321 222 inf
+a 223 224 inf
+a 224 223 inf
+a 223 225 inf
+a 225 223 inf
+a 223 227 inf
+a 227 223 inf
+a 223 229 inf
+a 229 223 inf
+a 223 231 inf
+a 231 223 inf
+a 223 237 inf
+a 237 223 inf
+a 223 239 inf
+a 239 223 inf
+a 223 321 inf
+a 321 223 inf
+a 224 225 inf
+a 225 224 inf
+a 224 227 inf
+a 227 224 inf
+a 224 229 inf
+a 229 224 inf
+a 224 230 inf
+a 230 224 inf
+a 224 231 inf
+a 231 224 inf
+a 224 232 inf
+a 232 224 inf
+a 224 235 inf
+a 235 224 inf
+a 224 236 inf
+a 236 224 inf
+a 224 237 inf
+a 237 224 inf
+a 224 239 inf
+a 239 224 inf
+a 224 293 inf
+a 293 224 inf
+a 224 321 inf
+a 321 224 inf
+a 225 226 inf
+a 226 225 inf
+a 225 227 inf
+a 227 225 inf
+a 225 229 inf
+a 229 225 inf
+a 225 230 inf
+a 230 225 inf
+a 225 231 inf
+a 231 225 inf
+a 225 235 inf
+a 235 225 inf
+a 225 237 inf
+a 237 225 inf
+a 225 239 inf
+a 239 225 inf
+a 225 321 inf
+a 321 225 inf
+a 226 321 inf
+a 321 226 inf
+a 227 228 inf
+a 228 227 inf
+a 227 229 inf
+a 229 227 inf
+a 227 230 inf
+a 230 227 inf
+a 227 231 inf
+a 231 227 inf
+a 227 232 inf
+a 232 227 inf
+a 227 235 inf
+a 235 227 inf
+a 227 236 inf
+a 236 227 inf
+a 227 237 inf
+a 237 227 inf
+a 227 239 inf
+a 239 227 inf
+a 227 241 inf
+a 241 227 inf
+a 227 242 inf
+a 242 227 inf
+a 227 257 inf
+a 257 227 inf
+a 227 282 inf
+a 282 227 inf
+a 227 284 inf
+a 284 227 inf
+a 227 289 inf
+a 289 227 inf
+a 227 290 inf
+a 290 227 inf
+a 227 293 inf
+a 293 227 inf
+a 227 296 inf
+a 296 227 inf
+a 227 317 inf
+a 317 227 inf
+a 227 318 inf
+a 318 227 inf
+a 227 321 inf
+a 321 227 inf
+a 228 321 inf
+a 321 228 inf
+a 229 230 inf
+a 230 229 inf
+a 229 231 inf
+a 231 229 inf
+a 229 235 inf
+a 235 229 inf
+a 229 237 inf
+a 237 229 inf
+a 229 239 inf
+a 239 229 inf
+a 229 321 inf
+a 321 229 inf
+a 230 231 inf
+a 231 230 inf
+a 230 232 inf
+a 232 230 inf
+a 230 235 inf
+a 235 230 inf
+a 230 236 inf
+a 236 230 inf
+a 230 237 inf
+a 237 230 inf
+a 230 239 inf
+a 239 230 inf
+a 230 293 inf
+a 293 230 inf
+a 230 296 inf
+a 296 230 inf
+a 230 321 inf
+a 321 230 inf
+a 231 232 inf
+a 232 231 inf
+a 231 233 inf
+a 233 231 inf
+a 231 235 inf
+a 235 231 inf
+a 231 236 inf
+a 236 231 inf
+a 231 237 inf
+a 237 231 inf
+a 231 239 inf
+a 239 231 inf
+a 231 321 inf
+a 321 231 inf
+a 232 236 inf
+a 236 232 inf
+a 232 237 inf
+a 237 232 inf
+a 232 239 inf
+a 239 232 inf
+a 232 293 inf
+a 293 232 inf
+a 232 321 inf
+a 321 232 inf
+a 233 234 inf
+a 234 233 inf
+a 233 235 inf
+a 235 233 inf
+a 233 237 inf
+a 237 233 inf
+a 233 239 inf
+a 239 233 inf
+a 233 321 inf
+a 321 233 inf
+a 234 321 inf
+a 321 234 inf
+a 235 236 inf
+a 236 235 inf
+a 235 237 inf
+a 237 235 inf
+a 235 239 inf
+a 239 235 inf
+a 235 321 inf
+a 321 235 inf
+a 236 237 inf
+a 237 236 inf
+a 236 239 inf
+a 239 236 inf
+a 236 241 inf
+a 241 236 inf
+a 236 257 inf
+a 257 236 inf
+a 236 282 inf
+a 282 236 inf
+a 236 284 inf
+a 284 236 inf
+a 236 289 inf
+a 289 236 inf
+a 236 290 inf
+a 290 236 inf
+a 236 293 inf
+a 293 236 inf
+a 236 296 inf
+a 296 236 inf
+a 236 317 inf
+a 317 236 inf
+a 236 318 inf
+a 318 236 inf
+a 236 321 inf
+a 321 236 inf
+a 237 238 inf
+a 238 237 inf
+a 237 239 inf
+a 239 237 inf
+a 237 321 inf
+a 321 237 inf
+a 238 321 inf
+a 321 238 inf
+a 239 240 inf
+a 240 239 inf
+a 239 321 inf
+a 321 239 inf
+a 240 321 inf
+a 321 240 inf
+a 241 242 inf
+a 242 241 inf
+a 241 243 inf
+a 243 241 inf
+a 241 245 inf
+a 245 241 inf
+a 241 247 inf
+a 247 241 inf
+a 241 249 inf
+a 249 241 inf
+a 241 251 inf
+a 251 241 inf
+a 241 253 inf
+a 253 241 inf
+a 241 255 inf
+a 255 241 inf
+a 241 257 inf
+a 257 241 inf
+a 241 321 inf
+a 321 241 inf
+a 242 321 inf
+a 321 242 inf
+a 243 244 inf
+a 244 243 inf
+a 243 245 inf
+a 245 243 inf
+a 243 247 inf
+a 247 243 inf
+a 243 249 inf
+a 249 243 inf
+a 243 253 inf
+a 253 243 inf
+a 243 255 inf
+a 255 243 inf
+a 243 257 inf
+a 257 243 inf
+a 243 259 inf
+a 259 243 inf
+a 243 321 inf
+a 321 243 inf
+a 244 321 inf
+a 321 244 inf
+a 245 246 inf
+a 246 245 inf
+a 245 247 inf
+a 247 245 inf
+a 245 249 inf
+a 249 245 inf
+a 245 251 inf
+a 251 245 inf
+a 245 253 inf
+a 253 245 inf
+a 245 257 inf
+a 257 245 inf
+a 245 259 inf
+a 259 245 inf
+a 245 321 inf
+a 321 245 inf
+a 246 321 inf
+a 321 246 inf
+a 247 248 inf
+a 248 247 inf
+a 247 249 inf
+a 249 247 inf
+a 247 253 inf
+a 253 247 inf
+a 247 255 inf
+a 255 247 inf
+a 247 257 inf
+a 257 247 inf
+a 247 259 inf
+a 259 247 inf
+a 247 321 inf
+a 321 247 inf
+a 248 321 inf
+a 321 248 inf
+a 249 250 inf
+a 250 249 inf
+a 249 253 inf
+a 253 249 inf
+a 249 255 inf
+a 255 249 inf
+a 249 257 inf
+a 257 249 inf
+a 249 259 inf
+a 259 249 inf
+a 249 321 inf
+a 321 249 inf
+a 250 321 inf
+a 321 250 inf
+a 251 252 inf
+a 252 251 inf
+a 251 253 inf
+a 253 251 inf
+a 251 257 inf
+a 257 251 inf
+a 251 321 inf
+a 321 251 inf
+a 252 321 inf
+a 321 252 inf
+a 253 254 inf
+a 254 253 inf
+a 253 255 inf
+a 255 253 inf
+a 253 257 inf
+a 257 253 inf
+a 253 259 inf
+a 259 253 inf
+a 253 321 inf
+a 321 253 inf
+a 254 321 inf
+a 321 254 inf
+a 255 256 inf
+a 256 255 inf
+a 255 257 inf
+a 257 255 inf
+a 255 321 inf
+a 321 255 inf
+a 256 321 inf
+a 321 256 inf
+a 257 258 inf
+a 258 257 inf
+a 257 259 inf
+a 259 257 inf
+a 257 318 inf
+a 318 257 inf
+a 257 321 inf
+a 321 257 inf
+a 258 321 inf
+a 321 258 inf
+a 259 260 inf
+a 260 259 inf
+a 259 321 inf
+a 321 259 inf
+a 260 321 inf
+a 321 260 inf
+a 261 262 inf
+a 262 261 inf
+a 261 263 inf
+a 263 261 inf
+a 261 265 inf
+a 265 261 inf
+a 261 267 inf
+a 267 261 inf
+a 261 269 inf
+a 269 261 inf
+a 261 271 inf
+a 271 261 inf
+a 261 273 inf
+a 273 261 inf
+a 261 275 inf
+a 275 261 inf
+a 261 321 inf
+a 321 261 inf
+a 262 321 inf
+a 321 262 inf
+a 263 264 inf
+a 264 263 inf
+a 263 265 inf
+a 265 263 inf
+a 263 267 inf
+a 267 263 inf
+a 263 269 inf
+a 269 263 inf
+a 263 271 inf
+a 271 263 inf
+a 263 273 inf
+a 273 263 inf
+a 263 275 inf
+a 275 263 inf
+a 263 276 inf
+a 276 263 inf
+a 263 277 inf
+a 277 263 inf
+a 263 321 inf
+a 321 263 inf
+a 264 321 inf
+a 321 264 inf
+a 265 266 inf
+a 266 265 inf
+a 265 267 inf
+a 267 265 inf
+a 265 269 inf
+a 269 265 inf
+a 265 271 inf
+a 271 265 inf
+a 265 273 inf
+a 273 265 inf
+a 265 275 inf
+a 275 265 inf
+a 265 276 inf
+a 276 265 inf
+a 265 277 inf
+a 277 265 inf
+a 265 279 inf
+a 279 265 inf
+a 265 321 inf
+a 321 265 inf
+a 266 321 inf
+a 321 266 inf
+a 267 268 inf
+a 268 267 inf
+a 267 269 inf
+a 269 267 inf
+a 267 271 inf
+a 271 267 inf
+a 267 273 inf
+a 273 267 inf
+a 267 275 inf
+a 275 267 inf
+a 267 276 inf
+a 276 267 inf
+a 267 277 inf
+a 277 267 inf
+a 267 321 inf
+a 321 267 inf
+a 268 321 inf
+a 321 268 inf
+a 269 270 inf
+a 270 269 inf
+a 269 273 inf
+a 273 269 inf
+a 269 321 inf
+a 321 269 inf
+a 270 321 inf
+a 321 270 inf
+a 271 272 inf
+a 272 271 inf
+a 271 273 inf
+a 273 271 inf
+a 271 275 inf
+a 275 271 inf
+a 271 321 inf
+a 321 271 inf
+a 272 321 inf
+a 321 272 inf
+a 273 274 inf
+a 274 273 inf
+a 273 275 inf
+a 275 273 inf
+a 273 276 inf
+a 276 273 inf
+a 273 277 inf
+a 277 273 inf
+a 273 321 inf
+a 321 273 inf
+a 274 321 inf
+a 321 274 inf
+a 275 276 inf
+a 276 275 inf
+a 275 277 inf
+a 277 275 inf
+a 275 321 inf
+a 321 275 inf
+a 276 321 inf
+a 321 276 inf
+a 277 278 inf
+a 278 277 inf
+a 277 321 inf
+a 321 277 inf
+a 278 321 inf
+a 321 278 inf
+a 279 280 inf
+a 280 279 inf
+a 279 321 inf
+a 321 279 inf
+a 280 321 inf
+a 321 280 inf
+a 281 282 inf
+a 282 281 inf
+a 281 283 inf
+a 283 281 inf
+a 281 284 inf
+a 284 281 inf
+a 281 285 inf
+a 285 281 inf
+a 281 287 inf
+a 287 281 inf
+a 281 289 inf
+a 289 281 inf
+a 281 291 inf
+a 291 281 inf
+a 281 292 inf
+a 292 281 inf
+a 281 293 inf
+a 293 281 inf
+a 281 295 inf
+a 295 281 inf
+a 281 296 inf
+a 296 281 inf
+a 281 297 inf
+a 297 281 inf
+a 281 298 inf
+a 298 281 inf
+a 281 299 inf
+a 299 281 inf
+a 281 321 inf
+a 321 281 inf
+a 282 284 inf
+a 284 282 inf
+a 282 285 inf
+a 285 282 inf
+a 282 286 inf
+a 286 282 inf
+a 282 289 inf
+a 289 282 inf
+a 282 290 inf
+a 290 282 inf
+a 282 292 inf
+a 292 282 inf
+a 282 293 inf
+a 293 282 inf
+a 282 296 inf
+a 296 282 inf
+a 282 298 inf
+a 298 282 inf
+a 282 305 inf
+a 305 282 inf
+a 282 317 inf
+a 317 282 inf
+a 282 321 inf
+a 321 282 inf
+a 283 284 inf
+a 284 283 inf
+a 283 285 inf
+a 285 283 inf
+a 283 289 inf
+a 289 283 inf
+a 283 291 inf
+a 291 283 inf
+a 283 293 inf
+a 293 283 inf
+a 283 299 inf
+a 299 283 inf
+a 283 321 inf
+a 321 283 inf
+a 284 285 inf
+a 285 284 inf
+a 284 286 inf
+a 286 284 inf
+a 284 289 inf
+a 289 284 inf
+a 284 290 inf
+a 290 284 inf
+a 284 291 inf
+a 291 284 inf
+a 284 292 inf
+a 292 284 inf
+a 284 293 inf
+a 293 284 inf
+a 284 296 inf
+a 296 284 inf
+a 284 298 inf
+a 298 284 inf
+a 284 299 inf
+a 299 284 inf
+a 284 305 inf
+a 305 284 inf
+a 284 317 inf
+a 317 284 inf
+a 284 321 inf
+a 321 284 inf
+a 285 286 inf
+a 286 285 inf
+a 285 287 inf
+a 287 285 inf
+a 285 289 inf
+a 289 285 inf
+a 285 291 inf
+a 291 285 inf
+a 285 292 inf
+a 292 285 inf
+a 285 293 inf
+a 293 285 inf
+a 285 295 inf
+a 295 285 inf
+a 285 296 inf
+a 296 285 inf
+a 285 297 inf
+a 297 285 inf
+a 285 298 inf
+a 298 285 inf
+a 285 299 inf
+a 299 285 inf
+a 285 321 inf
+a 321 285 inf
+a 286 289 inf
+a 289 286 inf
+a 286 292 inf
+a 292 286 inf
+a 286 293 inf
+a 293 286 inf
+a 286 296 inf
+a 296 286 inf
+a 286 298 inf
+a 298 286 inf
+a 286 321 inf
+a 321 286 inf
+a 287 288 inf
+a 288 287 inf
+a 287 289 inf
+a 289 287 inf
+a 287 291 inf
+a 291 287 inf
+a 287 293 inf
+a 293 287 inf
+a 287 295 inf
+a 295 287 inf
+a 287 296 inf
+a 296 287 inf
+a 287 297 inf
+a 297 287 inf
+a 287 298 inf
+a 298 287 inf
+a 287 299 inf
+a 299 287 inf
+a 287 321 inf
+a 321 287 inf
+a 288 321 inf
+a 321 288 inf
+a 289 290 inf
+a 290 289 inf
+a 289 291 inf
+a 291 289 inf
+a 289 292 inf
+a 292 289 inf
+a 289 293 inf
+a 293 289 inf
+a 289 295 inf
+a 295 289 inf
+a 289 296 inf
+a 296 289 inf
+a 289 298 inf
+a 298 289 inf
+a 289 299 inf
+a 299 289 inf
+a 289 321 inf
+a 321 289 inf
+a 290 292 inf
+a 292 290 inf
+a 290 293 inf
+a 293 290 inf
+a 290 296 inf
+a 296 290 inf
+a 290 305 inf
+a 305 290 inf
+a 290 317 inf
+a 317 290 inf
+a 290 321 inf
+a 321 290 inf
+a 291 292 inf
+a 292 291 inf
+a 291 293 inf
+a 293 291 inf
+a 291 296 inf
+a 296 291 inf
+a 291 297 inf
+a 297 291 inf
+a 291 298 inf
+a 298 291 inf
+a 291 299 inf
+a 299 291 inf
+a 291 321 inf
+a 321 291 inf
+a 292 293 inf
+a 293 292 inf
+a 292 296 inf
+a 296 292 inf
+a 292 298 inf
+a 298 292 inf
+a 292 299 inf
+a 299 292 inf
+a 292 321 inf
+a 321 292 inf
+a 293 294 inf
+a 294 293 inf
+a 293 295 inf
+a 295 293 inf
+a 293 296 inf
+a 296 293 inf
+a 293 298 inf
+a 298 293 inf
+a 293 299 inf
+a 299 293 inf
+a 293 321 inf
+a 321 293 inf
+a 294 321 inf
+a 321 294 inf
+a 295 296 inf
+a 296 295 inf
+a 295 299 inf
+a 299 295 inf
+a 295 321 inf
+a 321 295 inf
+a 296 298 inf
+a 298 296 inf
+a 296 299 inf
+a 299 296 inf
+a 296 321 inf
+a 321 296 inf
+a 297 298 inf
+a 298 297 inf
+a 297 321 inf
+a 321 297 inf
+a 298 299 inf
+a 299 298 inf
+a 298 321 inf
+a 321 298 inf
+a 299 300 inf
+a 300 299 inf
+a 299 321 inf
+a 321 299 inf
+a 300 321 inf
+a 321 300 inf
+a 301 302 inf
+a 302 301 inf
+a 301 303 inf
+a 303 301 inf
+a 301 305 inf
+a 305 301 inf
+a 301 307 inf
+a 307 301 inf
+a 301 308 inf
+a 308 301 inf
+a 301 309 inf
+a 309 301 inf
+a 301 311 inf
+a 311 301 inf
+a 301 313 inf
+a 313 301 inf
+a 301 315 inf
+a 315 301 inf
+a 301 317 inf
+a 317 301 inf
+a 301 319 inf
+a 319 301 inf
+a 301 321 inf
+a 321 301 inf
+a 302 321 inf
+a 321 302 inf
+a 303 304 inf
+a 304 303 inf
+a 303 307 inf
+a 307 303 inf
+a 303 309 inf
+a 309 303 inf
+a 303 313 inf
+a 313 303 inf
+a 303 317 inf
+a 317 303 inf
+a 303 321 inf
+a 321 303 inf
+a 304 321 inf
+a 321 304 inf
+a 305 306 inf
+a 306 305 inf
+a 305 308 inf
+a 308 305 inf
+a 305 309 inf
+a 309 305 inf
+a 305 311 inf
+a 311 305 inf
+a 305 313 inf
+a 313 305 inf
+a 305 315 inf
+a 315 305 inf
+a 305 317 inf
+a 317 305 inf
+a 305 319 inf
+a 319 305 inf
+a 305 321 inf
+a 321 305 inf
+a 306 321 inf
+a 321 306 inf
+a 307 308 inf
+a 308 307 inf
+a 307 309 inf
+a 309 307 inf
+a 307 311 inf
+a 311 307 inf
+a 307 313 inf
+a 313 307 inf
+a 307 317 inf
+a 317 307 inf
+a 307 319 inf
+a 319 307 inf
+a 307 321 inf
+a 321 307 inf
+a 308 309 inf
+a 309 308 inf
+a 308 311 inf
+a 311 308 inf
+a 308 313 inf
+a 313 308 inf
+a 308 317 inf
+a 317 308 inf
+a 308 319 inf
+a 319 308 inf
+a 308 321 inf
+a 321 308 inf
+a 309 310 inf
+a 310 309 inf
+a 309 311 inf
+a 311 309 inf
+a 309 313 inf
+a 313 309 inf
+a 309 315 inf
+a 315 309 inf
+a 309 317 inf
+a 317 309 inf
+a 309 319 inf
+a 319 309 inf
+a 309 321 inf
+a 321 309 inf
+a 310 321 inf
+a 321 310 inf
+a 311 312 inf
+a 312 311 inf
+a 311 313 inf
+a 313 311 inf
+a 311 315 inf
+a 315 311 inf
+a 311 317 inf
+a 317 311 inf
+a 311 319 inf
+a 319 311 inf
+a 311 321 inf
+a 321 311 inf
+a 312 321 inf
+a 321 312 inf
+a 313 314 inf
+a 314 313 inf
+a 313 317 inf
+a 317 313 inf
+a 313 319 inf
+a 319 313 inf
+a 313 321 inf
+a 321 313 inf
+a 314 321 inf
+a 321 314 inf
+a 315 316 inf
+a 316 315 inf
+a 315 317 inf
+a 317 315 inf
+a 315 321 inf
+a 321 315 inf
+a 316 321 inf
+a 321 316 inf
+a 317 318 inf
+a 318 317 inf
+a 317 319 inf
+a 319 317 inf
+a 317 321 inf
+a 321 317 inf
+a 318 321 inf
+a 321 318 inf
+a 319 320 inf
+a 320 319 inf
+a 319 321 inf
+a 321 319 inf
+a 320 321 inf
+a 321 320 inf
+c END OF PROBLEM DATA; additional refinment constraints follow.
+c "c <num_refinements> X" specifies that the problem has X additional refinement constraints.
+c "c <refine>" specifies each arc that should be considered a refinement constraint.
+c <num_refinements> 1319
+c <refine> 1 2 -4
+c <refine> 2 1 42
+c <refine> 1 3 473
+c <refine> 1 5 333
+c <refine> 5 1 223
+c <refine> 1 7 506
+c <refine> 7 1 330
+c <refine> 1 11 537
+c <refine> 11 1 319
+c <refine> 1 13 453
+c <refine> 1 15 266
+c <refine> 15 1 434
+c <refine> 1 19 134
+c <refine> 296 1 400
+c <refine> 321 1 0
+c <refine> 2 321 600
+c <refine> 3 4 -55
+c <refine> 4 3 57
+c <refine> 3 5 456
+c <refine> 5 3 296
+c <refine> 3 9 289
+c <refine> 9 3 553
+c <refine> 3 11 519
+c <refine> 15 3 314
+c <refine> 3 17 288
+c <refine> 19 3 577
+c <refine> 321 3 0
+c <refine> 4 321 600
+c <refine> 5 6 -11
+c <refine> 6 5 42
+c <refine> 7 5 310
+c <refine> 5 9 567
+c <refine> 5 13 393
+c <refine> 13 5 568
+c <refine> 5 15 371
+c <refine> 15 5 570
+c <refine> 19 5 410
+c <refine> 5 118 256
+c <refine> 321 5 0
+c <refine> 6 321 600
+c <refine> 7 8 0
+c <refine> 8 7 56
+c <refine> 7 13 550
+c <refine> 13 7 405
+c <refine> 15 7 493
+c <refine> 7 17 481
+c <refine> 7 19 264
+c <refine> 321 7 0
+c <refine> 8 321 600
+c <refine> 9 10 -26
+c <refine> 10 9 32
+c <refine> 9 13 238
+c <refine> 13 9 387
+c <refine> 17 9 345
+c <refine> 9 19 533
+c <refine> 321 9 0
+c <refine> 10 321 600
+c <refine> 11 12 -24
+c <refine> 12 11 74
+c <refine> 11 15 496
+c <refine> 15 11 279
+c <refine> 11 19 499
+c <refine> 19 11 524
+c <refine> 321 11 0
+c <refine> 12 321 600
+c <refine> 13 14 -26
+c <refine> 14 13 51
+c <refine> 13 17 245
+c <refine> 19 13 272
+c <refine> 321 13 0
+c <refine> 14 211 318
+c <refine> 14 321 600
+c <refine> 15 16 -24
+c <refine> 16 15 40
+c <refine> 15 17 316
+c <refine> 321 15 0
+c <refine> 49 16 358
+c <refine> 16 321 600
+c <refine> 17 18 -43
+c <refine> 18 17 70
+c <refine> 88 17 382
+c <refine> 321 17 0
+c <refine> 18 321 600
+c <refine> 19 20 -20
+c <refine> 20 19 71
+c <refine> 107 19 534
+c <refine> 273 19 572
+c <refine> 321 19 0
+c <refine> 20 321 600
+c <refine> 21 22 -29
+c <refine> 22 21 72
+c <refine> 21 25 340
+c <refine> 25 21 95
+c <refine> 21 27 284
+c <refine> 27 21 269
+c <refine> 21 29 333
+c <refine> 29 21 421
+c <refine> 21 33 431
+c <refine> 33 21 425
+c <refine> 21 35 531
+c <refine> 21 37 265
+c <refine> 321 21 0
+c <refine> 22 321 600
+c <refine> 23 24 -4
+c <refine> 24 23 55
+c <refine> 23 25 287
+c <refine> 23 27 482
+c <refine> 29 23 219
+c <refine> 23 31 331
+c <refine> 23 37 421
+c <refine> 37 23 314
+c <refine> 23 39 324
+c <refine> 321 23 0
+c <refine> 24 321 600
+c <refine> 25 26 -28
+c <refine> 26 25 84
+c <refine> 25 27 152
+c <refine> 29 25 250
+c <refine> 31 25 268
+c <refine> 35 25 184
+c <refine> 25 37 380
+c <refine> 37 25 438
+c <refine> 25 39 456
+c <refine> 321 25 0
+c <refine> 26 321 600
+c <refine> 27 28 -49
+c <refine> 28 27 49
+c <refine> 27 29 315
+c <refine> 31 27 276
+c <refine> 27 33 311
+c <refine> 35 27 378
+c <refine> 37 27 555
+c <refine> 321 27 0
+c <refine> 28 321 600
+c <refine> 29 30 -44
+c <refine> 30 29 92
+c <refine> 29 31 403
+c <refine> 31 29 277
+c <refine> 29 33 381
+c <refine> 29 37 543
+c <refine> 37 29 303
+c <refine> 321 29 0
+c <refine> 30 321 600
+c <refine> 31 32 -6
+c <refine> 32 31 8
+c <refine> 31 33 262
+c <refine> 31 35 556
+c <refine> 35 31 522
+c <refine> 31 37 307
+c <refine> 37 31 493
+c <refine> 31 39 546
+c <refine> 321 31 0
+c <refine> 32 321 600
+c <refine> 33 34 -54
+c <refine> 34 33 95
+c <refine> 321 33 0
+c <refine> 34 321 600
+c <refine> 35 36 -53
+c <refine> 36 35 107
+c <refine> 35 37 265
+c <refine> 35 39 432
+c <refine> 321 35 0
+c <refine> 36 321 600
+c <refine> 37 38 -25
+c <refine> 38 37 43
+c <refine> 37 74 329
+c <refine> 284 37 297
+c <refine> 321 37 0
+c <refine> 38 321 600
+c <refine> 39 40 -52
+c <refine> 40 39 82
+c <refine> 321 39 0
+c <refine> 40 321 600
+c <refine> 41 42 0
+c <refine> 42 41 29
+c <refine> 43 41 360
+c <refine> 47 41 443
+c <refine> 53 41 336
+c <refine> 41 55 494
+c <refine> 41 57 349
+c <refine> 57 41 465
+c <refine> 321 41 0
+c <refine> 152 42 283
+c <refine> 42 321 600
+c <refine> 43 44 -3
+c <refine> 44 43 5
+c <refine> 43 45 317
+c <refine> 45 43 471
+c <refine> 43 47 485
+c <refine> 43 49 440
+c <refine> 43 57 266
+c <refine> 57 43 422
+c <refine> 43 59 -77
+c <refine> 321 43 0
+c <refine> 290 44 335
+c <refine> 44 321 600
+c <refine> 45 46 -59
+c <refine> 46 45 76
+c <refine> 45 47 218
+c <refine> 47 45 526
+c <refine> 51 45 -15
+c <refine> 45 53 210
+c <refine> 53 45 516
+c <refine> 55 45 277
+c <refine> 45 57 272
+c <refine> 57 45 516
+c <refine> 158 45 343
+c <refine> 257 45 541
+c <refine> 321 45 0
+c <refine> 46 308 482
+c <refine> 46 321 600
+c <refine> 47 48 -29
+c <refine> 48 47 29
+c <refine> 47 49 177
+c <refine> 47 55 333
+c <refine> 47 59 406
+c <refine> 321 47 0
+c <refine> 48 321 600
+c <refine> 49 50 -5
+c <refine> 50 49 14
+c <refine> 49 51 438
+c <refine> 51 49 301
+c <refine> 49 53 397
+c <refine> 49 57 562
+c <refine> 59 49 237
+c <refine> 321 49 0
+c <refine> 50 321 600
+c <refine> 51 52 -52
+c <refine> 52 51 103
+c <refine> 51 55 234
+c <refine> 51 57 429
+c <refine> 59 51 323
+c <refine> 321 51 0
+c <refine> 52 321 600
+c <refine> 53 54 -51
+c <refine> 54 53 82
+c <refine> 53 55 269
+c <refine> 55 53 488
+c <refine> 53 57 330
+c <refine> 59 53 252
+c <refine> 321 53 0
+c <refine> 54 321 600
+c <refine> 55 56 -35
+c <refine> 56 55 53
+c <refine> 59 55 413
+c <refine> 321 55 0
+c <refine> 86 56 279
+c <refine> 56 321 600
+c <refine> 57 58 -29
+c <refine> 58 57 52
+c <refine> 57 59 512
+c <refine> 59 57 313
+c <refine> 321 57 0
+c <refine> 58 321 600
+c <refine> 59 60 -55
+c <refine> 60 59 84
+c <refine> 321 59 0
+c <refine> 60 321 600
+c <refine> 61 62 -12
+c <refine> 62 61 26
+c <refine> 61 63 356
+c <refine> 65 61 421
+c <refine> 61 69 387
+c <refine> 61 73 312
+c <refine> 61 77 423
+c <refine> 77 61 125
+c <refine> 79 61 458
+c <refine> 61 177 347
+c <refine> 321 61 0
+c <refine> 62 321 600
+c <refine> 63 64 -27
+c <refine> 64 63 83
+c <refine> 65 63 368
+c <refine> 63 67 487
+c <refine> 63 71 176
+c <refine> 71 63 401
+c <refine> 73 63 376
+c <refine> 63 77 154
+c <refine> 321 63 0
+c <refine> 64 321 600
+c <refine> 65 66 -53
+c <refine> 66 65 63
+c <refine> 65 67 452
+c <refine> 65 75 55
+c <refine> 79 65 346
+c <refine> 321 65 0
+c <refine> 87 66 344
+c <refine> 66 321 600
+c <refine> 67 68 -29
+c <refine> 68 67 81
+c <refine> 69 67 319
+c <refine> 67 75 426
+c <refine> 75 67 360
+c <refine> 67 77 420
+c <refine> 67 79 567
+c <refine> 79 67 320
+c <refine> 321 67 0
+c <refine> 68 321 600
+c <refine> 69 70 -48
+c <refine> 70 69 50
+c <refine> 69 73 -68
+c <refine> 69 77 296
+c <refine> 321 69 0
+c <refine> 70 321 600
+c <refine> 71 72 -24
+c <refine> 72 71 48
+c <refine> 73 71 429
+c <refine> 71 75 330
+c <refine> 71 77 380
+c <refine> 71 79 386
+c <refine> 79 71 444
+c <refine> 321 71 0
+c <refine> 72 321 600
+c <refine> 73 74 -28
+c <refine> 74 73 61
+c <refine> 73 75 432
+c <refine> 77 73 271
+c <refine> 79 73 299
+c <refine> 321 73 0
+c <refine> 74 182 266
+c <refine> 74 321 600
+c <refine> 75 76 -33
+c <refine> 76 75 41
+c <refine> 79 75 364
+c <refine> 321 75 0
+c <refine> 76 321 600
+c <refine> 77 78 -55
+c <refine> 78 77 58
+c <refine> 79 77 541
+c <refine> 321 77 0
+c <refine> 78 321 600
+c <refine> 79 80 -24
+c <refine> 80 79 34
+c <refine> 321 79 0
+c <refine> 80 321 600
+c <refine> 81 82 -34
+c <refine> 82 81 92
+c <refine> 81 83 340
+c <refine> 83 81 158
+c <refine> 87 81 450
+c <refine> 81 93 395
+c <refine> 81 95 191
+c <refine> 97 81 444
+c <refine> 81 99 556
+c <refine> 99 81 81
+c <refine> 321 81 0
+c <refine> 82 289 320
+c <refine> 82 321 600
+c <refine> 83 84 -25
+c <refine> 84 83 29
+c <refine> 89 83 241
+c <refine> 83 91 549
+c <refine> 83 93 257
+c <refine> 93 83 428
+c <refine> 83 95 416
+c <refine> 83 97 -117
+c <refine> 212 83 532
+c <refine> 321 83 0
+c <refine> 84 321 600
+c <refine> 85 86 -52
+c <refine> 86 85 85
+c <refine> 85 89 349
+c <refine> 85 91 462
+c <refine> 85 95 500
+c <refine> 85 97 510
+c <refine> 99 85 433
+c <refine> 321 85 0
+c <refine> 86 321 600
+c <refine> 87 88 -41
+c <refine> 88 87 59
+c <refine> 87 91 277
+c <refine> 97 87 386
+c <refine> 321 87 0
+c <refine> 88 321 600
+c <refine> 89 90 -26
+c <refine> 90 89 78
+c <refine> 93 89 391
+c <refine> 89 95 275
+c <refine> 95 89 459
+c <refine> 89 97 392
+c <refine> 97 89 330
+c <refine> 99 89 367
+c <refine> 224 89 600
+c <refine> 321 89 0
+c <refine> 90 321 600
+c <refine> 91 92 -6
+c <refine> 92 91 46
+c <refine> 91 93 64
+c <refine> 91 95 397
+c <refine> 95 91 468
+c <refine> 91 99 354
+c <refine> 99 91 253
+c <refine> 321 91 0
+c <refine> 92 321 600
+c <refine> 93 94 -28
+c <refine> 94 93 83
+c <refine> 99 93 129
+c <refine> 321 93 0
+c <refine> 94 321 600
+c <refine> 95 96 -57
+c <refine> 96 95 85
+c <refine> 95 99 291
+c <refine> 99 95 527
+c <refine> 321 95 0
+c <refine> 241 96 324
+c <refine> 96 321 600
+c <refine> 97 98 -9
+c <refine> 98 97 63
+c <refine> 99 97 456
+c <refine> 321 97 0
+c <refine> 98 168 487
+c <refine> 98 321 600
+c <refine> 99 100 -44
+c <refine> 100 99 73
+c <refine> 321 99 0
+c <refine> 100 321 600
+c <refine> 101 102 -36
+c <refine> 102 101 47
+c <refine> 101 105 248
+c <refine> 101 107 522
+c <refine> 107 101 456
+c <refine> 101 109 81
+c <refine> 101 111 231
+c <refine> 101 113 303
+c <refine> 113 101 470
+c <refine> 321 101 0
+c <refine> 102 144 595
+c <refine> 242 102 274
+c <refine> 102 321 600
+c <refine> 103 104 -15
+c <refine> 104 103 60
+c <refine> 107 103 378
+c <refine> 103 109 356
+c <refine> 103 111 542
+c <refine> 111 103 341
+c <refine> 103 113 278
+c <refine> 103 115 147
+c <refine> 115 103 266
+c <refine> 103 117 100
+c <refine> 103 119 411
+c <refine> 103 286 538
+c <refine> 321 103 0
+c <refine> 219 104 216
+c <refine> 104 321 600
+c <refine> 105 106 -43
+c <refine> 106 105 44
+c <refine> 105 111 455
+c <refine> 111 105 403
+c <refine> 105 115 213
+c <refine> 117 105 511
+c <refine> 119 105 509
+c <refine> 321 105 0
+c <refine> 106 321 600
+c <refine> 107 108 -49
+c <refine> 108 107 96
+c <refine> 109 107 384
+c <refine> 111 107 438
+c <refine> 113 107 520
+c <refine> 107 115 339
+c <refine> 107 119 354
+c <refine> 119 107 523
+c <refine> 321 107 0
+c <refine> 108 321 600
+c <refine> 109 110 -45
+c <refine> 110 109 53
+c <refine> 109 111 469
+c <refine> 111 109 471
+c <refine> 109 113 381
+c <refine> 109 117 302
+c <refine> 321 109 0
+c <refine> 110 172 325
+c <refine> 243 110 323
+c <refine> 110 321 600
+c <refine> 111 112 -54
+c <refine> 112 111 78
+c <refine> 111 117 361
+c <refine> 321 111 0
+c <refine> 112 321 600
+c <refine> 113 114 -22
+c <refine> 114 113 70
+c <refine> 117 113 505
+c <refine> 119 113 341
+c <refine> 321 113 0
+c <refine> 114 321 600
+c <refine> 115 116 -47
+c <refine> 116 115 69
+c <refine> 119 115 454
+c <refine> 321 115 0
+c <refine> 267 116 496
+c <refine> 116 321 600
+c <refine> 117 118 -23
+c <refine> 118 117 28
+c <refine> 117 119 539
+c <refine> 119 117 363
+c <refine> 321 117 0
+c <refine> 163 118 251
+c <refine> 118 321 600
+c <refine> 119 120 -34
+c <refine> 120 119 51
+c <refine> 321 119 0
+c <refine> 120 321 600
+c <refine> 121 122 -47
+c <refine> 122 121 62
+c <refine> 123 121 544
+c <refine> 125 121 533
+c <refine> 121 129 297
+c <refine> 129 121 337
+c <refine> 121 131 230
+c <refine> 121 133 172
+c <refine> 121 135 263
+c <refine> 135 121 507
+c <refine> 137 121 478
+c <refine> 139 121 528
+c <refine> 321 121 0
+c <refine> 122 321 600
+c <refine> 123 124 -16
+c <refine> 124 123 31
+c <refine> 123 127 432
+c <refine> 127 123 566
+c <refine> 123 131 445
+c <refine> 135 123 233
+c <refine> 123 137 257
+c <refine> 139 123 300
+c <refine> 321 123 0
+c <refine> 124 321 600
+c <refine> 125 126 -35
+c <refine> 126 125 77
+c <refine> 125 127 525
+c <refine> 129 125 410
+c <refine> 125 131 330
+c <refine> 131 125 129
+c <refine> 133 125 526
+c <refine> 135 125 554
+c <refine> 137 125 343
+c <refine> 321 125 0
+c <refine> 126 321 600
+c <refine> 127 128 -16
+c <refine> 128 127 76
+c <refine> 129 127 251
+c <refine> 127 133 418
+c <refine> 127 135 520
+c <refine> 321 127 0
+c <refine> 128 321 600
+c <refine> 129 130 -34
+c <refine> 130 129 46
+c <refine> 129 131 257
+c <refine> 131 129 566
+c <refine> 129 133 565
+c <refine> 129 135 359
+c <refine> 135 129 400
+c <refine> 129 137 344
+c <refine> 129 139 66
+c <refine> 305 129 221
+c <refine> 321 129 0
+c <refine> 130 162 316
+c <refine> 130 321 600
+c <refine> 131 132 -31
+c <refine> 132 131 52
+c <refine> 133 131 572
+c <refine> 131 139 493
+c <refine> 321 131 0
+c <refine> 132 321 600
+c <refine> 133 134 -7
+c <refine> 134 133 63
+c <refine> 137 133 332
+c <refine> 133 139 243
+c <refine> 321 133 0
+c <refine> 134 321 600
+c <refine> 135 136 -40
+c <refine> 136 135 60
+c <refine> 135 137 495
+c <refine> 137 135 208
+c <refine> 139 135 386
+c <refine> 321 135 0
+c <refine> 136 321 600
+c <refine> 137 138 -41
+c <refine> 138 137 88
+c <refine> 139 137 298
+c <refine> 321 137 0
+c <refine> 138 321 600
+c <refine> 139 140 -15
+c <refine> 140 139 25
+c <refine> 139 290 338
+c <refine> 321 139 0
+c <refine> 140 196 310
+c <refine> 140 321 600
+c <refine> 141 142 0
+c <refine> 142 141 1
+c <refine> 141 143 42
+c <refine> 141 145 341
+c <refine> 145 141 554
+c <refine> 147 141 294
+c <refine> 149 141 320
+c <refine> 151 141 417
+c <refine> 141 153 241
+c <refine> 141 155 408
+c <refine> 155 141 316
+c <refine> 141 157 231
+c <refine> 159 141 539
+c <refine> 321 141 0
+c <refine> 142 321 600
+c <refine> 143 144 -2
+c <refine> 144 143 6
+c <refine> 143 145 342
+c <refine> 145 143 314
+c <refine> 147 143 385
+c <refine> 149 143 256
+c <refine> 143 151 443
+c <refine> 151 143 460
+c <refine> 143 153 324
+c <refine> 143 155 228
+c <refine> 155 143 340
+c <refine> 157 143 430
+c <refine> 143 159 383
+c <refine> 159 143 299
+c <refine> 321 143 0
+c <refine> 144 321 600
+c <refine> 145 146 -11
+c <refine> 146 145 32
+c <refine> 149 145 201
+c <refine> 145 155 258
+c <refine> 155 145 505
+c <refine> 276 145 354
+c <refine> 321 145 0
+c <refine> 146 321 600
+c <refine> 147 148 -41
+c <refine> 148 147 47
+c <refine> 151 147 312
+c <refine> 155 147 444
+c <refine> 159 147 533
+c <refine> 147 298 439
+c <refine> 321 147 0
+c <refine> 148 321 600
+c <refine> 149 150 -41
+c <refine> 150 149 50
+c <refine> 151 149 370
+c <refine> 149 155 285
+c <refine> 155 149 556
+c <refine> 149 159 122
+c <refine> 165 149 563
+c <refine> 321 149 0
+c <refine> 215 150 286
+c <refine> 150 321 600
+c <refine> 151 152 -4
+c <refine> 152 151 37
+c <refine> 153 151 511
+c <refine> 151 155 401
+c <refine> 155 151 501
+c <refine> 151 157 431
+c <refine> 157 151 531
+c <refine> 321 151 0
+c <refine> 152 321 600
+c <refine> 153 154 -3
+c <refine> 154 153 5
+c <refine> 155 153 220
+c <refine> 153 157 312
+c <refine> 153 159 522
+c <refine> 159 153 236
+c <refine> 182 153 378
+c <refine> 321 153 0
+c <refine> 154 321 600
+c <refine> 155 156 -39
+c <refine> 156 155 67
+c <refine> 155 159 272
+c <refine> 159 155 548
+c <refine> 321 155 0
+c <refine> 156 321 600
+c <refine> 157 158 -5
+c <refine> 158 157 19
+c <refine> 292 157 467
+c <refine> 321 157 0
+c <refine> 158 321 600
+c <refine> 159 160 -33
+c <refine> 160 159 43
+c <refine> 321 159 0
+c <refine> 160 321 600
+c <refine> 161 162 -33
+c <refine> 162 161 56
+c <refine> 163 161 327
+c <refine> 161 165 469
+c <refine> 161 167 465
+c <refine> 169 161 333
+c <refine> 161 171 372
+c <refine> 161 173 481
+c <refine> 161 175 228
+c <refine> 161 179 -20
+c <refine> 321 161 0
+c <refine> 162 321 600
+c <refine> 163 164 -43
+c <refine> 164 163 66
+c <refine> 163 165 550
+c <refine> 163 169 458
+c <refine> 169 163 246
+c <refine> 163 171 443
+c <refine> 173 163 230
+c <refine> 163 175 419
+c <refine> 177 163 429
+c <refine> 321 163 0
+c <refine> 164 198 550
+c <refine> 164 321 600
+c <refine> 165 166 -14
+c <refine> 166 165 51
+c <refine> 165 167 387
+c <refine> 167 165 511
+c <refine> 165 169 94
+c <refine> 165 173 432
+c <refine> 175 165 317
+c <refine> 165 179 165
+c <refine> 179 165 556
+c <refine> 321 165 0
+c <refine> 166 321 600
+c <refine> 167 168 -2
+c <refine> 168 167 21
+c <refine> 167 169 340
+c <refine> 169 167 439
+c <refine> 167 171 373
+c <refine> 173 167 100
+c <refine> 167 179 185
+c <refine> 321 167 0
+c <refine> 168 321 600
+c <refine> 169 170 -46
+c <refine> 170 169 104
+c <refine> 173 169 220
+c <refine> 169 175 389
+c <refine> 179 169 290
+c <refine> 321 169 0
+c <refine> 170 321 600
+c <refine> 171 172 -29
+c <refine> 172 171 40
+c <refine> 171 177 327
+c <refine> 177 171 514
+c <refine> 179 171 346
+c <refine> 321 171 0
+c <refine> 172 321 600
+c <refine> 173 174 -50
+c <refine> 174 173 110
+c <refine> 173 175 342
+c <refine> 177 173 181
+c <refine> 173 179 89
+c <refine> 321 173 0
+c <refine> 174 321 600
+c <refine> 175 176 -45
+c <refine> 176 175 83
+c <refine> 177 175 222
+c <refine> 321 175 0
+c <refine> 257 176 240
+c <refine> 176 321 600
+c <refine> 177 178 -43
+c <refine> 178 177 78
+c <refine> 177 179 286
+c <refine> 321 177 0
+c <refine> 178 321 600
+c <refine> 179 180 -9
+c <refine> 180 179 63
+c <refine> 317 179 395
+c <refine> 321 179 0
+c <refine> 180 321 600
+c <refine> 181 182 -51
+c <refine> 182 181 82
+c <refine> 181 183 249
+c <refine> 183 181 473
+c <refine> 185 181 315
+c <refine> 189 181 348
+c <refine> 181 191 276
+c <refine> 181 193 474
+c <refine> 193 181 238
+c <refine> 195 181 290
+c <refine> 197 181 430
+c <refine> 199 181 300
+c <refine> 321 181 0
+c <refine> 182 321 600
+c <refine> 183 184 -31
+c <refine> 184 183 63
+c <refine> 183 187 357
+c <refine> 183 191 526
+c <refine> 183 193 429
+c <refine> 197 183 187
+c <refine> 199 183 319
+c <refine> 321 183 0
+c <refine> 184 321 600
+c <refine> 185 186 -29
+c <refine> 186 185 57
+c <refine> 185 187 176
+c <refine> 187 185 392
+c <refine> 189 185 471
+c <refine> 185 191 499
+c <refine> 191 185 412
+c <refine> 185 193 490
+c <refine> 185 197 421
+c <refine> 199 185 539
+c <refine> 321 185 0
+c <refine> 186 321 600
+c <refine> 187 188 -34
+c <refine> 188 187 71
+c <refine> 191 187 146
+c <refine> 187 193 386
+c <refine> 193 187 257
+c <refine> 187 195 270
+c <refine> 195 187 368
+c <refine> 199 187 354
+c <refine> 321 187 0
+c <refine> 188 321 600
+c <refine> 189 190 -10
+c <refine> 190 189 54
+c <refine> 199 189 253
+c <refine> 321 189 0
+c <refine> 190 321 600
+c <refine> 191 192 -8
+c <refine> 192 191 10
+c <refine> 191 193 578
+c <refine> 193 191 190
+c <refine> 195 191 496
+c <refine> 191 197 540
+c <refine> 191 199 587
+c <refine> 321 191 0
+c <refine> 192 321 600
+c <refine> 193 194 -50
+c <refine> 194 193 75
+c <refine> 195 193 389
+c <refine> 199 193 453
+c <refine> 321 193 0
+c <refine> 194 321 600
+c <refine> 195 196 -46
+c <refine> 196 195 79
+c <refine> 195 197 543
+c <refine> 197 195 221
+c <refine> 195 199 413
+c <refine> 199 195 289
+c <refine> 321 195 0
+c <refine> 196 321 600
+c <refine> 197 198 -45
+c <refine> 198 197 93
+c <refine> 321 197 0
+c <refine> 198 321 600
+c <refine> 199 200 -41
+c <refine> 200 199 54
+c <refine> 321 199 0
+c <refine> 200 321 600
+c <refine> 201 202 -55
+c <refine> 202 201 111
+c <refine> 201 203 325
+c <refine> 203 201 533
+c <refine> 201 205 269
+c <refine> 201 209 164
+c <refine> 209 201 240
+c <refine> 201 213 246
+c <refine> 213 201 358
+c <refine> 219 201 280
+c <refine> 321 201 0
+c <refine> 202 321 600
+c <refine> 203 204 -26
+c <refine> 204 203 50
+c <refine> 203 207 382
+c <refine> 207 203 476
+c <refine> 209 203 398
+c <refine> 211 203 352
+c <refine> 215 203 535
+c <refine> 203 217 574
+c <refine> 219 203 499
+c <refine> 321 203 0
+c <refine> 204 321 600
+c <refine> 205 206 -50
+c <refine> 206 205 91
+c <refine> 207 205 338
+c <refine> 209 205 460
+c <refine> 205 211 211
+c <refine> 213 205 187
+c <refine> 205 217 390
+c <refine> 217 205 287
+c <refine> 205 219 275
+c <refine> 321 205 0
+c <refine> 206 321 600
+c <refine> 207 208 -41
+c <refine> 208 207 85
+c <refine> 211 207 234
+c <refine> 207 213 268
+c <refine> 207 215 452
+c <refine> 207 217 517
+c <refine> 217 207 60
+c <refine> 321 207 0
+c <refine> 208 321 600
+c <refine> 209 210 -25
+c <refine> 210 209 83
+c <refine> 209 211 296
+c <refine> 209 213 429
+c <refine> 209 215 333
+c <refine> 209 217 278
+c <refine> 219 209 264
+c <refine> 321 209 0
+c <refine> 210 321 600
+c <refine> 211 212 -56
+c <refine> 212 211 80
+c <refine> 211 213 219
+c <refine> 211 215 389
+c <refine> 215 211 404
+c <refine> 217 211 279
+c <refine> 219 211 557
+c <refine> 321 211 0
+c <refine> 212 321 600
+c <refine> 213 214 -43
+c <refine> 214 213 45
+c <refine> 213 215 491
+c <refine> 321 213 0
+c <refine> 214 321 600
+c <refine> 215 216 -50
+c <refine> 216 215 102
+c <refine> 219 215 418
+c <refine> 321 215 0
+c <refine> 216 321 600
+c <refine> 217 218 -19
+c <refine> 218 217 23
+c <refine> 217 230 535
+c <refine> 321 217 0
+c <refine> 218 321 600
+c <refine> 219 220 -33
+c <refine> 220 219 59
+c <refine> 321 219 0
+c <refine> 220 321 600
+c <refine> 221 222 -47
+c <refine> 222 221 74
+c <refine> 225 221 368
+c <refine> 221 227 374
+c <refine> 221 233 232
+c <refine> 221 235 400
+c <refine> 235 221 438
+c <refine> 221 237 543
+c <refine> 237 221 243
+c <refine> 221 239 546
+c <refine> 321 221 0
+c <refine> 222 321 600
+c <refine> 223 224 -60
+c <refine> 224 223 70
+c <refine> 223 225 512
+c <refine> 223 227 497
+c <refine> 227 223 467
+c <refine> 229 223 405
+c <refine> 223 231 353
+c <refine> 231 223 401
+c <refine> 237 223 280
+c <refine> 223 239 476
+c <refine> 239 223 427
+c <refine> 321 223 0
+c <refine> 224 321 600
+c <refine> 225 226 -31
+c <refine> 226 225 50
+c <refine> 225 229 227
+c <refine> 225 231 60
+c <refine> 225 235 343
+c <refine> 235 225 534
+c <refine> 225 237 327
+c <refine> 237 225 301
+c <refine> 225 239 556
+c <refine> 239 225 297
+c <refine> 321 225 0
+c <refine> 226 321 600
+c <refine> 227 228 -10
+c <refine> 228 227 33
+c <refine> 227 229 297
+c <refine> 227 231 265
+c <refine> 231 227 521
+c <refine> 227 235 475
+c <refine> 227 237 273
+c <refine> 227 242 476
+c <refine> 321 227 0
+c <refine> 228 321 600
+c <refine> 229 230 -29
+c <refine> 230 229 66
+c <refine> 229 231 330
+c <refine> 231 229 480
+c <refine> 229 235 414
+c <refine> 229 239 384
+c <refine> 239 229 332
+c <refine> 321 229 0
+c <refine> 230 321 600
+c <refine> 231 232 -18
+c <refine> 232 231 27
+c <refine> 231 233 373
+c <refine> 237 231 384
+c <refine> 321 231 0
+c <refine> 232 293 512
+c <refine> 232 321 600
+c <refine> 233 234 -8
+c <refine> 234 233 39
+c <refine> 235 233 511
+c <refine> 233 237 367
+c <refine> 237 233 331
+c <refine> 239 233 426
+c <refine> 321 233 0
+c <refine> 234 321 600
+c <refine> 235 236 -6
+c <refine> 236 235 6
+c <refine> 239 235 361
+c <refine> 321 235 0
+c <refine> 241 236 276
+c <refine> 236 321 600
+c <refine> 237 238 -35
+c <refine> 238 237 63
+c <refine> 321 237 0
+c <refine> 238 321 600
+c <refine> 239 240 -51
+c <refine> 240 239 88
+c <refine> 321 239 0
+c <refine> 240 321 600
+c <refine> 241 242 -45
+c <refine> 242 241 100
+c <refine> 241 243 214
+c <refine> 241 245 378
+c <refine> 245 241 499
+c <refine> 241 247 353
+c <refine> 241 251 305
+c <refine> 251 241 361
+c <refine> 253 241 390
+c <refine> 241 255 555
+c <refine> 255 241 422
+c <refine> 241 257 216
+c <refine> 321 241 0
+c <refine> 242 321 600
+c <refine> 243 244 -2
+c <refine> 244 243 11
+c <refine> 243 245 369
+c <refine> 245 243 484
+c <refine> 243 247 567
+c <refine> 243 249 506
+c <refine> 249 243 309
+c <refine> 243 253 357
+c <refine> 243 255 537
+c <refine> 259 243 408
+c <refine> 321 243 0
+c <refine> 244 321 600
+c <refine> 245 246 -3
+c <refine> 246 245 19
+c <refine> 247 245 257
+c <refine> 249 245 419
+c <refine> 251 245 241
+c <refine> 245 253 283
+c <refine> 253 245 479
+c <refine> 245 257 592
+c <refine> 257 245 492
+c <refine> 245 259 468
+c <refine> 321 245 0
+c <refine> 246 321 600
+c <refine> 247 248 -5
+c <refine> 248 247 19
+c <refine> 247 249 588
+c <refine> 247 253 217
+c <refine> 255 247 513
+c <refine> 247 259 423
+c <refine> 259 247 316
+c <refine> 321 247 0
+c <refine> 248 321 600
+c <refine> 249 250 -1
+c <refine> 250 249 29
+c <refine> 249 253 439
+c <refine> 253 249 239
+c <refine> 255 249 555
+c <refine> 249 257 408
+c <refine> 249 259 481
+c <refine> 259 249 406
+c <refine> 321 249 0
+c <refine> 250 321 600
+c <refine> 251 252 -25
+c <refine> 252 251 44
+c <refine> 253 251 303
+c <refine> 257 251 523
+c <refine> 321 251 0
+c <refine> 252 321 600
+c <refine> 253 254 -41
+c <refine> 254 253 49
+c <refine> 253 255 405
+c <refine> 253 259 401
+c <refine> 321 253 0
+c <refine> 254 321 600
+c <refine> 255 256 0
+c <refine> 256 255 52
+c <refine> 257 255 354
+c <refine> 321 255 0
+c <refine> 256 321 600
+c <refine> 257 258 -15
+c <refine> 258 257 41
+c <refine> 259 257 401
+c <refine> 257 318 405
+c <refine> 321 257 0
+c <refine> 258 321 600
+c <refine> 259 260 -41
+c <refine> 260 259 50
+c <refine> 321 259 0
+c <refine> 260 321 600
+c <refine> 261 262 -16
+c <refine> 262 261 72
+c <refine> 263 261 404
+c <refine> 261 265 202
+c <refine> 261 267 551
+c <refine> 267 261 412
+c <refine> 261 269 574
+c <refine> 261 271 311
+c <refine> 273 261 342
+c <refine> 261 275 480
+c <refine> 275 261 286
+c <refine> 321 261 0
+c <refine> 262 321 600
+c <refine> 263 264 -16
+c <refine> 264 263 64
+c <refine> 263 267 409
+c <refine> 263 269 490
+c <refine> 269 263 259
+c <refine> 263 271 213
+c <refine> 271 263 219
+c <refine> 273 263 326
+c <refine> 275 263 538
+c <refine> 263 277 447
+c <refine> 277 263 307
+c <refine> 321 263 0
+c <refine> 264 321 600
+c <refine> 265 266 -24
+c <refine> 266 265 37
+c <refine> 269 265 464
+c <refine> 271 265 331
+c <refine> 265 275 367
+c <refine> 275 265 506
+c <refine> 277 265 407
+c <refine> 279 265 312
+c <refine> 321 265 0
+c <refine> 266 321 600
+c <refine> 267 268 -21
+c <refine> 268 267 58
+c <refine> 269 267 341
+c <refine> 267 271 498
+c <refine> 271 267 185
+c <refine> 273 267 315
+c <refine> 267 275 562
+c <refine> 267 277 -26
+c <refine> 321 267 0
+c <refine> 268 321 600
+c <refine> 269 270 -39
+c <refine> 270 269 52
+c <refine> 273 269 506
+c <refine> 321 269 0
+c <refine> 270 321 600
+c <refine> 271 272 -56
+c <refine> 272 271 83
+c <refine> 273 271 379
+c <refine> 271 275 229
+c <refine> 275 271 516
+c <refine> 321 271 0
+c <refine> 272 321 600
+c <refine> 273 274 0
+c <refine> 274 273 45
+c <refine> 273 277 277
+c <refine> 321 273 0
+c <refine> 274 321 600
+c <refine> 275 276 -43
+c <refine> 276 275 91
+c <refine> 275 277 487
+c <refine> 321 275 0
+c <refine> 276 321 600
+c <refine> 277 278 -10
+c <refine> 278 277 25
+c <refine> 321 277 0
+c <refine> 278 321 600
+c <refine> 279 280 -35
+c <refine> 280 279 39
+c <refine> 321 279 0
+c <refine> 280 321 600
+c <refine> 281 282 -39
+c <refine> 282 281 86
+c <refine> 281 283 359
+c <refine> 283 281 518
+c <refine> 281 287 353
+c <refine> 287 281 435
+c <refine> 281 289 527
+c <refine> 295 281 544
+c <refine> 281 297 353
+c <refine> 281 299 75
+c <refine> 321 281 0
+c <refine> 282 305 408
+c <refine> 282 321 600
+c <refine> 283 284 -4
+c <refine> 284 283 33
+c <refine> 283 285 251
+c <refine> 285 283 314
+c <refine> 289 283 142
+c <refine> 283 291 504
+c <refine> 291 283 315
+c <refine> 293 283 401
+c <refine> 283 299 385
+c <refine> 299 283 218
+c <refine> 321 283 0
+c <refine> 284 321 600
+c <refine> 285 286 -40
+c <refine> 286 285 83
+c <refine> 287 285 395
+c <refine> 285 289 499
+c <refine> 285 295 440
+c <refine> 297 285 250
+c <refine> 299 285 354
+c <refine> 321 285 0
+c <refine> 286 321 600
+c <refine> 287 288 -12
+c <refine> 288 287 43
+c <refine> 287 291 391
+c <refine> 291 287 523
+c <refine> 287 295 434
+c <refine> 287 297 296
+c <refine> 297 287 195
+c <refine> 287 299 518
+c <refine> 299 287 492
+c <refine> 321 287 0
+c <refine> 288 321 600
+c <refine> 289 290 -47
+c <refine> 290 289 93
+c <refine> 291 289 237
+c <refine> 293 289 342
+c <refine> 289 295 421
+c <refine> 299 289 364
+c <refine> 321 289 0
+c <refine> 290 321 600
+c <refine> 291 292 -60
+c <refine> 292 291 106
+c <refine> 291 293 381
+c <refine> 291 297 180
+c <refine> 321 291 0
+c <refine> 292 321 600
+c <refine> 293 294 -43
+c <refine> 294 293 84
+c <refine> 293 295 403
+c <refine> 295 293 243
+c <refine> 321 293 0
+c <refine> 294 321 600
+c <refine> 295 296 -55
+c <refine> 296 295 114
+c <refine> 295 299 390
+c <refine> 321 295 0
+c <refine> 296 321 600
+c <refine> 297 298 -49
+c <refine> 298 297 99
+c <refine> 321 297 0
+c <refine> 298 321 600
+c <refine> 299 300 -55
+c <refine> 300 299 71
+c <refine> 321 299 0
+c <refine> 300 321 600
+c <refine> 301 302 -13
+c <refine> 302 301 34
+c <refine> 303 301 256
+c <refine> 301 305 416
+c <refine> 301 307 273
+c <refine> 309 301 443
+c <refine> 311 301 221
+c <refine> 315 301 265
+c <refine> 317 301 360
+c <refine> 301 319 427
+c <refine> 319 301 401
+c <refine> 321 301 0
+c <refine> 302 321 600
+c <refine> 303 304 -56
+c <refine> 304 303 114
+c <refine> 303 307 264
+c <refine> 303 309 287
+c <refine> 309 303 560
+c <refine> 313 303 398
+c <refine> 303 317 439
+c <refine> 321 303 0
+c <refine> 304 321 600
+c <refine> 305 306 -45
+c <refine> 306 305 98
+c <refine> 305 311 248
+c <refine> 313 305 154
+c <refine> 315 305 418
+c <refine> 305 317 290
+c <refine> 305 319 377
+c <refine> 321 305 0
+c <refine> 306 321 600
+c <refine> 307 308 -31
+c <refine> 308 307 55
+c <refine> 307 311 170
+c <refine> 311 307 114
+c <refine> 307 313 366
+c <refine> 313 307 280
+c <refine> 317 307 538
+c <refine> 307 319 -107
+c <refine> 319 307 428
+c <refine> 321 307 0
+c <refine> 308 321 600
+c <refine> 309 310 -13
+c <refine> 310 309 13
+c <refine> 309 313 553
+c <refine> 313 309 503
+c <refine> 315 309 312
+c <refine> 309 317 489
+c <refine> 309 319 343
+c <refine> 321 309 0
+c <refine> 310 321 600
+c <refine> 311 312 -42
+c <refine> 312 311 45
+c <refine> 311 313 514
+c <refine> 311 315 264
+c <refine> 317 311 245
+c <refine> 319 311 388
+c <refine> 321 311 0
+c <refine> 312 321 600
+c <refine> 313 314 -53
+c <refine> 314 313 109
+c <refine> 313 319 220
+c <refine> 321 313 0
+c <refine> 314 321 600
+c <refine> 315 316 -38
+c <refine> 316 315 68
+c <refine> 317 315 313
+c <refine> 321 315 0
+c <refine> 316 321 600
+c <refine> 317 318 -54
+c <refine> 318 317 87
+c <refine> 317 319 95
+c <refine> 321 317 0
+c <refine> 318 321 600
+c <refine> 319 320 -20
+c <refine> 320 319 21
+c <refine> 321 319 0
+c <refine> 320 321 600
+c --------------------------

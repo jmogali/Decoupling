@@ -15,9 +15,9 @@ public class Agent implements Runnable{
 	private long m_dDelay;
 	private Agent_Type m_enType;
 	
-	Agent(String stName , int iValue , long dDelay , MessagePassingQueue Msg_Queue , Agent_Type en_Type)
+	Agent(String strName , int iValue , long dDelay , MessagePassingQueue Msg_Queue , Agent_Type en_Type)
 	{
-		m_str_Name = stName;
+		m_str_Name = strName;
 		m_hmp_Trans_Msg = new HashMap<String , Synch_Object>();
 		m_hmp_que_Rec_Msg = new HashMap<String, MessagePassingQueue>();
 		m_iVal = iValue;
@@ -26,6 +26,11 @@ public class Agent implements Runnable{
 		m_enType = en_Type;
 		
 		t = new Thread(this , m_str_Name);
+	}
+	
+	public void ResetValue(int iValue)
+	{
+		m_iVal = iValue;
 	}
 	
 	public String GetName()
@@ -42,7 +47,7 @@ public class Agent implements Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		System.out.println("Agent"+m_str_Name+"initialized");
+		System.out.println("Agent: "+m_str_Name+" initialized");
 		ComputeSum();
 	}
 	
@@ -124,6 +129,7 @@ public class Agent implements Runnable{
 				{
 					System.out.println("Agent: "+ m_str_Name + " Left try2");
 				}
+				
 			}catch(NoNewMessagesAcceptableException e)
 			{
 				//Transmits its estimate to the slow agent

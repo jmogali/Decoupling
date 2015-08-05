@@ -1,0 +1,2687 @@
+c In this file, the DIMACS format is extended by allowing arcs of infinite weight.
+c These are specified by "a U V inf", where U and V are vertex IDs.
+c 81 vertex labels follow:
+c <label>     1 0_0_ST
+c <label>     2 0_0_ET
+c <label>     3 0_1_ST
+c <label>     4 0_1_ET
+c <label>     5 0_2_ST
+c <label>     6 0_2_ET
+c <label>     7 0_3_ST
+c <label>     8 0_3_ET
+c <label>     9 0_4_ST
+c <label>    10 0_4_ET
+c <label>    11 0_5_ST
+c <label>    12 0_5_ET
+c <label>    13 0_6_ST
+c <label>    14 0_6_ET
+c <label>    15 0_7_ST
+c <label>    16 0_7_ET
+c <label>    17 0_8_ST
+c <label>    18 0_8_ET
+c <label>    19 0_9_ST
+c <label>    20 0_9_ET
+c <label>    21 1_0_ST
+c <label>    22 1_0_ET
+c <label>    23 1_1_ST
+c <label>    24 1_1_ET
+c <label>    25 1_2_ST
+c <label>    26 1_2_ET
+c <label>    27 1_3_ST
+c <label>    28 1_3_ET
+c <label>    29 1_4_ST
+c <label>    30 1_4_ET
+c <label>    31 1_5_ST
+c <label>    32 1_5_ET
+c <label>    33 1_6_ST
+c <label>    34 1_6_ET
+c <label>    35 1_7_ST
+c <label>    36 1_7_ET
+c <label>    37 1_8_ST
+c <label>    38 1_8_ET
+c <label>    39 1_9_ST
+c <label>    40 1_9_ET
+c <label>    41 2_0_ST
+c <label>    42 2_0_ET
+c <label>    43 2_1_ST
+c <label>    44 2_1_ET
+c <label>    45 2_2_ST
+c <label>    46 2_2_ET
+c <label>    47 2_3_ST
+c <label>    48 2_3_ET
+c <label>    49 2_4_ST
+c <label>    50 2_4_ET
+c <label>    51 2_5_ST
+c <label>    52 2_5_ET
+c <label>    53 2_6_ST
+c <label>    54 2_6_ET
+c <label>    55 2_7_ST
+c <label>    56 2_7_ET
+c <label>    57 2_8_ST
+c <label>    58 2_8_ET
+c <label>    59 2_9_ST
+c <label>    60 2_9_ET
+c <label>    61 3_0_ST
+c <label>    62 3_0_ET
+c <label>    63 3_1_ST
+c <label>    64 3_1_ET
+c <label>    65 3_2_ST
+c <label>    66 3_2_ET
+c <label>    67 3_3_ST
+c <label>    68 3_3_ET
+c <label>    69 3_4_ST
+c <label>    70 3_4_ET
+c <label>    71 3_5_ST
+c <label>    72 3_5_ET
+c <label>    73 3_6_ST
+c <label>    74 3_6_ET
+c <label>    75 3_7_ST
+c <label>    76 3_7_ET
+c <label>    77 3_8_ST
+c <label>    78 3_8_ET
+c <label>    79 3_9_ST
+c <label>    80 3_9_ET
+c <label>    81 z
+c --------------------------
+c following is multiagent data.
+c "c <num_agents> A" specifies that the problem has A agents.
+c "c <own> A L" specifies that the agent with id A owns the vertex with label L.
+c Agent id is 0-based.  The value -1 indicates a shared vertex.
+c <num_agents> 5
+c <own> 0 0_0_ST
+c <own> 0 0_0_ET
+c <own> 0 0_1_ST
+c <own> 0 0_1_ET
+c <own> 0 0_2_ST
+c <own> 0 0_2_ET
+c <own> 0 0_3_ST
+c <own> 0 0_3_ET
+c <own> 0 0_4_ST
+c <own> 0 0_4_ET
+c <own> 0 0_5_ST
+c <own> 0 0_5_ET
+c <own> 0 0_6_ST
+c <own> 0 0_6_ET
+c <own> 0 0_7_ST
+c <own> 0 0_7_ET
+c <own> 0 0_8_ST
+c <own> 0 0_8_ET
+c <own> 0 0_9_ST
+c <own> 0 0_9_ET
+c <own> 1 1_0_ST
+c <own> 1 1_0_ET
+c <own> 1 1_1_ST
+c <own> 1 1_1_ET
+c <own> 1 1_2_ST
+c <own> 1 1_2_ET
+c <own> 1 1_3_ST
+c <own> 1 1_3_ET
+c <own> 1 1_4_ST
+c <own> 1 1_4_ET
+c <own> 1 1_5_ST
+c <own> 1 1_5_ET
+c <own> 1 1_6_ST
+c <own> 1 1_6_ET
+c <own> 1 1_7_ST
+c <own> 1 1_7_ET
+c <own> 1 1_8_ST
+c <own> 1 1_8_ET
+c <own> 1 1_9_ST
+c <own> 1 1_9_ET
+c <own> 2 2_0_ST
+c <own> 2 2_0_ET
+c <own> 2 2_1_ST
+c <own> 2 2_1_ET
+c <own> 2 2_2_ST
+c <own> 2 2_2_ET
+c <own> 2 2_3_ST
+c <own> 2 2_3_ET
+c <own> 2 2_4_ST
+c <own> 2 2_4_ET
+c <own> 2 2_5_ST
+c <own> 2 2_5_ET
+c <own> 2 2_6_ST
+c <own> 2 2_6_ET
+c <own> 2 2_7_ST
+c <own> 2 2_7_ET
+c <own> 2 2_8_ST
+c <own> 2 2_8_ET
+c <own> 2 2_9_ST
+c <own> 2 2_9_ET
+c <own> 3 3_0_ST
+c <own> 3 3_0_ET
+c <own> 3 3_1_ST
+c <own> 3 3_1_ET
+c <own> 3 3_2_ST
+c <own> 3 3_2_ET
+c <own> 3 3_3_ST
+c <own> 3 3_3_ET
+c <own> 3 3_4_ST
+c <own> 3 3_4_ET
+c <own> 3 3_5_ST
+c <own> 3 3_5_ET
+c <own> 3 3_6_ST
+c <own> 3 3_6_ET
+c <own> 3 3_7_ST
+c <own> 3 3_7_ET
+c <own> 3 3_8_ST
+c <own> 3 3_8_ET
+c <own> 3 3_9_ST
+c <own> 3 3_9_ET
+c <own> 4 z
+c --------------------------
+c END OF HEADER; problem line and arc data follow
+p sp 81 2042
+a 1 2 inf
+a 2 1 inf
+a 1 11 inf
+a 11 1 inf
+a 1 13 inf
+a 13 1 inf
+a 1 15 inf
+a 15 1 inf
+a 1 17 inf
+a 17 1 inf
+a 1 19 inf
+a 19 1 inf
+a 1 29 inf
+a 29 1 inf
+a 1 46 inf
+a 46 1 inf
+a 1 81 inf
+a 81 1 inf
+a 2 3 inf
+a 3 2 inf
+a 2 6 inf
+a 6 2 inf
+a 2 7 inf
+a 7 2 inf
+a 2 10 inf
+a 10 2 inf
+a 2 11 inf
+a 11 2 inf
+a 2 13 inf
+a 13 2 inf
+a 2 15 inf
+a 15 2 inf
+a 2 17 inf
+a 17 2 inf
+a 2 19 inf
+a 19 2 inf
+a 2 20 inf
+a 20 2 inf
+a 2 25 inf
+a 25 2 inf
+a 2 27 inf
+a 27 2 inf
+a 2 29 inf
+a 29 2 inf
+a 2 31 inf
+a 31 2 inf
+a 2 32 inf
+a 32 2 inf
+a 2 33 inf
+a 33 2 inf
+a 2 35 inf
+a 35 2 inf
+a 2 38 inf
+a 38 2 inf
+a 2 39 inf
+a 39 2 inf
+a 2 40 inf
+a 40 2 inf
+a 2 41 inf
+a 41 2 inf
+a 2 43 inf
+a 43 2 inf
+a 2 45 inf
+a 45 2 inf
+a 2 46 inf
+a 46 2 inf
+a 2 47 inf
+a 47 2 inf
+a 2 51 inf
+a 51 2 inf
+a 2 53 inf
+a 53 2 inf
+a 2 55 inf
+a 55 2 inf
+a 2 57 inf
+a 57 2 inf
+a 2 60 inf
+a 60 2 inf
+a 2 61 inf
+a 61 2 inf
+a 2 63 inf
+a 63 2 inf
+a 2 65 inf
+a 65 2 inf
+a 2 67 inf
+a 67 2 inf
+a 2 68 inf
+a 68 2 inf
+a 2 69 inf
+a 69 2 inf
+a 2 71 inf
+a 71 2 inf
+a 2 72 inf
+a 72 2 inf
+a 2 73 inf
+a 73 2 inf
+a 2 75 inf
+a 75 2 inf
+a 2 77 inf
+a 77 2 inf
+a 2 79 inf
+a 79 2 inf
+a 2 80 inf
+a 80 2 inf
+a 2 81 inf
+a 81 2 inf
+a 3 4 inf
+a 4 3 inf
+a 3 5 inf
+a 5 3 inf
+a 3 6 inf
+a 6 3 inf
+a 3 7 inf
+a 7 3 inf
+a 3 9 inf
+a 9 3 inf
+a 3 10 inf
+a 10 3 inf
+a 3 11 inf
+a 11 3 inf
+a 3 13 inf
+a 13 3 inf
+a 3 15 inf
+a 15 3 inf
+a 3 17 inf
+a 17 3 inf
+a 3 19 inf
+a 19 3 inf
+a 3 20 inf
+a 20 3 inf
+a 3 21 inf
+a 21 3 inf
+a 3 24 inf
+a 24 3 inf
+a 3 25 inf
+a 25 3 inf
+a 3 27 inf
+a 27 3 inf
+a 3 29 inf
+a 29 3 inf
+a 3 31 inf
+a 31 3 inf
+a 3 32 inf
+a 32 3 inf
+a 3 33 inf
+a 33 3 inf
+a 3 35 inf
+a 35 3 inf
+a 3 37 inf
+a 37 3 inf
+a 3 38 inf
+a 38 3 inf
+a 3 39 inf
+a 39 3 inf
+a 3 41 inf
+a 41 3 inf
+a 3 43 inf
+a 43 3 inf
+a 3 45 inf
+a 45 3 inf
+a 3 47 inf
+a 47 3 inf
+a 3 53 inf
+a 53 3 inf
+a 3 55 inf
+a 55 3 inf
+a 3 57 inf
+a 57 3 inf
+a 3 61 inf
+a 61 3 inf
+a 3 63 inf
+a 63 3 inf
+a 3 65 inf
+a 65 3 inf
+a 3 67 inf
+a 67 3 inf
+a 3 68 inf
+a 68 3 inf
+a 3 69 inf
+a 69 3 inf
+a 3 73 inf
+a 73 3 inf
+a 3 75 inf
+a 75 3 inf
+a 3 76 inf
+a 76 3 inf
+a 3 79 inf
+a 79 3 inf
+a 3 81 inf
+a 81 3 inf
+a 4 39 inf
+a 39 4 inf
+a 4 43 inf
+a 43 4 inf
+a 4 76 inf
+a 76 4 inf
+a 4 81 inf
+a 81 4 inf
+a 5 6 inf
+a 6 5 inf
+a 5 7 inf
+a 7 5 inf
+a 5 11 inf
+a 11 5 inf
+a 5 13 inf
+a 13 5 inf
+a 5 15 inf
+a 15 5 inf
+a 5 17 inf
+a 17 5 inf
+a 5 27 inf
+a 27 5 inf
+a 5 32 inf
+a 32 5 inf
+a 5 35 inf
+a 35 5 inf
+a 5 38 inf
+a 38 5 inf
+a 5 61 inf
+a 61 5 inf
+a 5 81 inf
+a 81 5 inf
+a 6 7 inf
+a 7 6 inf
+a 6 10 inf
+a 10 6 inf
+a 6 11 inf
+a 11 6 inf
+a 6 13 inf
+a 13 6 inf
+a 6 15 inf
+a 15 6 inf
+a 6 17 inf
+a 17 6 inf
+a 6 20 inf
+a 20 6 inf
+a 6 21 inf
+a 21 6 inf
+a 6 25 inf
+a 25 6 inf
+a 6 27 inf
+a 27 6 inf
+a 6 29 inf
+a 29 6 inf
+a 6 31 inf
+a 31 6 inf
+a 6 32 inf
+a 32 6 inf
+a 6 33 inf
+a 33 6 inf
+a 6 35 inf
+a 35 6 inf
+a 6 36 inf
+a 36 6 inf
+a 6 37 inf
+a 37 6 inf
+a 6 38 inf
+a 38 6 inf
+a 6 39 inf
+a 39 6 inf
+a 6 40 inf
+a 40 6 inf
+a 6 41 inf
+a 41 6 inf
+a 6 43 inf
+a 43 6 inf
+a 6 45 inf
+a 45 6 inf
+a 6 47 inf
+a 47 6 inf
+a 6 49 inf
+a 49 6 inf
+a 6 51 inf
+a 51 6 inf
+a 6 53 inf
+a 53 6 inf
+a 6 54 inf
+a 54 6 inf
+a 6 55 inf
+a 55 6 inf
+a 6 57 inf
+a 57 6 inf
+a 6 60 inf
+a 60 6 inf
+a 6 61 inf
+a 61 6 inf
+a 6 63 inf
+a 63 6 inf
+a 6 64 inf
+a 64 6 inf
+a 6 65 inf
+a 65 6 inf
+a 6 67 inf
+a 67 6 inf
+a 6 69 inf
+a 69 6 inf
+a 6 73 inf
+a 73 6 inf
+a 6 75 inf
+a 75 6 inf
+a 6 77 inf
+a 77 6 inf
+a 6 79 inf
+a 79 6 inf
+a 6 80 inf
+a 80 6 inf
+a 6 81 inf
+a 81 6 inf
+a 7 8 inf
+a 8 7 inf
+a 7 10 inf
+a 10 7 inf
+a 7 11 inf
+a 11 7 inf
+a 7 13 inf
+a 13 7 inf
+a 7 15 inf
+a 15 7 inf
+a 7 17 inf
+a 17 7 inf
+a 7 19 inf
+a 19 7 inf
+a 7 20 inf
+a 20 7 inf
+a 7 25 inf
+a 25 7 inf
+a 7 26 inf
+a 26 7 inf
+a 7 27 inf
+a 27 7 inf
+a 7 29 inf
+a 29 7 inf
+a 7 31 inf
+a 31 7 inf
+a 7 32 inf
+a 32 7 inf
+a 7 33 inf
+a 33 7 inf
+a 7 35 inf
+a 35 7 inf
+a 7 38 inf
+a 38 7 inf
+a 7 39 inf
+a 39 7 inf
+a 7 41 inf
+a 41 7 inf
+a 7 43 inf
+a 43 7 inf
+a 7 45 inf
+a 45 7 inf
+a 7 46 inf
+a 46 7 inf
+a 7 47 inf
+a 47 7 inf
+a 7 51 inf
+a 51 7 inf
+a 7 53 inf
+a 53 7 inf
+a 7 55 inf
+a 55 7 inf
+a 7 57 inf
+a 57 7 inf
+a 7 59 inf
+a 59 7 inf
+a 7 60 inf
+a 60 7 inf
+a 7 61 inf
+a 61 7 inf
+a 7 63 inf
+a 63 7 inf
+a 7 65 inf
+a 65 7 inf
+a 7 67 inf
+a 67 7 inf
+a 7 68 inf
+a 68 7 inf
+a 7 69 inf
+a 69 7 inf
+a 7 73 inf
+a 73 7 inf
+a 7 75 inf
+a 75 7 inf
+a 7 77 inf
+a 77 7 inf
+a 7 78 inf
+a 78 7 inf
+a 7 79 inf
+a 79 7 inf
+a 7 81 inf
+a 81 7 inf
+a 8 26 inf
+a 26 8 inf
+a 8 32 inf
+a 32 8 inf
+a 8 38 inf
+a 38 8 inf
+a 8 81 inf
+a 81 8 inf
+a 9 10 inf
+a 10 9 inf
+a 9 13 inf
+a 13 9 inf
+a 9 15 inf
+a 15 9 inf
+a 9 17 inf
+a 17 9 inf
+a 9 19 inf
+a 19 9 inf
+a 9 81 inf
+a 81 9 inf
+a 10 11 inf
+a 11 10 inf
+a 10 13 inf
+a 13 10 inf
+a 10 15 inf
+a 15 10 inf
+a 10 17 inf
+a 17 10 inf
+a 10 19 inf
+a 19 10 inf
+a 10 20 inf
+a 20 10 inf
+a 10 21 inf
+a 21 10 inf
+a 10 25 inf
+a 25 10 inf
+a 10 27 inf
+a 27 10 inf
+a 10 29 inf
+a 29 10 inf
+a 10 31 inf
+a 31 10 inf
+a 10 32 inf
+a 32 10 inf
+a 10 33 inf
+a 33 10 inf
+a 10 35 inf
+a 35 10 inf
+a 10 37 inf
+a 37 10 inf
+a 10 38 inf
+a 38 10 inf
+a 10 39 inf
+a 39 10 inf
+a 10 40 inf
+a 40 10 inf
+a 10 41 inf
+a 41 10 inf
+a 10 43 inf
+a 43 10 inf
+a 10 45 inf
+a 45 10 inf
+a 10 47 inf
+a 47 10 inf
+a 10 51 inf
+a 51 10 inf
+a 10 52 inf
+a 52 10 inf
+a 10 53 inf
+a 53 10 inf
+a 10 55 inf
+a 55 10 inf
+a 10 57 inf
+a 57 10 inf
+a 10 60 inf
+a 60 10 inf
+a 10 61 inf
+a 61 10 inf
+a 10 63 inf
+a 63 10 inf
+a 10 65 inf
+a 65 10 inf
+a 10 67 inf
+a 67 10 inf
+a 10 68 inf
+a 68 10 inf
+a 10 69 inf
+a 69 10 inf
+a 10 73 inf
+a 73 10 inf
+a 10 75 inf
+a 75 10 inf
+a 10 79 inf
+a 79 10 inf
+a 10 80 inf
+a 80 10 inf
+a 10 81 inf
+a 81 10 inf
+a 11 12 inf
+a 12 11 inf
+a 11 13 inf
+a 13 11 inf
+a 11 15 inf
+a 15 11 inf
+a 11 17 inf
+a 17 11 inf
+a 11 19 inf
+a 19 11 inf
+a 11 20 inf
+a 20 11 inf
+a 11 25 inf
+a 25 11 inf
+a 11 27 inf
+a 27 11 inf
+a 11 29 inf
+a 29 11 inf
+a 11 31 inf
+a 31 11 inf
+a 11 32 inf
+a 32 11 inf
+a 11 35 inf
+a 35 11 inf
+a 11 38 inf
+a 38 11 inf
+a 11 39 inf
+a 39 11 inf
+a 11 41 inf
+a 41 11 inf
+a 11 42 inf
+a 42 11 inf
+a 11 45 inf
+a 45 11 inf
+a 11 46 inf
+a 46 11 inf
+a 11 61 inf
+a 61 11 inf
+a 11 67 inf
+a 67 11 inf
+a 11 68 inf
+a 68 11 inf
+a 11 69 inf
+a 69 11 inf
+a 11 73 inf
+a 73 11 inf
+a 11 75 inf
+a 75 11 inf
+a 11 79 inf
+a 79 11 inf
+a 11 81 inf
+a 81 11 inf
+a 12 75 inf
+a 75 12 inf
+a 12 79 inf
+a 79 12 inf
+a 12 81 inf
+a 81 12 inf
+a 13 14 inf
+a 14 13 inf
+a 13 15 inf
+a 15 13 inf
+a 13 17 inf
+a 17 13 inf
+a 13 19 inf
+a 19 13 inf
+a 13 20 inf
+a 20 13 inf
+a 13 21 inf
+a 21 13 inf
+a 13 24 inf
+a 24 13 inf
+a 13 25 inf
+a 25 13 inf
+a 13 27 inf
+a 27 13 inf
+a 13 29 inf
+a 29 13 inf
+a 13 31 inf
+a 31 13 inf
+a 13 32 inf
+a 32 13 inf
+a 13 33 inf
+a 33 13 inf
+a 13 35 inf
+a 35 13 inf
+a 13 37 inf
+a 37 13 inf
+a 13 38 inf
+a 38 13 inf
+a 13 39 inf
+a 39 13 inf
+a 13 41 inf
+a 41 13 inf
+a 13 43 inf
+a 43 13 inf
+a 13 45 inf
+a 45 13 inf
+a 13 46 inf
+a 46 13 inf
+a 13 47 inf
+a 47 13 inf
+a 13 53 inf
+a 53 13 inf
+a 13 55 inf
+a 55 13 inf
+a 13 57 inf
+a 57 13 inf
+a 13 61 inf
+a 61 13 inf
+a 13 63 inf
+a 63 13 inf
+a 13 65 inf
+a 65 13 inf
+a 13 67 inf
+a 67 13 inf
+a 13 68 inf
+a 68 13 inf
+a 13 69 inf
+a 69 13 inf
+a 13 73 inf
+a 73 13 inf
+a 13 75 inf
+a 75 13 inf
+a 13 79 inf
+a 79 13 inf
+a 13 81 inf
+a 81 13 inf
+a 14 24 inf
+a 24 14 inf
+a 14 38 inf
+a 38 14 inf
+a 14 39 inf
+a 39 14 inf
+a 14 47 inf
+a 47 14 inf
+a 14 57 inf
+a 57 14 inf
+a 14 58 inf
+a 58 14 inf
+a 14 67 inf
+a 67 14 inf
+a 14 69 inf
+a 69 14 inf
+a 14 73 inf
+a 73 14 inf
+a 14 74 inf
+a 74 14 inf
+a 14 81 inf
+a 81 14 inf
+a 15 16 inf
+a 16 15 inf
+a 15 17 inf
+a 17 15 inf
+a 15 19 inf
+a 19 15 inf
+a 15 20 inf
+a 20 15 inf
+a 15 25 inf
+a 25 15 inf
+a 15 27 inf
+a 27 15 inf
+a 15 28 inf
+a 28 15 inf
+a 15 29 inf
+a 29 15 inf
+a 15 30 inf
+a 30 15 inf
+a 15 31 inf
+a 31 15 inf
+a 15 32 inf
+a 32 15 inf
+a 15 33 inf
+a 33 15 inf
+a 15 35 inf
+a 35 15 inf
+a 15 36 inf
+a 36 15 inf
+a 15 37 inf
+a 37 15 inf
+a 15 38 inf
+a 38 15 inf
+a 15 39 inf
+a 39 15 inf
+a 15 41 inf
+a 41 15 inf
+a 15 43 inf
+a 43 15 inf
+a 15 45 inf
+a 45 15 inf
+a 15 46 inf
+a 46 15 inf
+a 15 47 inf
+a 47 15 inf
+a 15 49 inf
+a 49 15 inf
+a 15 53 inf
+a 53 15 inf
+a 15 55 inf
+a 55 15 inf
+a 15 56 inf
+a 56 15 inf
+a 15 57 inf
+a 57 15 inf
+a 15 60 inf
+a 60 15 inf
+a 15 61 inf
+a 61 15 inf
+a 15 63 inf
+a 63 15 inf
+a 15 65 inf
+a 65 15 inf
+a 15 67 inf
+a 67 15 inf
+a 15 68 inf
+a 68 15 inf
+a 15 69 inf
+a 69 15 inf
+a 15 73 inf
+a 73 15 inf
+a 15 75 inf
+a 75 15 inf
+a 15 76 inf
+a 76 15 inf
+a 15 77 inf
+a 77 15 inf
+a 15 79 inf
+a 79 15 inf
+a 15 81 inf
+a 81 15 inf
+a 16 56 inf
+a 56 16 inf
+a 16 81 inf
+a 81 16 inf
+a 17 18 inf
+a 18 17 inf
+a 17 19 inf
+a 19 17 inf
+a 17 20 inf
+a 20 17 inf
+a 17 25 inf
+a 25 17 inf
+a 17 27 inf
+a 27 17 inf
+a 17 29 inf
+a 29 17 inf
+a 17 31 inf
+a 31 17 inf
+a 17 32 inf
+a 32 17 inf
+a 17 33 inf
+a 33 17 inf
+a 17 35 inf
+a 35 17 inf
+a 17 36 inf
+a 36 17 inf
+a 17 38 inf
+a 38 17 inf
+a 17 39 inf
+a 39 17 inf
+a 17 41 inf
+a 41 17 inf
+a 17 43 inf
+a 43 17 inf
+a 17 45 inf
+a 45 17 inf
+a 17 46 inf
+a 46 17 inf
+a 17 47 inf
+a 47 17 inf
+a 17 49 inf
+a 49 17 inf
+a 17 53 inf
+a 53 17 inf
+a 17 55 inf
+a 55 17 inf
+a 17 57 inf
+a 57 17 inf
+a 17 61 inf
+a 61 17 inf
+a 17 63 inf
+a 63 17 inf
+a 17 64 inf
+a 64 17 inf
+a 17 65 inf
+a 65 17 inf
+a 17 67 inf
+a 67 17 inf
+a 17 68 inf
+a 68 17 inf
+a 17 69 inf
+a 69 17 inf
+a 17 73 inf
+a 73 17 inf
+a 17 75 inf
+a 75 17 inf
+a 17 77 inf
+a 77 17 inf
+a 17 79 inf
+a 79 17 inf
+a 17 81 inf
+a 81 17 inf
+a 18 31 inf
+a 31 18 inf
+a 18 36 inf
+a 36 18 inf
+a 18 49 inf
+a 49 18 inf
+a 18 50 inf
+a 50 18 inf
+a 18 64 inf
+a 64 18 inf
+a 18 77 inf
+a 77 18 inf
+a 18 81 inf
+a 81 18 inf
+a 19 20 inf
+a 20 19 inf
+a 19 27 inf
+a 27 19 inf
+a 19 28 inf
+a 28 19 inf
+a 19 29 inf
+a 29 19 inf
+a 19 31 inf
+a 31 19 inf
+a 19 45 inf
+a 45 19 inf
+a 19 46 inf
+a 46 19 inf
+a 19 68 inf
+a 68 19 inf
+a 19 81 inf
+a 81 19 inf
+a 20 25 inf
+a 25 20 inf
+a 20 26 inf
+a 26 20 inf
+a 20 27 inf
+a 27 20 inf
+a 20 29 inf
+a 29 20 inf
+a 20 30 inf
+a 30 20 inf
+a 20 31 inf
+a 31 20 inf
+a 20 32 inf
+a 32 20 inf
+a 20 33 inf
+a 33 20 inf
+a 20 35 inf
+a 35 20 inf
+a 20 38 inf
+a 38 20 inf
+a 20 39 inf
+a 39 20 inf
+a 20 40 inf
+a 40 20 inf
+a 20 41 inf
+a 41 20 inf
+a 20 43 inf
+a 43 20 inf
+a 20 45 inf
+a 45 20 inf
+a 20 47 inf
+a 47 20 inf
+a 20 48 inf
+a 48 20 inf
+a 20 51 inf
+a 51 20 inf
+a 20 53 inf
+a 53 20 inf
+a 20 55 inf
+a 55 20 inf
+a 20 60 inf
+a 60 20 inf
+a 20 61 inf
+a 61 20 inf
+a 20 65 inf
+a 65 20 inf
+a 20 67 inf
+a 67 20 inf
+a 20 68 inf
+a 68 20 inf
+a 20 69 inf
+a 69 20 inf
+a 20 73 inf
+a 73 20 inf
+a 20 75 inf
+a 75 20 inf
+a 20 79 inf
+a 79 20 inf
+a 20 81 inf
+a 81 20 inf
+a 21 22 inf
+a 22 21 inf
+a 21 23 inf
+a 23 21 inf
+a 21 24 inf
+a 24 21 inf
+a 21 25 inf
+a 25 21 inf
+a 21 27 inf
+a 27 21 inf
+a 21 29 inf
+a 29 21 inf
+a 21 31 inf
+a 31 21 inf
+a 21 32 inf
+a 32 21 inf
+a 21 33 inf
+a 33 21 inf
+a 21 35 inf
+a 35 21 inf
+a 21 37 inf
+a 37 21 inf
+a 21 38 inf
+a 38 21 inf
+a 21 39 inf
+a 39 21 inf
+a 21 47 inf
+a 47 21 inf
+a 21 53 inf
+a 53 21 inf
+a 21 54 inf
+a 54 21 inf
+a 21 57 inf
+a 57 21 inf
+a 21 65 inf
+a 65 21 inf
+a 21 67 inf
+a 67 21 inf
+a 21 69 inf
+a 69 21 inf
+a 21 73 inf
+a 73 21 inf
+a 21 81 inf
+a 81 21 inf
+a 22 31 inf
+a 31 22 inf
+a 22 53 inf
+a 53 22 inf
+a 22 65 inf
+a 65 22 inf
+a 22 66 inf
+a 66 22 inf
+a 22 67 inf
+a 67 22 inf
+a 22 69 inf
+a 69 22 inf
+a 22 81 inf
+a 81 22 inf
+a 23 24 inf
+a 24 23 inf
+a 23 25 inf
+a 25 23 inf
+a 23 29 inf
+a 29 23 inf
+a 23 31 inf
+a 31 23 inf
+a 23 33 inf
+a 33 23 inf
+a 23 37 inf
+a 37 23 inf
+a 23 39 inf
+a 39 23 inf
+a 23 81 inf
+a 81 23 inf
+a 24 25 inf
+a 25 24 inf
+a 24 29 inf
+a 29 24 inf
+a 24 31 inf
+a 31 24 inf
+a 24 33 inf
+a 33 24 inf
+a 24 37 inf
+a 37 24 inf
+a 24 38 inf
+a 38 24 inf
+a 24 39 inf
+a 39 24 inf
+a 24 47 inf
+a 47 24 inf
+a 24 57 inf
+a 57 24 inf
+a 24 67 inf
+a 67 24 inf
+a 24 69 inf
+a 69 24 inf
+a 24 73 inf
+a 73 24 inf
+a 24 74 inf
+a 74 24 inf
+a 24 81 inf
+a 81 24 inf
+a 25 26 inf
+a 26 25 inf
+a 25 27 inf
+a 27 25 inf
+a 25 29 inf
+a 29 25 inf
+a 25 31 inf
+a 31 25 inf
+a 25 32 inf
+a 32 25 inf
+a 25 33 inf
+a 33 25 inf
+a 25 35 inf
+a 35 25 inf
+a 25 37 inf
+a 37 25 inf
+a 25 38 inf
+a 38 25 inf
+a 25 39 inf
+a 39 25 inf
+a 25 41 inf
+a 41 25 inf
+a 25 43 inf
+a 43 25 inf
+a 25 44 inf
+a 44 25 inf
+a 25 45 inf
+a 45 25 inf
+a 25 47 inf
+a 47 25 inf
+a 25 53 inf
+a 53 25 inf
+a 25 55 inf
+a 55 25 inf
+a 25 57 inf
+a 57 25 inf
+a 25 61 inf
+a 61 25 inf
+a 25 62 inf
+a 62 25 inf
+a 25 63 inf
+a 63 25 inf
+a 25 65 inf
+a 65 25 inf
+a 25 67 inf
+a 67 25 inf
+a 25 68 inf
+a 68 25 inf
+a 25 69 inf
+a 69 25 inf
+a 25 71 inf
+a 71 25 inf
+a 25 73 inf
+a 73 25 inf
+a 25 75 inf
+a 75 25 inf
+a 25 76 inf
+a 76 25 inf
+a 25 77 inf
+a 77 25 inf
+a 25 79 inf
+a 79 25 inf
+a 25 81 inf
+a 81 25 inf
+a 26 32 inf
+a 32 26 inf
+a 26 38 inf
+a 38 26 inf
+a 26 68 inf
+a 68 26 inf
+a 26 81 inf
+a 81 26 inf
+a 27 28 inf
+a 28 27 inf
+a 27 29 inf
+a 29 27 inf
+a 27 31 inf
+a 31 27 inf
+a 27 32 inf
+a 32 27 inf
+a 27 33 inf
+a 33 27 inf
+a 27 35 inf
+a 35 27 inf
+a 27 37 inf
+a 37 27 inf
+a 27 38 inf
+a 38 27 inf
+a 27 39 inf
+a 39 27 inf
+a 27 41 inf
+a 41 27 inf
+a 27 43 inf
+a 43 27 inf
+a 27 45 inf
+a 45 27 inf
+a 27 46 inf
+a 46 27 inf
+a 27 47 inf
+a 47 27 inf
+a 27 53 inf
+a 53 27 inf
+a 27 55 inf
+a 55 27 inf
+a 27 57 inf
+a 57 27 inf
+a 27 61 inf
+a 61 27 inf
+a 27 63 inf
+a 63 27 inf
+a 27 65 inf
+a 65 27 inf
+a 27 67 inf
+a 67 27 inf
+a 27 68 inf
+a 68 27 inf
+a 27 69 inf
+a 69 27 inf
+a 27 73 inf
+a 73 27 inf
+a 27 75 inf
+a 75 27 inf
+a 27 79 inf
+a 79 27 inf
+a 27 81 inf
+a 81 27 inf
+a 28 68 inf
+a 68 28 inf
+a 28 81 inf
+a 81 28 inf
+a 29 30 inf
+a 30 29 inf
+a 29 31 inf
+a 31 29 inf
+a 29 32 inf
+a 32 29 inf
+a 29 33 inf
+a 33 29 inf
+a 29 35 inf
+a 35 29 inf
+a 29 37 inf
+a 37 29 inf
+a 29 38 inf
+a 38 29 inf
+a 29 39 inf
+a 39 29 inf
+a 29 41 inf
+a 41 29 inf
+a 29 43 inf
+a 43 29 inf
+a 29 45 inf
+a 45 29 inf
+a 29 46 inf
+a 46 29 inf
+a 29 47 inf
+a 47 29 inf
+a 29 53 inf
+a 53 29 inf
+a 29 55 inf
+a 55 29 inf
+a 29 57 inf
+a 57 29 inf
+a 29 60 inf
+a 60 29 inf
+a 29 61 inf
+a 61 29 inf
+a 29 62 inf
+a 62 29 inf
+a 29 63 inf
+a 63 29 inf
+a 29 65 inf
+a 65 29 inf
+a 29 67 inf
+a 67 29 inf
+a 29 68 inf
+a 68 29 inf
+a 29 69 inf
+a 69 29 inf
+a 29 73 inf
+a 73 29 inf
+a 29 75 inf
+a 75 29 inf
+a 29 76 inf
+a 76 29 inf
+a 29 79 inf
+a 79 29 inf
+a 29 81 inf
+a 81 29 inf
+a 30 60 inf
+a 60 30 inf
+a 30 79 inf
+a 79 30 inf
+a 30 81 inf
+a 81 30 inf
+a 31 32 inf
+a 32 31 inf
+a 31 33 inf
+a 33 31 inf
+a 31 35 inf
+a 35 31 inf
+a 31 36 inf
+a 36 31 inf
+a 31 37 inf
+a 37 31 inf
+a 31 38 inf
+a 38 31 inf
+a 31 39 inf
+a 39 31 inf
+a 31 40 inf
+a 40 31 inf
+a 31 41 inf
+a 41 31 inf
+a 31 43 inf
+a 43 31 inf
+a 31 45 inf
+a 45 31 inf
+a 31 47 inf
+a 47 31 inf
+a 31 48 inf
+a 48 31 inf
+a 31 49 inf
+a 49 31 inf
+a 31 53 inf
+a 53 31 inf
+a 31 54 inf
+a 54 31 inf
+a 31 55 inf
+a 55 31 inf
+a 31 57 inf
+a 57 31 inf
+a 31 60 inf
+a 60 31 inf
+a 31 61 inf
+a 61 31 inf
+a 31 63 inf
+a 63 31 inf
+a 31 64 inf
+a 64 31 inf
+a 31 65 inf
+a 65 31 inf
+a 31 66 inf
+a 66 31 inf
+a 31 67 inf
+a 67 31 inf
+a 31 68 inf
+a 68 31 inf
+a 31 69 inf
+a 69 31 inf
+a 31 70 inf
+a 70 31 inf
+a 31 73 inf
+a 73 31 inf
+a 31 75 inf
+a 75 31 inf
+a 31 77 inf
+a 77 31 inf
+a 31 79 inf
+a 79 31 inf
+a 31 81 inf
+a 81 31 inf
+a 32 33 inf
+a 33 32 inf
+a 32 35 inf
+a 35 32 inf
+a 32 37 inf
+a 37 32 inf
+a 32 38 inf
+a 38 32 inf
+a 32 39 inf
+a 39 32 inf
+a 32 41 inf
+a 41 32 inf
+a 32 43 inf
+a 43 32 inf
+a 32 45 inf
+a 45 32 inf
+a 32 47 inf
+a 47 32 inf
+a 32 53 inf
+a 53 32 inf
+a 32 54 inf
+a 54 32 inf
+a 32 55 inf
+a 55 32 inf
+a 32 57 inf
+a 57 32 inf
+a 32 60 inf
+a 60 32 inf
+a 32 61 inf
+a 61 32 inf
+a 32 63 inf
+a 63 32 inf
+a 32 65 inf
+a 65 32 inf
+a 32 67 inf
+a 67 32 inf
+a 32 68 inf
+a 68 32 inf
+a 32 69 inf
+a 69 32 inf
+a 32 73 inf
+a 73 32 inf
+a 32 75 inf
+a 75 32 inf
+a 32 79 inf
+a 79 32 inf
+a 32 81 inf
+a 81 32 inf
+a 33 34 inf
+a 34 33 inf
+a 33 35 inf
+a 35 33 inf
+a 33 37 inf
+a 37 33 inf
+a 33 38 inf
+a 38 33 inf
+a 33 39 inf
+a 39 33 inf
+a 33 40 inf
+a 40 33 inf
+a 33 41 inf
+a 41 33 inf
+a 33 43 inf
+a 43 33 inf
+a 33 45 inf
+a 45 33 inf
+a 33 47 inf
+a 47 33 inf
+a 33 53 inf
+a 53 33 inf
+a 33 55 inf
+a 55 33 inf
+a 33 57 inf
+a 57 33 inf
+a 33 60 inf
+a 60 33 inf
+a 33 61 inf
+a 61 33 inf
+a 33 62 inf
+a 62 33 inf
+a 33 63 inf
+a 63 33 inf
+a 33 65 inf
+a 65 33 inf
+a 33 67 inf
+a 67 33 inf
+a 33 69 inf
+a 69 33 inf
+a 33 73 inf
+a 73 33 inf
+a 33 75 inf
+a 75 33 inf
+a 33 76 inf
+a 76 33 inf
+a 33 79 inf
+a 79 33 inf
+a 33 80 inf
+a 80 33 inf
+a 33 81 inf
+a 81 33 inf
+a 34 65 inf
+a 65 34 inf
+a 34 81 inf
+a 81 34 inf
+a 35 36 inf
+a 36 35 inf
+a 35 37 inf
+a 37 35 inf
+a 35 38 inf
+a 38 35 inf
+a 35 39 inf
+a 39 35 inf
+a 35 41 inf
+a 41 35 inf
+a 35 42 inf
+a 42 35 inf
+a 35 43 inf
+a 43 35 inf
+a 35 45 inf
+a 45 35 inf
+a 35 47 inf
+a 47 35 inf
+a 35 49 inf
+a 49 35 inf
+a 35 53 inf
+a 53 35 inf
+a 35 55 inf
+a 55 35 inf
+a 35 57 inf
+a 57 35 inf
+a 35 61 inf
+a 61 35 inf
+a 35 63 inf
+a 63 35 inf
+a 35 65 inf
+a 65 35 inf
+a 35 67 inf
+a 67 35 inf
+a 35 69 inf
+a 69 35 inf
+a 35 73 inf
+a 73 35 inf
+a 35 75 inf
+a 75 35 inf
+a 35 77 inf
+a 77 35 inf
+a 35 79 inf
+a 79 35 inf
+a 35 81 inf
+a 81 35 inf
+a 36 49 inf
+a 49 36 inf
+a 36 63 inf
+a 63 36 inf
+a 36 64 inf
+a 64 36 inf
+a 36 65 inf
+a 65 36 inf
+a 36 67 inf
+a 67 36 inf
+a 36 77 inf
+a 77 36 inf
+a 36 81 inf
+a 81 36 inf
+a 37 38 inf
+a 38 37 inf
+a 37 39 inf
+a 39 37 inf
+a 37 43 inf
+a 43 37 inf
+a 37 45 inf
+a 45 37 inf
+a 37 47 inf
+a 47 37 inf
+a 37 53 inf
+a 53 37 inf
+a 37 55 inf
+a 55 37 inf
+a 37 56 inf
+a 56 37 inf
+a 37 57 inf
+a 57 37 inf
+a 37 61 inf
+a 61 37 inf
+a 37 63 inf
+a 63 37 inf
+a 37 65 inf
+a 65 37 inf
+a 37 67 inf
+a 67 37 inf
+a 37 69 inf
+a 69 37 inf
+a 37 73 inf
+a 73 37 inf
+a 37 75 inf
+a 75 37 inf
+a 37 76 inf
+a 76 37 inf
+a 37 81 inf
+a 81 37 inf
+a 38 39 inf
+a 39 38 inf
+a 38 41 inf
+a 41 38 inf
+a 38 43 inf
+a 43 38 inf
+a 38 44 inf
+a 44 38 inf
+a 38 45 inf
+a 45 38 inf
+a 38 47 inf
+a 47 38 inf
+a 38 53 inf
+a 53 38 inf
+a 38 55 inf
+a 55 38 inf
+a 38 56 inf
+a 56 38 inf
+a 38 57 inf
+a 57 38 inf
+a 38 58 inf
+a 58 38 inf
+a 38 60 inf
+a 60 38 inf
+a 38 61 inf
+a 61 38 inf
+a 38 62 inf
+a 62 38 inf
+a 38 63 inf
+a 63 38 inf
+a 38 65 inf
+a 65 38 inf
+a 38 67 inf
+a 67 38 inf
+a 38 68 inf
+a 68 38 inf
+a 38 69 inf
+a 69 38 inf
+a 38 73 inf
+a 73 38 inf
+a 38 74 inf
+a 74 38 inf
+a 38 75 inf
+a 75 38 inf
+a 38 76 inf
+a 76 38 inf
+a 38 79 inf
+a 79 38 inf
+a 38 81 inf
+a 81 38 inf
+a 39 40 inf
+a 40 39 inf
+a 39 41 inf
+a 41 39 inf
+a 39 43 inf
+a 43 39 inf
+a 39 45 inf
+a 45 39 inf
+a 39 47 inf
+a 47 39 inf
+a 39 49 inf
+a 49 39 inf
+a 39 53 inf
+a 53 39 inf
+a 39 55 inf
+a 55 39 inf
+a 39 57 inf
+a 57 39 inf
+a 39 60 inf
+a 60 39 inf
+a 39 61 inf
+a 61 39 inf
+a 39 63 inf
+a 63 39 inf
+a 39 65 inf
+a 65 39 inf
+a 39 67 inf
+a 67 39 inf
+a 39 68 inf
+a 68 39 inf
+a 39 69 inf
+a 69 39 inf
+a 39 73 inf
+a 73 39 inf
+a 39 75 inf
+a 75 39 inf
+a 39 76 inf
+a 76 39 inf
+a 39 77 inf
+a 77 39 inf
+a 39 78 inf
+a 78 39 inf
+a 39 79 inf
+a 79 39 inf
+a 39 81 inf
+a 81 39 inf
+a 40 47 inf
+a 47 40 inf
+a 40 48 inf
+a 48 40 inf
+a 40 60 inf
+a 60 40 inf
+a 40 69 inf
+a 69 40 inf
+a 40 79 inf
+a 79 40 inf
+a 40 80 inf
+a 80 40 inf
+a 40 81 inf
+a 81 40 inf
+a 41 42 inf
+a 42 41 inf
+a 41 43 inf
+a 43 41 inf
+a 41 45 inf
+a 45 41 inf
+a 41 47 inf
+a 47 41 inf
+a 41 49 inf
+a 49 41 inf
+a 41 51 inf
+a 51 41 inf
+a 41 53 inf
+a 53 41 inf
+a 41 55 inf
+a 55 41 inf
+a 41 57 inf
+a 57 41 inf
+a 41 59 inf
+a 59 41 inf
+a 41 60 inf
+a 60 41 inf
+a 41 61 inf
+a 61 41 inf
+a 41 63 inf
+a 63 41 inf
+a 41 65 inf
+a 65 41 inf
+a 41 67 inf
+a 67 41 inf
+a 41 69 inf
+a 69 41 inf
+a 41 73 inf
+a 73 41 inf
+a 41 75 inf
+a 75 41 inf
+a 41 77 inf
+a 77 41 inf
+a 41 79 inf
+a 79 41 inf
+a 41 81 inf
+a 81 41 inf
+a 42 61 inf
+a 61 42 inf
+a 42 73 inf
+a 73 42 inf
+a 42 75 inf
+a 75 42 inf
+a 42 81 inf
+a 81 42 inf
+a 43 44 inf
+a 44 43 inf
+a 43 45 inf
+a 45 43 inf
+a 43 47 inf
+a 47 43 inf
+a 43 49 inf
+a 49 43 inf
+a 43 51 inf
+a 51 43 inf
+a 43 53 inf
+a 53 43 inf
+a 43 55 inf
+a 55 43 inf
+a 43 57 inf
+a 57 43 inf
+a 43 59 inf
+a 59 43 inf
+a 43 60 inf
+a 60 43 inf
+a 43 61 inf
+a 61 43 inf
+a 43 62 inf
+a 62 43 inf
+a 43 63 inf
+a 63 43 inf
+a 43 65 inf
+a 65 43 inf
+a 43 67 inf
+a 67 43 inf
+a 43 69 inf
+a 69 43 inf
+a 43 73 inf
+a 73 43 inf
+a 43 75 inf
+a 75 43 inf
+a 43 76 inf
+a 76 43 inf
+a 43 77 inf
+a 77 43 inf
+a 43 79 inf
+a 79 43 inf
+a 43 81 inf
+a 81 43 inf
+a 44 62 inf
+a 62 44 inf
+a 44 76 inf
+a 76 44 inf
+a 44 81 inf
+a 81 44 inf
+a 45 46 inf
+a 46 45 inf
+a 45 47 inf
+a 47 45 inf
+a 45 49 inf
+a 49 45 inf
+a 45 51 inf
+a 51 45 inf
+a 45 53 inf
+a 53 45 inf
+a 45 55 inf
+a 55 45 inf
+a 45 57 inf
+a 57 45 inf
+a 45 59 inf
+a 59 45 inf
+a 45 60 inf
+a 60 45 inf
+a 45 61 inf
+a 61 45 inf
+a 45 62 inf
+a 62 45 inf
+a 45 63 inf
+a 63 45 inf
+a 45 65 inf
+a 65 45 inf
+a 45 67 inf
+a 67 45 inf
+a 45 68 inf
+a 68 45 inf
+a 45 69 inf
+a 69 45 inf
+a 45 73 inf
+a 73 45 inf
+a 45 75 inf
+a 75 45 inf
+a 45 76 inf
+a 76 45 inf
+a 45 77 inf
+a 77 45 inf
+a 45 79 inf
+a 79 45 inf
+a 45 81 inf
+a 81 45 inf
+a 46 68 inf
+a 68 46 inf
+a 46 81 inf
+a 81 46 inf
+a 47 48 inf
+a 48 47 inf
+a 47 51 inf
+a 51 47 inf
+a 47 53 inf
+a 53 47 inf
+a 47 55 inf
+a 55 47 inf
+a 47 57 inf
+a 57 47 inf
+a 47 59 inf
+a 59 47 inf
+a 47 60 inf
+a 60 47 inf
+a 47 61 inf
+a 61 47 inf
+a 47 63 inf
+a 63 47 inf
+a 47 65 inf
+a 65 47 inf
+a 47 67 inf
+a 67 47 inf
+a 47 69 inf
+a 69 47 inf
+a 47 73 inf
+a 73 47 inf
+a 47 74 inf
+a 74 47 inf
+a 47 75 inf
+a 75 47 inf
+a 47 79 inf
+a 79 47 inf
+a 47 81 inf
+a 81 47 inf
+a 48 69 inf
+a 69 48 inf
+a 48 70 inf
+a 70 48 inf
+a 48 81 inf
+a 81 48 inf
+a 49 50 inf
+a 50 49 inf
+a 49 53 inf
+a 53 49 inf
+a 49 57 inf
+a 57 49 inf
+a 49 63 inf
+a 63 49 inf
+a 49 64 inf
+a 64 49 inf
+a 49 65 inf
+a 65 49 inf
+a 49 67 inf
+a 67 49 inf
+a 49 77 inf
+a 77 49 inf
+a 49 81 inf
+a 81 49 inf
+a 50 64 inf
+a 64 50 inf
+a 50 81 inf
+a 81 50 inf
+a 51 52 inf
+a 52 51 inf
+a 51 53 inf
+a 53 51 inf
+a 51 55 inf
+a 55 51 inf
+a 51 59 inf
+a 59 51 inf
+a 51 60 inf
+a 60 51 inf
+a 51 75 inf
+a 75 51 inf
+a 51 81 inf
+a 81 51 inf
+a 52 81 inf
+a 81 52 inf
+a 53 54 inf
+a 54 53 inf
+a 53 55 inf
+a 55 53 inf
+a 53 57 inf
+a 57 53 inf
+a 53 59 inf
+a 59 53 inf
+a 53 60 inf
+a 60 53 inf
+a 53 61 inf
+a 61 53 inf
+a 53 63 inf
+a 63 53 inf
+a 53 65 inf
+a 65 53 inf
+a 53 66 inf
+a 66 53 inf
+a 53 67 inf
+a 67 53 inf
+a 53 69 inf
+a 69 53 inf
+a 53 73 inf
+a 73 53 inf
+a 53 75 inf
+a 75 53 inf
+a 53 77 inf
+a 77 53 inf
+a 53 79 inf
+a 79 53 inf
+a 53 81 inf
+a 81 53 inf
+a 54 73 inf
+a 73 54 inf
+a 54 81 inf
+a 81 54 inf
+a 55 56 inf
+a 56 55 inf
+a 55 57 inf
+a 57 55 inf
+a 55 60 inf
+a 60 55 inf
+a 55 61 inf
+a 61 55 inf
+a 55 63 inf
+a 63 55 inf
+a 55 65 inf
+a 65 55 inf
+a 55 67 inf
+a 67 55 inf
+a 55 69 inf
+a 69 55 inf
+a 55 73 inf
+a 73 55 inf
+a 55 75 inf
+a 75 55 inf
+a 55 76 inf
+a 76 55 inf
+a 55 79 inf
+a 79 55 inf
+a 55 81 inf
+a 81 55 inf
+a 56 63 inf
+a 63 56 inf
+a 56 76 inf
+a 76 56 inf
+a 56 81 inf
+a 81 56 inf
+a 57 58 inf
+a 58 57 inf
+a 57 61 inf
+a 61 57 inf
+a 57 63 inf
+a 63 57 inf
+a 57 65 inf
+a 65 57 inf
+a 57 67 inf
+a 67 57 inf
+a 57 69 inf
+a 69 57 inf
+a 57 73 inf
+a 73 57 inf
+a 57 75 inf
+a 75 57 inf
+a 57 76 inf
+a 76 57 inf
+a 57 77 inf
+a 77 57 inf
+a 57 79 inf
+a 79 57 inf
+a 57 81 inf
+a 81 57 inf
+a 58 81 inf
+a 81 58 inf
+a 59 60 inf
+a 60 59 inf
+a 59 81 inf
+a 81 59 inf
+a 60 65 inf
+a 65 60 inf
+a 60 69 inf
+a 69 60 inf
+a 60 75 inf
+a 75 60 inf
+a 60 79 inf
+a 79 60 inf
+a 60 81 inf
+a 81 60 inf
+a 61 62 inf
+a 62 61 inf
+a 61 63 inf
+a 63 61 inf
+a 61 65 inf
+a 65 61 inf
+a 61 67 inf
+a 67 61 inf
+a 61 69 inf
+a 69 61 inf
+a 61 73 inf
+a 73 61 inf
+a 61 75 inf
+a 75 61 inf
+a 61 76 inf
+a 76 61 inf
+a 61 77 inf
+a 77 61 inf
+a 61 79 inf
+a 79 61 inf
+a 61 81 inf
+a 81 61 inf
+a 62 76 inf
+a 76 62 inf
+a 62 81 inf
+a 81 62 inf
+a 63 64 inf
+a 64 63 inf
+a 63 65 inf
+a 65 63 inf
+a 63 67 inf
+a 67 63 inf
+a 63 69 inf
+a 69 63 inf
+a 63 71 inf
+a 71 63 inf
+a 63 73 inf
+a 73 63 inf
+a 63 75 inf
+a 75 63 inf
+a 63 76 inf
+a 76 63 inf
+a 63 77 inf
+a 77 63 inf
+a 63 79 inf
+a 79 63 inf
+a 63 81 inf
+a 81 63 inf
+a 64 77 inf
+a 77 64 inf
+a 64 81 inf
+a 81 64 inf
+a 65 66 inf
+a 66 65 inf
+a 65 67 inf
+a 67 65 inf
+a 65 69 inf
+a 69 65 inf
+a 65 71 inf
+a 71 65 inf
+a 65 73 inf
+a 73 65 inf
+a 65 75 inf
+a 75 65 inf
+a 65 77 inf
+a 77 65 inf
+a 65 79 inf
+a 79 65 inf
+a 65 81 inf
+a 81 65 inf
+a 66 81 inf
+a 81 66 inf
+a 67 68 inf
+a 68 67 inf
+a 67 69 inf
+a 69 67 inf
+a 67 73 inf
+a 73 67 inf
+a 67 75 inf
+a 75 67 inf
+a 67 77 inf
+a 77 67 inf
+a 67 79 inf
+a 79 67 inf
+a 67 81 inf
+a 81 67 inf
+a 68 81 inf
+a 81 68 inf
+a 69 70 inf
+a 70 69 inf
+a 69 71 inf
+a 71 69 inf
+a 69 73 inf
+a 73 69 inf
+a 69 75 inf
+a 75 69 inf
+a 69 77 inf
+a 77 69 inf
+a 69 79 inf
+a 79 69 inf
+a 69 81 inf
+a 81 69 inf
+a 70 81 inf
+a 81 70 inf
+a 71 72 inf
+a 72 71 inf
+a 71 73 inf
+a 73 71 inf
+a 71 75 inf
+a 75 71 inf
+a 71 77 inf
+a 77 71 inf
+a 71 79 inf
+a 79 71 inf
+a 71 81 inf
+a 81 71 inf
+a 72 81 inf
+a 81 72 inf
+a 73 74 inf
+a 74 73 inf
+a 73 75 inf
+a 75 73 inf
+a 73 77 inf
+a 77 73 inf
+a 73 79 inf
+a 79 73 inf
+a 73 81 inf
+a 81 73 inf
+a 74 81 inf
+a 81 74 inf
+a 75 76 inf
+a 76 75 inf
+a 75 77 inf
+a 77 75 inf
+a 75 79 inf
+a 79 75 inf
+a 75 81 inf
+a 81 75 inf
+a 76 81 inf
+a 81 76 inf
+a 77 78 inf
+a 78 77 inf
+a 77 79 inf
+a 79 77 inf
+a 77 81 inf
+a 81 77 inf
+a 78 81 inf
+a 81 78 inf
+a 79 80 inf
+a 80 79 inf
+a 79 81 inf
+a 81 79 inf
+a 80 81 inf
+a 81 80 inf
+c END OF PROBLEM DATA; additional refinment constraints follow.
+c "c <num_refinements> X" specifies that the problem has X additional refinement constraints.
+c "c <refine>" specifies each arc that should be considered a refinement constraint.
+c <num_refinements> 466
+c <refine> 1 2 -4
+c <refine> 2 1 42
+c <refine> 1 11 500
+c <refine> 13 1 414
+c <refine> 15 1 575
+c <refine> 17 1 373
+c <refine> 19 1 246
+c <refine> 1 29 365
+c <refine> 1 46 255
+c <refine> 81 1 0
+c <refine> 2 25 568
+c <refine> 29 2 296
+c <refine> 2 32 309
+c <refine> 32 2 389
+c <refine> 51 2 461
+c <refine> 57 2 337
+c <refine> 2 72 317
+c <refine> 2 80 317
+c <refine> 2 81 600
+c <refine> 3 4 -55
+c <refine> 4 3 57
+c <refine> 5 3 527
+c <refine> 3 7 227
+c <refine> 3 9 310
+c <refine> 9 3 241
+c <refine> 3 13 222
+c <refine> 13 3 460
+c <refine> 15 3 533
+c <refine> 3 17 355
+c <refine> 17 3 325
+c <refine> 3 19 432
+c <refine> 24 3 386
+c <refine> 3 35 418
+c <refine> 81 3 0
+c <refine> 4 39 594
+c <refine> 4 43 561
+c <refine> 4 76 281
+c <refine> 4 81 600
+c <refine> 5 6 -11
+c <refine> 6 5 42
+c <refine> 5 7 545
+c <refine> 5 11 349
+c <refine> 13 5 80
+c <refine> 15 5 438
+c <refine> 5 17 70
+c <refine> 17 5 464
+c <refine> 5 27 320
+c <refine> 32 5 535
+c <refine> 35 5 244
+c <refine> 38 5 362
+c <refine> 5 61 343
+c <refine> 81 5 0
+c <refine> 6 39 295
+c <refine> 49 6 540
+c <refine> 6 51 352
+c <refine> 6 54 522
+c <refine> 64 6 437
+c <refine> 80 6 329
+c <refine> 6 81 600
+c <refine> 7 8 0
+c <refine> 8 7 56
+c <refine> 7 11 403
+c <refine> 15 7 143
+c <refine> 7 17 283
+c <refine> 19 7 571
+c <refine> 29 7 492
+c <refine> 7 33 448
+c <refine> 35 7 260
+c <refine> 7 41 545
+c <refine> 46 7 569
+c <refine> 59 7 331
+c <refine> 7 78 272
+c <refine> 81 7 0
+c <refine> 8 26 247
+c <refine> 32 8 360
+c <refine> 38 8 367
+c <refine> 8 81 600
+c <refine> 9 10 -26
+c <refine> 10 9 32
+c <refine> 9 13 492
+c <refine> 13 9 300
+c <refine> 15 9 502
+c <refine> 17 9 379
+c <refine> 9 19 546
+c <refine> 19 9 371
+c <refine> 81 9 0
+c <refine> 21 10 440
+c <refine> 10 45 379
+c <refine> 10 52 343
+c <refine> 80 10 473
+c <refine> 10 81 600
+c <refine> 11 12 -24
+c <refine> 12 11 74
+c <refine> 13 11 477
+c <refine> 11 15 -25
+c <refine> 15 11 401
+c <refine> 11 19 308
+c <refine> 11 42 270
+c <refine> 11 69 302
+c <refine> 81 11 0
+c <refine> 12 75 281
+c <refine> 79 12 428
+c <refine> 12 81 600
+c <refine> 13 14 -26
+c <refine> 14 13 51
+c <refine> 13 15 341
+c <refine> 19 13 330
+c <refine> 13 43 470
+c <refine> 13 55 392
+c <refine> 81 13 0
+c <refine> 39 14 444
+c <refine> 58 14 305
+c <refine> 67 14 349
+c <refine> 14 69 557
+c <refine> 14 74 544
+c <refine> 14 81 600
+c <refine> 15 16 -24
+c <refine> 16 15 40
+c <refine> 15 28 506
+c <refine> 15 30 391
+c <refine> 36 15 466
+c <refine> 46 15 298
+c <refine> 15 63 321
+c <refine> 15 77 444
+c <refine> 81 15 0
+c <refine> 56 16 388
+c <refine> 16 81 600
+c <refine> 17 18 -43
+c <refine> 18 17 70
+c <refine> 17 19 512
+c <refine> 19 17 462
+c <refine> 57 17 241
+c <refine> 61 17 263
+c <refine> 64 17 243
+c <refine> 17 77 339
+c <refine> 17 79 357
+c <refine> 81 17 0
+c <refine> 31 18 340
+c <refine> 36 18 201
+c <refine> 18 50 266
+c <refine> 77 18 220
+c <refine> 18 81 600
+c <refine> 19 20 -20
+c <refine> 20 19 71
+c <refine> 19 27 368
+c <refine> 28 19 391
+c <refine> 31 19 435
+c <refine> 81 19 0
+c <refine> 20 26 493
+c <refine> 20 29 572
+c <refine> 20 30 285
+c <refine> 48 20 402
+c <refine> 51 20 252
+c <refine> 20 68 432
+c <refine> 20 81 600
+c <refine> 21 22 -29
+c <refine> 22 21 72
+c <refine> 21 23 462
+c <refine> 23 21 222
+c <refine> 25 21 292
+c <refine> 27 21 242
+c <refine> 21 29 238
+c <refine> 21 33 323
+c <refine> 33 21 341
+c <refine> 21 35 328
+c <refine> 35 21 489
+c <refine> 37 21 521
+c <refine> 21 39 365
+c <refine> 21 54 215
+c <refine> 81 21 0
+c <refine> 22 66 444
+c <refine> 67 22 312
+c <refine> 69 22 365
+c <refine> 22 81 600
+c <refine> 23 24 -4
+c <refine> 24 23 55
+c <refine> 25 23 225
+c <refine> 23 29 140
+c <refine> 29 23 461
+c <refine> 23 31 365
+c <refine> 23 33 582
+c <refine> 37 23 300
+c <refine> 39 23 287
+c <refine> 81 23 0
+c <refine> 24 74 353
+c <refine> 24 81 600
+c <refine> 25 26 -28
+c <refine> 26 25 84
+c <refine> 27 25 477
+c <refine> 25 31 474
+c <refine> 31 25 327
+c <refine> 33 25 329
+c <refine> 25 35 389
+c <refine> 35 25 242
+c <refine> 44 25 350
+c <refine> 57 25 339
+c <refine> 71 25 219
+c <refine> 81 25 0
+c <refine> 68 26 351
+c <refine> 26 81 600
+c <refine> 27 28 -49
+c <refine> 28 27 49
+c <refine> 29 27 289
+c <refine> 33 27 491
+c <refine> 37 27 326
+c <refine> 27 39 397
+c <refine> 27 43 457
+c <refine> 46 27 291
+c <refine> 63 27 399
+c <refine> 81 27 0
+c <refine> 28 68 417
+c <refine> 28 81 600
+c <refine> 29 30 -44
+c <refine> 30 29 92
+c <refine> 29 31 319
+c <refine> 31 29 255
+c <refine> 29 33 240
+c <refine> 29 39 545
+c <refine> 29 62 507
+c <refine> 81 29 0
+c <refine> 30 60 405
+c <refine> 79 30 363
+c <refine> 30 81 600
+c <refine> 31 32 -6
+c <refine> 32 31 8
+c <refine> 31 35 435
+c <refine> 35 31 472
+c <refine> 37 31 62
+c <refine> 54 31 504
+c <refine> 31 66 290
+c <refine> 70 31 388
+c <refine> 81 31 0
+c <refine> 32 54 475
+c <refine> 32 60 473
+c <refine> 32 63 527
+c <refine> 75 32 214
+c <refine> 32 81 600
+c <refine> 33 34 -54
+c <refine> 34 33 95
+c <refine> 33 35 347
+c <refine> 37 33 500
+c <refine> 33 43 421
+c <refine> 60 33 154
+c <refine> 62 33 360
+c <refine> 33 67 313
+c <refine> 80 33 453
+c <refine> 81 33 0
+c <refine> 65 34 251
+c <refine> 34 81 600
+c <refine> 35 36 -53
+c <refine> 36 35 107
+c <refine> 37 35 416
+c <refine> 39 35 448
+c <refine> 42 35 453
+c <refine> 81 35 0
+c <refine> 36 65 508
+c <refine> 67 36 340
+c <refine> 36 81 600
+c <refine> 37 38 -25
+c <refine> 38 37 43
+c <refine> 37 39 529
+c <refine> 43 37 446
+c <refine> 56 37 362
+c <refine> 37 73 174
+c <refine> 81 37 0
+c <refine> 38 41 335
+c <refine> 44 38 132
+c <refine> 56 38 280
+c <refine> 58 38 393
+c <refine> 60 38 460
+c <refine> 38 61 366
+c <refine> 38 74 314
+c <refine> 38 81 600
+c <refine> 39 40 -52
+c <refine> 40 39 82
+c <refine> 39 43 349
+c <refine> 39 49 380
+c <refine> 39 68 432
+c <refine> 68 39 410
+c <refine> 39 78 210
+c <refine> 79 39 264
+c <refine> 81 39 0
+c <refine> 48 40 432
+c <refine> 40 60 398
+c <refine> 40 69 352
+c <refine> 40 80 370
+c <refine> 40 81 600
+c <refine> 41 42 0
+c <refine> 42 41 29
+c <refine> 41 45 460
+c <refine> 45 41 192
+c <refine> 41 47 524
+c <refine> 47 41 478
+c <refine> 49 41 488
+c <refine> 41 51 277
+c <refine> 51 41 405
+c <refine> 41 53 306
+c <refine> 41 55 326
+c <refine> 41 57 394
+c <refine> 41 59 600
+c <refine> 41 69 271
+c <refine> 81 41 0
+c <refine> 42 61 530
+c <refine> 42 73 268
+c <refine> 75 42 248
+c <refine> 42 81 600
+c <refine> 43 44 -3
+c <refine> 44 43 5
+c <refine> 43 45 428
+c <refine> 43 47 494
+c <refine> 49 43 139
+c <refine> 55 43 434
+c <refine> 43 57 539
+c <refine> 43 59 595
+c <refine> 81 43 0
+c <refine> 44 62 351
+c <refine> 62 44 535
+c <refine> 76 44 392
+c <refine> 44 81 600
+c <refine> 45 46 -59
+c <refine> 46 45 76
+c <refine> 45 49 352
+c <refine> 49 45 486
+c <refine> 51 45 441
+c <refine> 45 53 205
+c <refine> 55 45 133
+c <refine> 57 45 293
+c <refine> 59 45 308
+c <refine> 45 62 378
+c <refine> 45 69 323
+c <refine> 81 45 0
+c <refine> 68 46 401
+c <refine> 46 81 600
+c <refine> 47 48 -29
+c <refine> 48 47 29
+c <refine> 51 47 342
+c <refine> 47 53 125
+c <refine> 55 47 258
+c <refine> 47 57 259
+c <refine> 47 59 284
+c <refine> 74 47 541
+c <refine> 81 47 0
+c <refine> 70 48 525
+c <refine> 48 81 600
+c <refine> 49 50 -5
+c <refine> 50 49 14
+c <refine> 49 53 369
+c <refine> 53 49 366
+c <refine> 49 57 450
+c <refine> 57 49 150
+c <refine> 81 49 0
+c <refine> 64 50 532
+c <refine> 50 81 600
+c <refine> 51 52 -52
+c <refine> 52 51 103
+c <refine> 51 55 509
+c <refine> 51 59 427
+c <refine> 59 51 301
+c <refine> 75 51 552
+c <refine> 81 51 0
+c <refine> 52 81 600
+c <refine> 53 54 -51
+c <refine> 54 53 82
+c <refine> 53 57 283
+c <refine> 59 53 257
+c <refine> 66 53 504
+c <refine> 81 53 0
+c <refine> 73 54 254
+c <refine> 54 81 600
+c <refine> 55 56 -35
+c <refine> 56 55 53
+c <refine> 55 57 147
+c <refine> 81 55 0
+c <refine> 56 63 369
+c <refine> 76 56 323
+c <refine> 56 81 600
+c <refine> 57 58 -29
+c <refine> 58 57 52
+c <refine> 57 76 464
+c <refine> 81 57 0
+c <refine> 58 81 600
+c <refine> 59 60 -55
+c <refine> 60 59 84
+c <refine> 81 59 0
+c <refine> 60 65 515
+c <refine> 60 81 600
+c <refine> 61 62 -12
+c <refine> 62 61 26
+c <refine> 63 61 345
+c <refine> 61 65 545
+c <refine> 65 61 416
+c <refine> 61 67 394
+c <refine> 67 61 314
+c <refine> 61 69 399
+c <refine> 61 73 410
+c <refine> 73 61 242
+c <refine> 61 75 430
+c <refine> 61 77 268
+c <refine> 81 61 0
+c <refine> 62 81 600
+c <refine> 63 64 -27
+c <refine> 64 63 83
+c <refine> 63 65 515
+c <refine> 63 69 370
+c <refine> 63 71 491
+c <refine> 63 77 398
+c <refine> 77 63 337
+c <refine> 63 79 241
+c <refine> 81 63 0
+c <refine> 64 81 600
+c <refine> 65 66 -53
+c <refine> 66 65 63
+c <refine> 65 67 204
+c <refine> 69 65 295
+c <refine> 71 65 284
+c <refine> 65 73 516
+c <refine> 73 65 566
+c <refine> 75 65 102
+c <refine> 65 77 517
+c <refine> 77 65 376
+c <refine> 65 79 431
+c <refine> 81 65 0
+c <refine> 66 81 600
+c <refine> 67 68 -29
+c <refine> 68 67 81
+c <refine> 67 69 425
+c <refine> 75 67 314
+c <refine> 77 67 513
+c <refine> 67 79 561
+c <refine> 81 67 0
+c <refine> 68 81 600
+c <refine> 69 70 -48
+c <refine> 70 69 50
+c <refine> 69 71 515
+c <refine> 71 69 527
+c <refine> 81 69 0
+c <refine> 70 81 600
+c <refine> 71 72 -24
+c <refine> 72 71 48
+c <refine> 71 73 576
+c <refine> 71 75 386
+c <refine> 75 71 257
+c <refine> 71 77 138
+c <refine> 77 71 318
+c <refine> 79 71 538
+c <refine> 81 71 0
+c <refine> 72 81 600
+c <refine> 73 74 -28
+c <refine> 74 73 61
+c <refine> 75 73 235
+c <refine> 81 73 0
+c <refine> 74 81 600
+c <refine> 75 76 -33
+c <refine> 76 75 41
+c <refine> 75 79 494
+c <refine> 81 75 0
+c <refine> 76 81 600
+c <refine> 77 78 -55
+c <refine> 78 77 58
+c <refine> 79 77 506
+c <refine> 81 77 0
+c <refine> 78 81 600
+c <refine> 79 80 -24
+c <refine> 80 79 34
+c <refine> 81 79 0
+c <refine> 80 81 600
+c --------------------------
