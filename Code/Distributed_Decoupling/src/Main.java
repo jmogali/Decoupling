@@ -1,11 +1,26 @@
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+
+import DIMACS_Parser.Parser;
 
 
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException
 	{
+		
+		Parser myParser = new Parser();
+		String strFilePath = "E:\\Research\\STN\\Version_Controller\\Decoupling\\Data\\BDH_Problem_Instance\\bdh-agent-problems\\8_10_50_350_0.dimacs";
+		try {
+			boolean bSuccess = myParser.ParseFile(strFilePath);
+			System.out.println(bSuccess);			
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Failed to parse");
+		}
+		
+		
 		Set<String> keys_neighs_A = new HashSet<String>();
 		keys_neighs_A.add("C");
 		
