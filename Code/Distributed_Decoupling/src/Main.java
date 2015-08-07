@@ -2,7 +2,11 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-import DIMACS_Parser.Parser;
+import Agent_Related.Agent;
+import Agent_Related.Agent_Type;
+import DIMACS.Parser;
+import Distributed_Communication.MessagePassingQueue;
+import Distributed_Communication.Synch_Object;
 
 
 public class Main {
@@ -11,7 +15,7 @@ public class Main {
 	{
 		
 		Parser myParser = new Parser();
-		String strFilePath = "E:\\Research\\STN\\Version_Controller\\Decoupling\\Data\\BDH_Problem_Instance\\bdh-agent-problems\\8_10_50_350_0.dimacs";
+		String strFilePath = "E:\\Research\\STN\\Version_Controller\\Decoupling\\Data\\BDH_Problem_Instance\\bdh-agent-problems\\16_10_50_750_45.dimacs";
 		try {
 			boolean bSuccess = myParser.ParseFile(strFilePath);
 			System.out.println(bSuccess);			

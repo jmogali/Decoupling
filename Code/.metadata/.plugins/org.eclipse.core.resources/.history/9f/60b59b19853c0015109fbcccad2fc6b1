@@ -1,0 +1,44 @@
+package DIMACS;
+
+import Agent_Related.Agent;
+import Network_Related.STN;
+import Network_Related.STN_Vertex;
+
+import java.util.Iterator;
+import java.util.Map;
+
+
+public class Loader extends Parser{
+
+	public Loader()
+	{
+		super();
+	}
+	
+	public void PopulateAgentSTN(Agent obAgent)
+	{
+		STN agSTN = obAgent.GetSTN();
+		PopulateAgentVertices(agSTN , obAgent.GetName());
+		
+	}
+	
+	//Populate Vertices
+	private void PopulateAgentVertices(STN agSTN , String strAgentName)
+	{
+		Iterator<Map.Entry<String , String>> it = m_hmp_Vtx_Owner.entrySet().iterator();
+		String strVtxName;
+				
+		while(it.hasNext())
+		{
+			Map.Entry<String , String> enVal = it.next();
+			
+			strVtxName = enVal.getKey();
+			
+			if(strAgentName == enVal.getValue())
+			{
+				agSTN.AddVertex(strVtxName, new STN_Vertex(strVtxName));
+			}
+		}
+	}
+	
+}

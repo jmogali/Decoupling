@@ -4,20 +4,20 @@ public class STN_Edge {
 
 	public static final double f_Infty = Double.POSITIVE_INFINITY;
 	
-	private STN_Vertex m_Vtx1 = null, m_Vtx2 = null;
-	private double m_dConstraint;
+	protected String m_Vtx1 = null, m_Vtx2 = null;
+	protected double m_dConstraint;
 	
-	public STN_Edge(STN_Vertex stVtx1 , STN_Vertex stVtx2 )
+	public STN_Edge(String strVtx1 , String strVtx2 )
 	{
-		m_Vtx1 = stVtx1;
-		m_Vtx2 = stVtx2;
+		m_Vtx1 = strVtx1;
+		m_Vtx2 = strVtx2;
 		m_dConstraint = f_Infty;
 	}
 	
-	public STN_Edge(STN_Vertex stVtx1 , STN_Vertex stVtx2 , double dConstrtVal )
+	public STN_Edge(String strVtx1 , String strVtx2 , double dConstrtVal )
 	{
-		m_Vtx1 = stVtx1;
-		m_Vtx2 = stVtx2;
+		m_Vtx1 = strVtx1;
+		m_Vtx2 = strVtx2;
 		m_dConstraint = dConstrtVal;
 	}
 	
@@ -31,8 +31,18 @@ public class STN_Edge {
 		m_dConstraint = dConstraint;
 	}
 	
+	public String GetVertex_1_Name()
+	{
+		return m_Vtx1;
+	}
+	
+	public String GetVertex_2_Name()
+	{
+		return m_Vtx2;
+	}
+	
 	public String GetKey()
 	{
-		return m_Vtx1.Get_Name() + "_" + m_Vtx2.Get_Name();
+		return m_Vtx1 + "_" + m_Vtx2;
 	}
 }

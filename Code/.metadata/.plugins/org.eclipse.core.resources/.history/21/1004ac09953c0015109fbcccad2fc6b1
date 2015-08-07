@@ -1,0 +1,57 @@
+package Network_Related;
+
+import java.util.HashMap;
+
+public class STN {
+
+	private HashMap<String, STN_Vertex> m_hp_Vertices = null;   // Map containing all vertices
+	private HashMap<String, STN_Edge> m_hp_Intra_Edge = null;  // Map containing all intra-agent edges
+	private HashMap<String, Inter_agent_constraint> m_hp_Coupling_Edge = null;  // Map containing all intra-agent edges
+	boolean m_bModified; // Used to check if any constraints are modified
+	
+	public STN()
+	{
+		m_hp_Vertices = new HashMap<String, STN_Vertex>();
+		m_hp_Intra_Edge = new HashMap<String, STN_Edge>();
+		m_hp_Coupling_Edge = new HashMap<String, Inter_agent_constraint>();
+		m_bModified = true;
+	}
+	
+	public void AddVertex(String str , STN_Vertex obVtx)
+	{
+		m_hp_Vertices.put(str, obVtx);
+	}
+	
+	public boolean AddIntraEdge(String str , STN_Edge obEdge)
+	{
+		String stVtx1 = obEdge.GetVertex_1_Name();
+		String stVtx2 = obEdge.GetVertex_2_Name();
+		
+		if( ( null == m_hp_Vertices.get(stVtx1) ) || ( null == m_hp_Vertices.get(stVtx2) ) )
+		{ 
+			return false;
+		}
+		
+		m_hp_Intra_Edge.put(str, obEdge);
+		
+		return true;
+	}
+	
+	public boolean AddCouplingEdge(String str , Inter_agent_constraint obEdge)
+	{
+		String stVtx1 = obEdge.GetVertex_1_Name();
+		String stVtx2 = obEdge.GetVertex_2_Name();
+		
+		if( ( null == m_hp_Vertices.get(stVtx1) ) && ( null == m_hp_Vertices.get(stVtx2) ) )
+		{ 
+			return false;
+		}
+		
+		m_hp_Coupling_Edge.put(str, obEdge);
+		
+		return true;
+	}
+	
+	public 
+	
+}
