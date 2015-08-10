@@ -1,7 +1,9 @@
 package Agent_Related;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Iterator;
+import java.util.Set;
 
 import Distributed_Communication.MessagePassingQueue;
 import Distributed_Communication.NoNewMessagesAcceptableException;
@@ -11,34 +13,48 @@ import Network_Related.STN;
 
 public class Agent implements Runnable{
 
-	public static boolean PRINT_MESSAGES = false; 
+	public static final boolean PRINT_MESSAGES = false; 
 	private String m_str_Name;
 	public Thread t;
-	private HashMap<String , Synch_Object> m_hmp_Trans_Msg = null; // Contains communicating neighbor names after Min Spanning Tree
-	private HashMap<String ,MessagePassingQueue> m_hmp_que_Rec_Msg = null;
-	private MessagePassingQueue m_que_owner = null;
 	private int m_iVal;
 	private long m_dDelay;
 	private Agent_Type m_enType;
 	private STN m_STN;
 	
-	public Agent(String strName , int iValue , long dDelay , MessagePassingQueue Msg_Queue , Agent_Type en_Type)
+	// Communicating members
+	private MessagePassingQueue<Integer> m_que_owner = null;
+	private HashMap<String , Synch_Object<Integer>> m_hmp_Trans_Msg = null; // Contains communicating neighbor names after Min Spanning Tree
+	private HashMap<String ,MessagePassingQueue<Integer>> m_hmp_que_Rec_Msg = null;
+
+	//Coupling matrix synchronization
+	private MessagePassingQueue<Set<String>> m_que_ss_owner = null;
+	private HashMap<String , Synch_Object<HashSet<String>>> m_hmp_Trans_ss_Msg = null; // Contains communicating neighbor names after Min Spanning Tree
+	private HashMap<String ,MessagePassingQueue<HashSet<String>>> m_hmp_que_Rec_ss_Msg = null;
+
+	public Agent(String strName)
 	{
 		m_str_Name = strName;
-		m_hmp_Trans_Msg = new HashMap<String , Synch_Object>();
-		m_hmp_que_Rec_Msg = new HashMap<String, MessagePassingQueue>();
-		m_iVal = iValue;
-		m_dDelay = dDelay;
-		m_que_owner = Msg_Queue;
-		m_enType = en_Type;
 		m_STN = new STN();
+		
+		m_hmp_Trans_Msg = new HashMap<String , Synch_Object<Integer>>();
+		m_hmp_que_Rec_Msg = new HashMap<String, MessagePassingQueue<Integer>>();
+		
+		m_hmp_Trans_ss_Msg = new HashMap<String, Synch_Object<HashSet<String>>>();
+		m_hmp_que_Rec_ss_Msg = new HashMap<String, MessagePassingQueue<HashSet<String>>>();
 		
 		t = new Thread(this , m_str_Name);
 	}
 	
-	public void ResetValue(int iValue)
+	public void SetMessagePassingQueue_AndSetType(MessagePassingQueue<Integer> Msg_Queue , Agent_Type en_Type)
+	{
+		m_que_owner = Msg_Queue;
+		m_enType = en_Type;
+	}
+	
+	public void setValue(int iValue , long dDelay)
 	{
 		m_iVal = iValue;
+		m_dDelay = dDelay;
 	}
 	
 	public String GetName()
@@ -46,7 +62,12 @@ public class Agent implements Runnable{
 		return m_str_Name;
 	}
 	
-	public void AddCommNeighbour(String strAgentName, Synch_Object objNeigh , MessagePassingQueue obNeighTransQueue)
+	public MessagePassingQueue<Integer> GetMessagePassingQueue()
+	{
+		return m_que_owner;
+	}
+	
+	public void AddCommNeighbour(String strAgentName, Synch_Object<Integer> objNeigh , MessagePassingQueue<Integer> obNeighTransQueue)
 	{
 		m_hmp_Trans_Msg.put(strAgentName , objNeigh);
 		m_hmp_que_Rec_Msg.put(strAgentName, obNeighTransQueue);
@@ -56,16 +77,29 @@ public class Agent implements Runnable{
 	{
 		return m_STN;
 	}
-
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		System.out.println("Agent: "+m_str_Name+" initialized");
-		ComputeSum();
+		
+		try {
+			ComputeSum();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		try {
+//			SynchroizeToForm_B_Matrix();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	//Distributed Summation Function
-	private void ComputeSum() 
+	private void ComputeSum() throws Exception 
 	{
 		int iSum = 0;
 		
@@ -82,11 +116,11 @@ public class Agent implements Runnable{
 				System.out.println("Mistake in Minimum Spanning Tree");
 			}
 			
-			Iterator<Map.Entry<String ,MessagePassingQueue>> it = m_hmp_que_Rec_Msg.entrySet().iterator();
+			Iterator<Map.Entry<String ,MessagePassingQueue<Integer>>> it = m_hmp_que_Rec_Msg.entrySet().iterator();
 			
 			while(it.hasNext())
 			{
-				Map.Entry<String, MessagePassingQueue> enVal = (Map.Entry<String, MessagePassingQueue>) it.next();
+				Map.Entry<String, MessagePassingQueue<Integer>> enVal = (Map.Entry<String, MessagePassingQueue<Integer>>) it.next();
 				try {
 					enVal.getValue().AddElement(m_str_Name, m_iVal);
 					
@@ -123,12 +157,12 @@ public class Agent implements Runnable{
 		else
 		{
 			// This step waits till n-1 neighbors update their values and figures the slow agent
-			MessagePassingQueue.Value_Slow_Agent obValAgent= m_que_owner.GetSum();
+			MessagePassingQueue<Integer>.Value_Slow_Agent obValAgent= m_que_owner.GetSum();
 			
 			iSum = obValAgent.GetValue() + m_iVal;
 			
 			try{
-				MessagePassingQueue enVal = m_hmp_que_Rec_Msg.get(obValAgent.GetSlowAgent());
+				MessagePassingQueue<Integer> enVal = m_hmp_que_Rec_Msg.get(obValAgent.GetSlowAgent());
 				enVal.AddElement(m_str_Name, iSum);
 				
 				if(PRINT_MESSAGES)
@@ -175,5 +209,10 @@ public class Agent implements Runnable{
 		}		
 		
 		System.out.println("Agent Name:" + m_str_Name +" sum:"+iSum);		
-	}	
+	}
+	
+	private void SynchroizeToForm_B_Matrix()
+	{
+		HashSet<String> setEqnNames = m_STN.ReturnCouplingEdgesResponsibleFor();
+	}
 }

@@ -4,8 +4,8 @@ public class STN_Edge {
 
 	public static final double f_Infty = Double.POSITIVE_INFINITY;
 	
-	protected String m_Vtx1 = null, m_Vtx2 = null;
-	protected double m_dConstraint;
+	private String m_Vtx1 = null, m_Vtx2 = null;
+	private double m_dConstraint;
 	
 	public STN_Edge(String strVtx1 , String strVtx2 )
 	{

@@ -31,7 +31,7 @@ public class User_Defined_Constraint {
 		return m_strName;
 	}
 	
-	public double GetValue()
+	public double GetConstraintValue()
 	{
 		return m_dVal;
 	}
