@@ -15,7 +15,7 @@ public class Parser {
 
 	protected HashMap<Integer, String> m_hp_Int_to_String_Labels = null;
 	protected HashMap<String , Integer> m_hp_String_to_Int_Labels = null;
-	protected HashMap<String , String> m_hp_Vtx_Owner = null; // First string gives vertex name, Second string gives owner name
+	protected HashMap<String , String> m_hp_Vtx_Owner = null;// First string gives vertex name, Second string gives owner name
 	protected HashMap<String, User_Defined_Constraint> m_hp_Edge_Weights = null; // String format: Owner1_Owner2
 	protected HashMap<String , Boolean> m_hp_Vtx_Shared = null;
 	protected SortedSet<String> m_ss_Agent_Names = null;
@@ -71,6 +71,7 @@ public class Parser {
 				else if( (words[1].equals("<num_refinements>")) && (words.length == 3) )
 				{
 					m_iEdgeChecker = Integer.valueOf(words[2]);
+					System.out.println("Number Of edges:" + m_iEdgeChecker);
 				}
 				else if(words.length >= 5)
 				{

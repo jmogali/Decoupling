@@ -92,7 +92,9 @@ public class MST_Wrapper {
 	private void CreateCommunicatingObjects( HashMap<String , Agent> hp_Agents  , KruskalMST mst) 
 	{
 		HashMap<String, HashSet<String>> hp_MST_Agnt_Neighs = new HashMap<String, HashSet<String>>();
+		
 		HashMap<Integer, Synch_Object<Integer>> hp_MST_Synch_Objects = new HashMap<Integer, Synch_Object<Integer>>();
+		HashMap<Integer, Synch_Object<HashSet<String>>> hp_MST_Synch_hs_Objects = new HashMap<Integer, Synch_Object<HashSet<String>>>();
 		
 		int v, w , iCantorKey;
 		String strAgent1 , strAgent2;
@@ -120,6 +122,7 @@ public class MST_Wrapper {
 			if(false == hp_MST_Synch_Objects.containsKey(iCantorKey))
 			{
 				hp_MST_Synch_Objects.put(iCantorKey, new Synch_Object<Integer>());
+				hp_MST_Synch_hs_Objects.put(iCantorKey, new Synch_Object<HashSet<String>>());
 			}
 			
 			hp_MST_Agnt_Neighs.get(strAgent1).add(strAgent2);
@@ -149,7 +152,10 @@ public class MST_Wrapper {
 			HashSet<String> keys_neighs = hp_MST_Agnt_Neighs.get(stKey);
 			
 			MessagePassingQueue<Integer> msgQueue = new MessagePassingQueue<Integer>(iNeighSize - 1, stKey, keys_neighs); 
-			hp_Agents.get(stKey).SetMessagePassingQueue_AndSetType(msgQueue, enType);
+			hp_Agents.get(stKey).SetMessagePassing_Integer_Queue_AndSetType(msgQueue, enType);
+			
+			MessagePassingQueue<HashSet<String>> msg_hs_Queue = new MessagePassingQueue<HashSet<String>>(iNeighSize - 1, stKey, keys_neighs); 
+			hp_Agents.get(stKey).SetMessagePassing_B_Matrix_Queue_AndSetType(msg_hs_Queue, enType);
 		}
 		
 		Iterator<Map.Entry<String, HashSet<String>>> itComm = hp_MST_Agnt_Neighs.entrySet().iterator();
@@ -178,15 +184,19 @@ public class MST_Wrapper {
 				iCantorKey = GetCantorKey(v, w);
 						
 				MessagePassingQueue<Integer> obNeighTransQueue = hp_Agents.get(strNeighName).GetMessagePassingQueue();
+				MessagePassingQueue<HashSet<String>> obNeigh_hs_TransQueue = hp_Agents.get(strNeighName).GetMessagePassing_B_Mat_Queue();
 				
 				Synch_Object<Integer> objSynchNeigh = hp_MST_Synch_Objects.get(iCantorKey);
+				Synch_Object<HashSet<String>> objSynch_hs_Neigh = hp_MST_Synch_hs_Objects.get(iCantorKey);
 				
-				agent.AddCommNeighbour(strNeighName, objSynchNeigh, obNeighTransQueue);
+				agent.AddComm_Integer_Neighbour(strNeighName, objSynchNeigh, obNeighTransQueue);
+				agent.AddComm_B_Mat_Neighbour(strNeighName, objSynch_hs_Neigh, obNeigh_hs_TransQueue);
 			}			
 		}
 		
 		hp_MST_Agnt_Neighs = null;
 		hp_MST_Synch_Objects = null;
+		hp_MST_Synch_hs_Objects = null;
 	}
 	
 	private int GetCantorKey(int iNum1 , int iNum2)

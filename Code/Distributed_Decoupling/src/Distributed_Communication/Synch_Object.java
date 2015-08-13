@@ -103,7 +103,7 @@ public class Synch_Object<T> {
     	{
     		return (T) (Integer) ((Integer) v1 + (Integer) v2);
     	}
-    	else if( (v2.getClass() == HashSet.class) && (v2.getClass().getTypeName().equals(String.class.getName())))
+    	else if((v2.getClass() == HashSet.class))
     	{
     		HashSet<String> set_Eqns = new HashSet<String>();
     		

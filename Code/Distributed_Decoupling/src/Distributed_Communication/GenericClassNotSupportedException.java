@@ -16,6 +16,6 @@ public class GenericClassNotSupportedException<T>{
 	
 	public String toString()
 	{
-		return "Unsupported class " + ((T)target).getClass();
+		return "Unsupported class " + target.getClass() + " and type " + target.getClass().getComponentType() ;
 	}
 }

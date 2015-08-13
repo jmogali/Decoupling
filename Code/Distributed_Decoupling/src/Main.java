@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException
 	{
 		Loader myParser = new Loader();
-		String strFilePath = "E:\\Research\\STN\\Version_Controller\\Decoupling\\Data\\BDH_Problem_Instance\\bdh-agent-problems\\16_10_50_750_45.dimacs";
+		String strFilePath = "E:\\Research\\STN\\Version_Controller\\Decoupling\\Data\\BDH_Problem_Instance\\bdh-agent-problems\\20_10_50_950_33.dimacs";
 		
 		boolean bSuccess;
 		
@@ -32,6 +32,8 @@ public class Main {
 		Iterator<String> it = ssAgentNames.iterator();
 		String str;
 		
+		int iCouplingEdgeCount = 0;
+		
 		for(int iCount = 0; iCount < iNumOfAgents ; iCount++)
 		{
 			str = String.valueOf(it.next());			
@@ -41,8 +43,22 @@ public class Main {
 			a.setValue(23, (long)(1200 + 5 * Math.random()));
 			myParser.PopulateAgentSTN(a);
 			
-			bSuccess = a.GetSTN().EstablishFPCIntraAgentConsistency(a.GetName());
-			System.out.println("Agent :" + a.GetName() + " FPC Consistency: "+bSuccess);
+			if(Agent.SANITY_CHECK)
+			{
+				bSuccess = a.GetSTN().EstablishFPCIntraAgentConsistency(a.GetName());
+				
+				if(false == bSuccess)
+				{
+					System.out.println("Agent :" + a.GetName() + " FPC Consistency: "+bSuccess);
+				}
+			}
+			
+			iCouplingEdgeCount = iCouplingEdgeCount + a.GetSTN().GetNumOfCouplingEdges();
+		}
+		
+		if(Agent.SANITY_CHECK)
+		{
+			System.out.println("Number Of coupling Edges: " + (iCouplingEdgeCount/2));
 		}
 		
 		System.out.println("Done");

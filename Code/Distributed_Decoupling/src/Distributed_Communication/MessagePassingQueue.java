@@ -43,7 +43,7 @@ public class MessagePassingQueue<T> {
 		m_keys_neighs = keys_neighs;
 	}
 	
-	public synchronized Value_Slow_Agent GetSum() throws Exception
+	public synchronized Value_Slow_Agent CombineOperation() throws Exception
 	{
 		while(m_hm_Mesages.size() < f_iCapacity)
 		{
@@ -76,7 +76,7 @@ public class MessagePassingQueue<T> {
 	}
 	
 	@SuppressWarnings({"unchecked" , "rawtypes"})
-	private T PerformOperation(HashMap<String, T> hm_Mesages , Set<String> keyNeighs) throws Exception
+	private T PerformOperation(HashMap<String, T> hm_Mesages , HashSet<String> keyNeighs) throws Exception
 	{
 		if(hm_Mesages.isEmpty())
 		{
@@ -86,7 +86,7 @@ public class MessagePassingQueue<T> {
 		String[] vecKeys = hm_Mesages.keySet().toArray(new String[hm_Mesages.size()]);
 		
 		Class clName = hm_Mesages.get(vecKeys[0]).getClass();
-		
+				
 		if(clName == Integer.class)
 		{	
 			Integer iSum = 0;
@@ -99,7 +99,7 @@ public class MessagePassingQueue<T> {
 			
 			return T_clone( (T) iSum);
 		}
-		else if( (clName == Set.class) && (clName.getTypeName().equals(String.class.getName())) )
+		else if( (clName == HashSet.class))
 		{
 			Set<String> set_Eqns = new HashSet<String>();
 			

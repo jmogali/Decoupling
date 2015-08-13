@@ -33,8 +33,7 @@ public class Loader extends Parser{
 		
 		PopulateAgentVertices(agSTN , obAgent.GetName());
 		
-		PopulateAgentEdges(agSTN , obAgent.GetName());	
-		
+		PopulateAgentEdges(agSTN , obAgent.GetName());			
 	}
 	
 	//Populate Vertices
@@ -112,22 +111,21 @@ public class Loader extends Parser{
 			if(strAgentName.equals(strOwner1) && strAgentName.equals(strOwner2))
 			{
 				//intra agent edge
-				agSTN.AddIntraEdge(stKey, new STN_Edge(strVtx1, strVtx2, dConstraint));				
+				agSTN.AddIntraEdge(stKey, new STN_Edge(strVtx1, strVtx2, dConstraint));
 			}
 			else if( strAgentName.equals(strOwner1) || strAgentName.equals(strOwner2))
 			{
 				//coupling edge
 				if(strAgentName.equals(strOwner1))
 				{
-					agSTN.AddCouplingEdge(stKey, new Inter_agent_constraint(strVtx1, strVtx2, dConstraint, strOwner2, true));
+					agSTN.AddCouplingEdge(stKey, new Inter_agent_constraint(strVtx1, strVtx2, dConstraint, strOwner2, true));					
 				}
 				else
 				{
 					agSTN.AddCouplingEdge(stKey, new Inter_agent_constraint(strVtx1, strVtx2, dConstraint, strOwner1 , false));	
-				}
-			}		
-		}
-		
+				}				
+			}			
+		}		
 	}
 	
 	public int GetNumOfAgents()

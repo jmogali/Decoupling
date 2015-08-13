@@ -8,10 +8,10 @@ import java.util.Set;
 
 public class STN {
 
-	private HashMap<String, STN_Vertex> m_hp_Vertices = null;   // Map containing all vertices
-	private HashMap<String, STN_Edge> m_hp_Intra_Edge = null;  // Map containing all intra-agent edges
-	private HashMap<String, Inter_agent_constraint> m_hp_Coupling_Edge = null;  // Map containing all intra-agent edges
-	private HashSet<String> m_set_Neighbhours = null;
+	protected HashMap<String, STN_Vertex> m_hp_Vertices = null;   // Map containing all vertices
+	protected HashMap<String, STN_Edge> m_hp_Intra_Edge = null;  // Map containing all intra-agent edges
+	protected HashMap<String, Inter_agent_constraint> m_hp_Coupling_Edge = null;  // Map containing all intra-agent edges
+	protected HashSet<String> m_set_Neighbhours = null;
 	
 	public STN()
 	{
@@ -61,6 +61,11 @@ public class STN {
 		return m_hp_Vertices.get(strVtx).isShared();
 	}
 	
+	public int GetNumOfCouplingEdges()
+	{
+		return m_hp_Coupling_Edge.size();
+	}
+	
 	//Apply Floyd Warshall Algorithm to establish FPC 
 	public boolean EstablishFPCIntraAgentConsistency(String strAgentName)
 	{
@@ -70,7 +75,8 @@ public class STN {
 		
 		String stKey;
 		
-		HashMap<String, Double> hp_Vtx_Vtx_dist = new HashMap<String, Double>();
+		final int f_iVtxHpSize = (int)(m_hp_Vertices.size() * 4 /3 ) + 1;
+		HashMap<String, Double> hp_Vtx_Vtx_dist = new HashMap<String, Double>(f_iVtxHpSize);
 	    Iterator<Map.Entry<String, STN_Vertex>> it = m_hp_Vertices.entrySet().iterator();
 		
 	    while(it.hasNext())
@@ -261,5 +267,25 @@ public class STN {
 		}
 		
 		return setCouplingEqnNames;
+	}
+	
+	public boolean SanityCheckFor_B_Matrix(HashSet<String> setEqnNames)
+	{
+		Iterator<String> it = m_hp_Coupling_Edge.keySet().iterator();
+		
+		while(it.hasNext())
+		{
+			if(false == setEqnNames.contains(it.next()))
+			{
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	public int GetNumOfVertics()
+	{
+		return m_hp_Vertices.size();
 	}
 }
